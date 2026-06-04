@@ -1,0 +1,41 @@
+name: Weekly Availability Reminder
+
+on:
+  schedule:
+    # Sunday: 04:00–22:00 UTC every 2 hours
+    #   → covers Sunday 4 PM AEDT (= 05:00 UTC) and 4 PM AEST (= 06:00 UTC)
+    - cron: '0 4-22/2 * * 0'
+    # Monday: every 2 hours all day
+    #   → covers the 14-hour wait + all subsequent 2-hour reminders
+    - cron: '0 */2 * * 1'
+
+  # Allow a manual run for testing
+  workflow_dispatch:
+
+# Prevent concurrent runs so two jobs can't both decide to post a reminder
+concurrency:
+  group: availability-bot
+  cancel-in-progress: false
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run availability reminder bot
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        run: python bot.py
