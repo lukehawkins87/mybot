@@ -12,6 +12,9 @@ on:
   # Allow a manual run for testing
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 # Prevent concurrent runs so two jobs can't both decide to post a reminder
 concurrency:
   group: availability-bot
