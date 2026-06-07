@@ -232,31 +232,33 @@ function pullDailySpend() {
 
 // ─── CHANGE LOG TAB ──────────────────────────────────────────────────────────
 
+// Break-even CPL based on funnel math:
+// 31% attend Ses3 × 40% book call × 70% show × 30% close × $8000 = ~$208/lead
+const BREAKEVEN_CPL = 208;
+
 function suggestAction(spend, roas, ctr, cpp, purchases) {
   if (spend < 5) return '— No spend';
 
   if (purchases === 0 && spend > 100) {
-    if (ctr < 0.5) return '🛑 Kill — no sales & very low CTR. Wrong audience or weak creative.';
-    return '⚠️ Pause & check — spending but zero purchases. Verify pixel is firing.';
+    if (ctr < 0.5) return '🛑 Kill — no leads & very low CTR. Wrong audience or weak creative.';
+    return '⚠️ Pause & check — spending but zero leads recorded. Verify pixel is firing.';
   }
 
-  if (roas === null || purchases === 0) {
-    if (ctr >= 1.5) return '👀 Monitor — good CTR but no purchases yet. Check landing page.';
+  if (cpp === null || purchases === 0) {
+    if (ctr >= 1.5) return '👀 Monitor — good CTR but no leads yet. Check landing page.';
     return '⏳ Too early to judge — needs more data.';
   }
 
-  if (roas >= 2.0) return '🚀 Scale hard — increase budget 30-50%. Best performer.';
-  if (roas >= 1.5) return '📈 Scale 20-30% — strong ROAS. Expand audience.';
-  if (roas >= 1.0) return '✅ Hold & optimise — profitable. Test new creatives to scale.';
-  if (roas >= 0.5) {
-    if (ctr < 1.0) return '🔄 Refresh creative — marginal return & weak CTR. Test new hook/angle.';
-    return '🔄 Test new audience — clicks OK but poor conversion. Tighten targeting.';
+  // Primary metric: cost per lead vs break-even backend value (~$208)
+  if (cpp < 80)  return '🚀 Scale hard — very cheap leads. Increase budget 30-50%.';
+  if (cpp < 140) return '📈 Scale 20-30% — profitable on backend. Strong performer.';
+  if (cpp < BREAKEVEN_CPL) return '✅ Hold & test — leads below break-even ($208). Try new creatives to lower CPL further.';
+  if (cpp < 280) {
+    if (ctr < 1.0) return '🔄 Refresh creative — leads too expensive & weak CTR. Test new hook/angle.';
+    return '🔄 Test new audience — leads above break-even ($208). People click but don\'t opt in.';
   }
-  if (roas >= 0.2) {
-    if (cpp !== null && cpp > 150) return '⚠️ Too expensive per lead. Cut budget 50% or kill.';
-    return '⚠️ Restructure — poor ROAS. New creative + different audience.';
-  }
-  return '🛑 Kill or pause — losing money badly. Only keep if actively split-testing.';
+  if (cpp < 400) return '⚠️ Restructure — leads costing ~2× what they\'re worth. New creative + tighter audience.';
+  return '🛑 Kill or pause — leads far too expensive to be profitable on backend. Reallocate budget.';
 }
 
 function assessChange(changeType) {
