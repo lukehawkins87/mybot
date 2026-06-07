@@ -96,7 +96,7 @@ function updateDashboard() {
   sheet.getRange('A4').setValue('LAST 7 DAYS — CAMPAIGN PERFORMANCE')
     .setFontWeight('bold').setFontSize(12);
 
-  const headers7d = ['Campaign', 'Spend ($)', 'Purchases', 'Cost/Purchase ($)', 'ROAS', 'CTR (%)', 'Status'];
+  const headers7d = ['Campaign', 'Spend ($)', 'Purchases', 'Cost/Purchase ($)', 'ROAS', 'CTR (%)', 'Status', 'Suggested Action'];
   sheet.getRange(5, 1, 1, headers7d.length).setValues([headers7d])
     .setFontWeight('bold').setBackground('#e8f0fe');
 
@@ -124,18 +124,21 @@ function updateDashboard() {
       .replace('- Event: Purchase - COLD - WC', '')
       .trim();
 
-    sheet.getRange(r, 1, 1, 7).setValues([[
+    const suggestion = suggestAction(spend, roas, ctr, cpp, purchases);
+
+    sheet.getRange(r, 1, 1, 8).setValues([[
       shortName,
       spend.toFixed(2),
       purchases,
       cpp !== null ? cpp.toFixed(2) : '—',
       roas !== null ? roas.toFixed(3) : '—',
       ctr.toFixed(2),
-      status
+      status,
+      suggestion
     ]]);
 
     if (roas !== null && roas < 0.2) {
-      sheet.getRange(r, 1, 1, 7).setBackground('#fce8e6');
+      sheet.getRange(r, 1, 1, 8).setBackground('#fce8e6');
     }
     r++;
   });
@@ -143,6 +146,7 @@ function updateDashboard() {
   // Totals row
   sheet.getRange(r, 1, 1, 3).setValues([['TOTAL', totalSpend7d.toFixed(2), totalPurchases7d]])
     .setFontWeight('bold').setBackground('#f0f0f0');
+  sheet.setColumnWidth(8, 380);
   r += 2;
 
   // ── Agency activity yesterday ──
@@ -227,6 +231,33 @@ function pullDailySpend() {
 }
 
 // ─── CHANGE LOG TAB ──────────────────────────────────────────────────────────
+
+function suggestAction(spend, roas, ctr, cpp, purchases) {
+  if (spend < 5) return '— No spend';
+
+  if (purchases === 0 && spend > 100) {
+    if (ctr < 0.5) return '🛑 Kill — no sales & very low CTR. Wrong audience or weak creative.';
+    return '⚠️ Pause & check — spending but zero purchases. Verify pixel is firing.';
+  }
+
+  if (roas === null || purchases === 0) {
+    if (ctr >= 1.5) return '👀 Monitor — good CTR but no purchases yet. Check landing page.';
+    return '⏳ Too early to judge — needs more data.';
+  }
+
+  if (roas >= 2.0) return '🚀 Scale hard — increase budget 30-50%. Best performer.';
+  if (roas >= 1.5) return '📈 Scale 20-30% — strong ROAS. Expand audience.';
+  if (roas >= 1.0) return '✅ Hold & optimise — profitable. Test new creatives to scale.';
+  if (roas >= 0.5) {
+    if (ctr < 1.0) return '🔄 Refresh creative — marginal return & weak CTR. Test new hook/angle.';
+    return '🔄 Test new audience — clicks OK but poor conversion. Tighten targeting.';
+  }
+  if (roas >= 0.2) {
+    if (cpp !== null && cpp > 150) return '⚠️ Too expensive per lead. Cut budget 50% or kill.';
+    return '⚠️ Restructure — poor ROAS. New creative + different audience.';
+  }
+  return '🛑 Kill or pause — losing money badly. Only keep if actively split-testing.';
+}
 
 function assessChange(changeType) {
   const t = (changeType || '').toLowerCase();
