@@ -1,12 +1,14 @@
 # Comparative Coaching Deep-Dive: Regan Hillyer vs. Marczell Klein
 
 > **Status:** ✅ COMPLETE — live Meta/Facebook Ad Library inventory pulled 2026-06-08 via Apify
-> (actor `apify/facebook-ads-scraper`, run `54d1drbzzffDaiMGM`, 80 ads across both keyword searches).
+> (actor `apify/facebook-ads-scraper`). Final data = **page-targeted census, run `dPRKa3lPFN99RYFr6`,
+> 693 ads** across Regan's, Marczell's, and Mindvalley's pages. (An earlier keyword pull was capped/
+> undersampled and its wrong conclusion is flagged + corrected in Section 4.)
 >
 > **Sourcing caveats:** Both coaches' own sites block automated fetching, so prices come from
 > search-index snippets and are "reported/estimated" point-in-time. High-ticket/mastermind
-> prices are gated (application-only) and not public. Ad-library pull was capped at 50 ads per
-> keyword search (Meta surfaced ~100 total), so counts below are a representative sample, not a census.
+> prices are gated (application-only) and not public. Regan's own ad page hit the 300-ad pull cap,
+> so her ad total is a floor (≥300), not an exact count.
 
 ---
 
@@ -75,71 +77,80 @@ free workshop/"Simple 2-Step Process" VSL; free "$6.5M funnel" VSL (coaching ent
 free/cheap event tickets ("Mindset Mastery" etc.); book "Unlock Your Mind" as authority asset;
 organic IG/YouTube → "link in bio for free course". No free quiz/meditation/community group found.
 
-## 4. Facebook / Meta Ads — ✅ LIVE PULL (Apify, 2026-06-08)
+## 4. Facebook / Meta Ads — ✅ LIVE PULL (Apify, 2026-06-08, page-targeted census)
 
-**Headline finding:** The two run opposite Meta strategies. **Marczell advertises aggressively under
-his own brand page; Regan barely advertises under hers at all — her paid Meta presence runs almost
-entirely through Mindvalley's ad account.**
+> **Correction note:** An earlier draft of this section (from a keyword-search pull capped at 50 results)
+> wrongly concluded "Regan barely advertises under her own page." That was a sampling artifact — keyword
+> search returned mostly Mindvalley results and only 4 stale ads from her page. This **page-targeted
+> census** (693 ads across the three pages, run `dPRKa3lPFN99RYFr6`) corrects it: **Regan runs a large,
+> active self-run ad program of her own.**
 
-### 4a. Regan Hillyer — via the **Mindvalley** page (the real engine)
-- **26 ads** (14 active / 12 inactive), running **Dec 2024 → Apr 2026** — a sustained always-on funnel.
-- **Destination: 100% mindvalley.com**, almost all → `/manifesting/masterclass` (21 of 26) — the free
-  manifestation masterclass. Plus `/manifesting/sales` (3) and **pathway-segmented** VSLs:
-  `/masterclass/pathway-wealth` and `/masterclass/pathway-love`.
-- **Format:** Video (16), DCO/dynamic creative (7), Image (3). **CTA:** "Sign up" (14), "Learn more" (12).
-- **Placements:** Facebook, Instagram, Audience Network, Messenger, Threads (full Meta spread).
-- **Angles / hooks (verbatim titles):**
-  - *"The World's No.1 Manifestation Method" / "Are you manifesting correctly?"* (authority/method)
-  - *"FREE: Master Manifestation for Transformation & Success" / "Join the #1 Free Manifesting Masterclass"* (free lead magnet)
-  - *"The Real Reason Your Income Has Hit a Ceiling"* (**wealth** pathway)
-  - *"You're Not Unlucky in Love. You're Misaligned."* (**love/relationships** pathway)
-  - *"Unlock Your Receiving Potential" / "Scroll Away If You Don't Want Your Dreams To Come True"*
-  - Body copy positions Regan as *"multimillionaire manifestation coach"* and leans on the
-    "you were never taught how to receive" / "remove the invisible blocks" frame.
+**Headline finding:** Both coaches run heavy, always-on Meta programs under their own brand pages.
+**Regan additionally has Mindvalley advertising her manifestation funnel on top** — so her total
+paid-Meta footprint is the largest of the three.
 
-### 4b. Regan Hillyer — her **own** brand page
-- Only **4 ads, ALL inactive**, the oldest from **Mar 2022** (*"7 Lessons We Must Learn From Ukraine"*),
-  plus organic-style business/origin content (*"Stop doing these 3 things… to scale your online business,"*
-  *"When I was 17 I said no to the 9–5…"*).
-- **Takeaway:** Regan does **not** run a meaningful paid-Meta program under her own brand. Mindvalley
-  carries the manifestation acquisition. This confirms and sharpens the "Mindvalley-powered distribution"
-  thesis — it's not just content reach, it's literally Mindvalley's ad budget and pixel.
+> ⚠️ **Cap caveat:** Regan's own page hit the **300-ad pull limit I set**, so her true total is **≥300**.
+> Mindvalley (280) and Marczell (113) returned complete. Active-ad counts are exact (Meta always shows
+> all live ads); inactive counts understate 12-mo history (Meta retains stopped *commercial* ads only briefly).
+
+### 4a. Regan Hillyer — her **OWN** brand page (large self-run program)
+- **≥300 ads** (pull-capped), **32 currently active**, running **Mar 2022 → Jun 2026** — a mature,
+  continuously-tested direct-response operation, **not** a Mindvalley dependency.
+- **Format:** DCO/dynamic (135), Video (111), Image (53), Carousel (1) — heavy creative testing.
+- **CTA mix:** "Subscribe" (118), "Sign up" (97), "Learn more" (31), **"Apply now" (28 → high-ticket gate)**,
+  "Shop now" (8) — the whole value ladder in one ad account.
+- **Funnel destinations:** `reganhillyer.com` (234), **GoToWebinar** (register 21 + attendee 15 = 36 —
+  webinar funnel), `mmm.reganhillyer.com` (10 — the *Millions, Manifesting & Magic* mastermind), Instagram (9).
+- **Currently-active funnel:** `/products/the-manifestation-code` (15), **`/products/ignite-with-regan`**
+  ($9.99 membership, 9), `/products/ceo-identity-method`, plus manifestation landing pages.
+- **High-ticket "Apply now" routes:** `/pages/premium-mentorship` (13), `/pages/mmm-application-form` (10),
+  `/10k-with-mrr/` (4) — application gates running as live ads.
+- **Angles / hooks (verbatim titles):** the full ladder is visible in the creative —
+  *"Spiritual Growth For Real Life. Join Our Community for $9.99"* (entry) · *"Stop Overthinking. Start
+  Executing. $77"* · *"$777 until 30 May. Then $4,777."* (price-reveal urgency) · *"Resell '10K A Month'
+  for 100% Profit!"* (MRR) · *"Cross the line into millionaire identity"* · *"Lead your life like a CEO"* ·
+  *"Receive Money Like It's Inevitable"* · *"Same Ceiling Every Time? Let's Address The Real Block"* ·
+  scarcity: *"Only 2 spots remain"* / *"3 calls. Then never again."*
+
+### 4b. Regan Hillyer — **Mindvalley** amplification (on top of her own)
+- Mindvalley's page runs **280 ads (99 active)** across its *whole teacher catalog* — so most are NOT
+  Regan (e.g. be-extraordinary 50, duality 47, ultramind 40, bliss 30, superbrain 28, amplify 25).
+- **Regan's slice = the `/manifesting` funnel: 40 ads, 21 active.** Destination: `mindvalley.com/manifesting/masterclass`
+  (free masterclass), with **pathway-segmented** VSLs (`/pathway-wealth`, `/pathway-love`).
+- **Angles:** *"The World's No.1 Manifestation Method"* · *"FREE Manifesting Masterclass"* ·
+  *"The Real Reason Your Income Has Hit a Ceiling"* (wealth) · *"You're Not Unlucky in Love. You're Misaligned."* (love).
+- **So Regan's total active footprint ≈ 32 (own) + 21 (Mindvalley manifesting) = ~53 active ads** — the
+  Mindvalley deal is *additive reach*, not a substitute for her own spend.
 
 ### 4c. Marczell Klein — under his **own** brand page (high-tempo direct response)
-- **49 ads** (11 active / 38 inactive), running **Dec 2024 → Jun 2026** — continuous testing, with a
-  huge **Black-Friday/Cyber-Monday blitz** (35 ads launched Nov 2025, 26 of them → `/bfcm`).
-- **Format:** Video (25) + DCO (23) — heavy dynamic-creative A/B testing. **CTA:** "Learn more" (30),
-  **"Shop now" (18)** — direct purchase intent, consistent with the self-liquidating front end.
-- **Placements:** Facebook, Instagram, Audience Network, Messenger, Threads.
-- **Funnel destinations:**
-  - `products.marczellklein.com/bfcm` (26) — seasonal discount blast
-  - `products.marczellklein.com/the-shift-v2` (7) — front-end offer
-  - `products.marczellklein.com/the-invisible-influence-system` (2) — the $37 entry course
-  - `apply.marczellklein.com/mental-millionaire-ads` (2) — **application/high-ticket** gate
-  - `fb.me/…` click-to-**Messenger** (7) — conversational/lead-capture funnel (his current active set)
-- **Angles / hooks (verbatim):**
-  - *"Government Secrets EXPOSED"* — *"The government spent $480m+ researching it. I'm using it to
-    reprogram millionaires to retain their wealth…"* (curiosity/conspiracy + wealth)
-  - *"Get 90% OFF Today Only"* — *"copy the mindset of an 8-figure entrepreneur… subconscious remapping
-    program"* (price anchor + scarcity)
-  - *"DONE FOR YOU MINDSET"* (his current active angle)
-  - Hypnosis hard-hook: *"I'm going to hypnotize you to create the health, wealth, and relationships
-    you've always wanted."*
+- **113 ads (11 active)**, running **Dec 2024 → Jun 2026** — continuous testing, with a big
+  **Black-Friday/Cyber-Monday blitz** in Nov 2025.
+- **Format:** Video (85) + DCO (27). **CTA:** **"Shop now" (78)** + "Learn more" (34) — direct purchase
+  intent, consistent with the self-liquidating front end.
+- **Funnel destinations:** `products.marczellklein.com` (97 — `/bfcm`, `/the-shift-v2`,
+  `/the-invisible-influence-system`), `apply.marczellklein.com` (4 — high-ticket gate),
+  `fb.me/…` click-to-**Messenger** (7, his current active set).
+- **Angles / hooks (verbatim):** *"Government Secrets EXPOSED"* (*"$480m+ gov research… reprogram
+  millionaires"*) · *"Get 90% OFF Today Only"* (*"copy the mindset of an 8-figure entrepreneur"*) ·
+  *"DONE FOR YOU MINDSET"* (current active) · hypnosis hard-hook *"I'm going to hypnotize you to create
+  the health, wealth, and relationships you've always wanted."*
 
-### 4d. Side-by-side
-| | Regan (via Mindvalley) | Marczell (own page) |
-|---|---|---|
-| Ads in sample | 26 (14 active) | 49 (11 active) |
-| Who runs them | **Mindvalley's ad account** | Marczell himself |
-| Primary destination | mindvalley.com free masterclass | products.marczellklein.com front-end offers |
-| Creative mix | Video-led, "Sign up" to free class | Video + heavy DCO, "Shop now" to buy |
-| Segmentation | By **pathway** (wealth vs love) | By **offer/season** (BFCM, Shift, IIS, apply) |
-| Current active funnel | Free masterclass opt-in | Click-to-Messenger + "Done For You Mindset" |
-| Signature angle | "World's #1 Manifestation Method" | "Government Secrets EXPOSED" hypnosis hook |
+### 4d. Side-by-side (corrected)
+| | Regan (own page) | Regan via Mindvalley | Marczell (own page) |
+|---|---|---|---|
+| Total ads | **≥300** (pull-capped) | 40 (manifesting slice) | 113 |
+| Active now | **32** | 21 | 11 |
+| Who runs them | Regan herself | Mindvalley's ad account | Marczell himself |
+| Primary destination | reganhillyer.com (+GoToWebinar) | mindvalley.com free masterclass | products.marczellklein.com |
+| Creative mix | DCO + Video + Image | Video + DCO | Video + DCO |
+| Dominant CTA | "Subscribe" / "Sign up" / "Apply now" | "Sign up" / "Learn more" | **"Shop now"** |
+| Ladder visible in ads | Full ($9.99 → $77 → $777/$4,777 → mastermind apply) | Free masterclass top-of-funnel | Front-end offers + apply |
+| Segmentation | By offer/tier + webinar | By **pathway** (wealth vs love) | By offer/season (BFCM etc.) |
+| Signature angle | "Cross into millionaire identity" / CEO | "World's #1 Manifestation Method" | "Government Secrets EXPOSED" hypnosis |
 
-*Note on retention:* Meta surfaces all currently-active commercial ads but retains stopped/inactive
-commercial ads only briefly (unlike 7-yr retention for political/social-issue ads), so the inactive
-counts above understate true 12-month history.
+**Net:** Regan is the *bigger* Meta advertiser, running her entire value ladder herself (entry membership
+through mastermind application, with live webinar funnels) **and** getting Mindvalley to push her free
+masterclass on top. Marczell runs a leaner, purchase-direct "Shop now" front-end machine.
 
 ## 5. Marketing & Sales Conversion Tactics
 
@@ -182,21 +193,24 @@ Both self-published via "Do More Books."
 Same genre, different flavor. Regan = feminine, spiritual-abundance, **Mindvalley-powered distribution**,
 ultra-premium ceiling ($1M). Marczell = masculine, **hypnosis/persuasion**, aggressively engineered
 direct-response funnel (income capture, OTOs, $25 deposit, AI continuity).
-Regan's unfair advantage = the Mindvalley partnership (borrowed audience + #1 quest) — and the
-**live ad data confirms this is literal: Mindvalley, not Regan, runs the Meta ads** (she has
-essentially no active ads on her own page).
-Marczell's = optimized self-liquidating front end + recurring AI revenue, fed by a high-tempo,
-heavily-tested direct-response Meta program he runs himself (Video+DCO, "Shop now," seasonal BFCM blasts).
+Regan's unfair advantage = the Mindvalley partnership (borrowed audience + #1 quest) **layered on top of
+her own large, self-run Meta program** — the page-targeted ad census shows ≥300 ads / 32 active under her
+own page (full ladder: $9.99 membership → $77 → $777/$4,777 → mastermind application, plus live webinar
+funnels), *plus* ~21 active Mindvalley manifesting-masterclass ads. She is the bigger Meta advertiser of the two.
+Marczell's = optimized self-liquidating front end + recurring AI revenue, fed by a leaner, purchase-direct
+Meta program he runs himself (113 ads, Video+DCO, "Shop now," seasonal BFCM blasts).
 
 ---
 
 ## ✅ COMPLETED — Apify Ad-Library pull (2026-06-08)
 
 - `apify` MCP confirmed **connected** (`.mcp.json` + `APIFY_TOKEN` working).
-- Ran `apify/facebook-ads-scraper` (run `54d1drbzzffDaiMGM`, SUCCEEDED in 38s) against Meta Ad Library
-  keyword searches for **"Regan Hillyer"** and **"Marczell Klein"**, country = ALL, active + inactive.
-- 80 ads captured (50/keyword cap); dataset `zL5XAmLbUGN2U2HlU`. Creative/hooks, primary text, destination
-  offer, run dates, formats, placements and active status grouped into **Section 4** above.
-- Optional follow-ups if you want to go deeper: (a) lift the 50-ad cap for a full census;
-  (b) scrape the exact Facebook **Page URLs** (not just keyword) to catch ads keyword search missed;
-  (c) export the report to a Google Doc.
+- **Pass 1 (keyword, capped):** run `54d1drbzzffDaiMGM`, 80 ads. *Undersampled Regan's own page* and led
+  to a wrong conclusion — superseded.
+- **Pass 2 (page-targeted census):** run `dPRKa3lPFN99RYFr6`, SUCCEEDED in 147s, **693 ads**, dataset
+  `iuxVYTdzl1FXntGxJ`. Scraped the exact Page IDs (Regan 829208673777443, Mindvalley 719853864726295,
+  Marczell 109522351561499), `active_status=all`, 300/page limit. This is the data behind Section 4.
+- Creative/hooks, primary text, destination offers, run dates, formats, placements and active status
+  fully grouped into **Section 4** above (with the earlier error flagged and corrected).
+- Remaining caveat: Regan's own page **hit the 300-ad pull cap**, so her true total is ≥300. To get an
+  exact total, re-run her page alone with `resultsLimit` removed (unlimited).
