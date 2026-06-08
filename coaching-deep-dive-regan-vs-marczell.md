@@ -178,12 +178,23 @@ masterclass on top. Marczell runs a leaner, purchase-direct "Shop now" front-end
 | **On-platform DCO / lead** | 5 / 4 | dynamic catalog, no outbound link |
 | **High-ticket application (gated)** | 4 / 0 | `apply.marczellklein.com/mm-v2ads`, `/mental-millionaire-ads` — "Mental Millionaire" apply funnel |
 
-> **Marczell's lead magnet:** notably **not** free — his entry point is a **click-to-Messenger conversation**
-> (current "Done For You Mindset" hypnosis hook) or a **cheap paid tripwire** ("The Shift" 90% off, $37 IIS).
-> Self-liquidating from the first click.
+> **Marczell's lead magnet (resolved):** his ad *creative* never names a freebie — the Messenger ads
+> ("Done For You Mindset") sell the hypnosis *outcome* and use a soft "Click LEARN MORE to see how
+> hypnosis can change your mindset" CTA that opens a **Messenger conversation** (CTA type `LEARN_MORE`,
+> no cards, link = `fb.me`). The Ad Library can't show the in-DM flow, but his **documented free lead
+> magnet is "The Simple Course" (FREE)** — opt-in at `products.marczellklein.com/the-simple-course`,
+> CTA *"CLICK HERE TO GET THE SIMPLE COURSE FREE."* Critically, the opt-in captures **First/Last name,
+> Phone, Email, and Annual Income** + consent to **recurring marketing texts** — i.e. a Messenger/SMS
+> lead funnel built to segment by spending power. Second free entry point: **"Book Your Free Call"**
+> (→ high-ticket Mental Millionaire / Breakthrough coaching application).
+> *Caveat:* the `fb.me` Messenger destination isn't directly resolvable, so the Messenger-ad → Simple-Course
+> link is a strong inference (his only documented free magnet + matching hypnosis hook), not Ad-Library-confirmed.
 
-**Key contrast:** Regan's ads lead with **free value** (masterclass → webinar → ladder); Marczell's lead
-with a **low-priced paid offer or a Messenger DM** — no free lead magnet in his ad set.
+**Key contrast:** **Both** have a free lead magnet, but Regan **names hers in the ad** (free Manifesting
+Masterclass / webinars) while Marczell **hides his behind the click** — the ad sells the hypnosis outcome
+and the Messenger bot delivers the free "Simple Course" (capturing phone + income). Regan = free value
+stated up front; Marczell = outcome hook up front, free course + data capture delivered in-DM. His paid
+"Shop now" tripwires (The Shift $297 "90% off", $37 IIS) run in parallel as a self-liquidating front end.
 
 ## 5. Marketing & Sales Conversion Tactics
 
