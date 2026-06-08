@@ -152,6 +152,39 @@ paid-Meta footprint is the largest of the three.
 through mastermind application, with live webinar funnels) **and** getting Mindvalley to push her free
 masterclass on top. Marczell runs a leaner, purchase-direct "Shop now" front-end machine.
 
+### 4e. What each ad drives to — categories & specific lead magnets
+*(DCO ads use `{{product.name}}` templating, so the destination URL — not the headline — defines the offer.)*
+
+**Regan Hillyer — multi-funnel, leads with FREE:**
+| Category | Ads (total / active) | Destination → lead magnet / offer |
+|---|---|---|
+| **Free masterclass** *(top lead magnet, via Mindvalley)* | 40 / 21 | `mindvalley.com/manifesting/masterclass` — free Manifesting Masterclass (wealth/love pathway variants) |
+| **Free webinar funnels** | ~36 / 0 now | GoToWebinar regs + `/pages/webinar-mmm-join`, `/webinar-mmm-instant-join`, `/behind-the-magic-webinar-waitlist` → feed MMM mastermind |
+| **Free opt-in / training pages** | ~11 / 4 | `/pages/manifestation`, `/manifestation-code-your-best-journey`, `/free-training-ctc` (Coach The Coach free training) |
+| **Low-ticket / tripwire (paid entry)** | ~160 / 26 | `ignite-with-regan` ($9.99/mo membership — **132 ads, biggest volume**), `the-manifestation-code` (**most-active offer, 15 live**), `ceo-identity-method` ($77), `cash-on-demand-777` ($777), `your-daily-abundance-routine` |
+| **Mid-ticket courses** | ~12 / 0 | `10k-with-mrr` (resell), `online-empire-builder`, `7-figure-manifestation-workshop` |
+| **High-ticket application (gated)** | ~40 / 0 now | `premium-mentorship` (1:1), `mmm-application-form` + `mmm.reganhillyer.com/main-apply` (Millions, Manifesting & Magic), `infusion-leadership-retreat`, `coach-the-coach` cert |
+| **Social growth** | 9 / 2 | `instagram.com/reganhillyer` (follow) |
+
+> **Regan's specific free lead magnets:** (1) free **Manifesting Masterclass** (Mindvalley, the big one),
+> (2) free **live webinars** via GoToWebinar (MMM + "Behind the Magic"), (3) free **Coach The Coach training**,
+> (4) free manifestation **opt-in pages**. Her most-advertised *paid* tripwire is the **$9.99 Ignite membership**.
+
+**Marczell Klein — leads with a cheap PAID tripwire + Messenger (no free PDF/webinar in the ad set):**
+| Category | Ads (total / active) | Destination → offer / lead magnet |
+|---|---|---|
+| **Paid tripwire front-end ("Shop now")** | ~97 / 0 now | `/the-shift-v2` (**52 ads** — "90% off subconscious remapping program"), `/bfcm` (42 — Black Friday), `/the-invisible-influence-system` ($37 entry course) |
+| **Click-to-Messenger lead gen** *(current active)* | 7 / 7 | `fb.me/…` → Messenger, hook = **"DONE FOR YOU MINDSET"** hypnosis |
+| **On-platform DCO / lead** | 5 / 4 | dynamic catalog, no outbound link |
+| **High-ticket application (gated)** | 4 / 0 | `apply.marczellklein.com/mm-v2ads`, `/mental-millionaire-ads` — "Mental Millionaire" apply funnel |
+
+> **Marczell's lead magnet:** notably **not** free — his entry point is a **click-to-Messenger conversation**
+> (current "Done For You Mindset" hypnosis hook) or a **cheap paid tripwire** ("The Shift" 90% off, $37 IIS).
+> Self-liquidating from the first click.
+
+**Key contrast:** Regan's ads lead with **free value** (masterclass → webinar → ladder); Marczell's lead
+with a **low-priced paid offer or a Messenger DM** — no free lead magnet in his ad set.
+
 ## 5. Marketing & Sales Conversion Tactics
 
 Shared: value-ladder/ascension • free VSL→offer • free challenge/webinar→paid • application gate for high-ticket •
