@@ -466,15 +466,6 @@ function pullCreativeInventory() {
   r += 2;
 
   // ── Per-ad performance table (last 30 days) ──
-  sheet.getRange(r, 1).setValue('ALL ADS — 30-DAY PERFORMANCE')
-    .setFontWeight('bold').setFontSize(12);
-  r++;
-
-  const adPerfHeaders = ['Ad Name', 'Campaign', 'Status', 'Spend ($)', 'Leads', 'Cost/Lead ($)', 'CTR (%)', 'Impressions', 'View Ad'];
-  sheet.getRange(r, 1, 1, adPerfHeaders.length).setValues([adPerfHeaders])
-    .setFontWeight('bold').setBackground('#e8f0fe');
-  r++;
-
   const adInsights = callAPI(`${AD_ACCOUNT}/insights`, {
     fields: 'ad_id,ad_name,campaign_name,spend,impressions,clicks,actions,cost_per_action_type,ctr',
     date_preset: 'last_30d',
@@ -482,47 +473,111 @@ function pullCreativeInventory() {
     limit: '200'
   });
 
-  // Build ad id → status map
   const adStatusMap = {};
   (ads.data || []).forEach(ad => { adStatusMap[ad.id] = ad.status; });
 
-  (adInsights.data || []).forEach(row => {
-    const spend = parseFloat(row.spend || 0);
-    const purchases = getPurchases(row.actions);
-    const cpp = getCPP(row.cost_per_action_type);
-    const ctr = parseFloat(row.ctr || 0);
-    const impressions = parseInt(row.impressions || 0);
-    const status = adStatusMap[row.ad_id] || '—';
-
-    const adUrl = `https://adsmanager.facebook.com/adsmanager/manage/ads?act=${AD_ACCOUNT.replace('act_','')}&selected_ad_ids=${row.ad_id}`;
-
-    const shortCampaign = (row.campaign_name || '')
+  const adRows = (adInsights.data || []).map(adRow => {
+    const spend = parseFloat(adRow.spend || 0);
+    const purchases = getPurchases(adRow.actions);
+    const cpp = getCPP(adRow.cost_per_action_type);
+    const ctr = parseFloat(adRow.ctr || 0);
+    const impressions = parseInt(adRow.impressions || 0);
+    const status = adStatusMap[adRow.ad_id] || '—';
+    const action = suggestAction(spend, null, ctr, cpp, purchases);
+    const adUrl = `https://adsmanager.facebook.com/adsmanager/manage/ads?act=${AD_ACCOUNT.replace('act_', '')}&selected_ad_ids=${adRow.ad_id}`;
+    const shortCampaign = (adRow.campaign_name || '')
       .replace('A&S - Challenge Funnel ', '')
       .replace('- Event: Purchase - COLD - WC', '')
       .trim();
+    return { adRow, spend, purchases, cpp, ctr, impressions, status, action, adUrl, shortCampaign };
+  });
 
-    sheet.getRange(r, 1, 1, 8).setValues([[
-      row.ad_name || '—',
+  // Sort worst CPL first so kills surface at the top
+  adRows.sort((a, b) => {
+    if (a.cpp === null && b.cpp === null) return b.spend - a.spend;
+    if (a.cpp === null) return 1;
+    if (b.cpp === null) return -1;
+    return b.cpp - a.cpp;
+  });
+
+  // ── Priority Actions banner ──
+  const killList = adRows.filter(a => a.action.startsWith('🛑') && a.spend > 100);
+  const scaleList = adRows.filter(a => a.action.startsWith('🚀') || a.action.startsWith('📈'));
+
+  if (killList.length > 0 || scaleList.length > 0) {
+    sheet.getRange(r, 1).setValue('⚡ PRIORITY ACTIONS')
+      .setFontWeight('bold').setFontSize(13).setFontColor('#d93025');
+    r++;
+
+    if (killList.length > 0) {
+      sheet.getRange(r, 1).setValue('PAUSE OR KILL — above break-even $208 CPL:')
+        .setFontWeight('bold');
+      r++;
+      killList.slice(0, 8).forEach(a => {
+        const cplStr = a.cpp !== null ? `$${a.cpp.toFixed(0)} CPL` : 'no leads';
+        sheet.getRange(r, 1)
+          .setValue(`  🛑 "${a.adRow.ad_name}" — ${cplStr}  |  ${a.shortCampaign}`)
+          .setBackground('#fce8e6');
+        r++;
+      });
+      r++;
+    }
+
+    if (scaleList.length > 0) {
+      sheet.getRange(r, 1).setValue('SCALE BUDGET — profitable leads:')
+        .setFontWeight('bold');
+      r++;
+      scaleList.slice(0, 8).forEach(a => {
+        const cplStr = a.cpp !== null ? `$${a.cpp.toFixed(0)} CPL` : 'early';
+        sheet.getRange(r, 1)
+          .setValue(`  🚀 "${a.adRow.ad_name}" — ${cplStr}  |  ${a.shortCampaign}`)
+          .setBackground('#c8e6c9');
+        r++;
+      });
+      r++;
+    }
+    r++;
+  }
+
+  // ── Full ad table ──
+  sheet.getRange(r, 1).setValue('ALL ADS — 30-DAY PERFORMANCE (sorted by Cost/Lead, worst first)')
+    .setFontWeight('bold').setFontSize(12);
+  r++;
+
+  const adPerfHeaders = ['Ad Name', 'Campaign', 'Status', 'Spend ($)', 'Leads', 'Cost/Lead ($)', 'CTR (%)', 'Impressions', 'Suggested Action', 'View Ad'];
+  sheet.getRange(r, 1, 1, adPerfHeaders.length).setValues([adPerfHeaders])
+    .setFontWeight('bold').setBackground('#e8f0fe');
+  r++;
+
+  adRows.forEach(({ adRow, spend, purchases, cpp, ctr, impressions, status, action, adUrl, shortCampaign }) => {
+    sheet.getRange(r, 1, 1, 9).setValues([[
+      adRow.ad_name || '—',
       shortCampaign,
       status,
       spend.toFixed(2),
       purchases,
       cpp !== null ? cpp.toFixed(2) : '—',
       ctr.toFixed(2),
-      impressions
+      impressions,
+      action
     ]]);
 
-    // Add clickable link in column 9
-    sheet.getRange(r, 9).setFormula(`=HYPERLINK("${adUrl}","View in Ads Manager")`);
+    sheet.getRange(r, 10).setFormula(`=HYPERLINK("${adUrl}","View in Ads Manager")`);
 
-    if (spend > 0 && purchases === 0) {
-      sheet.getRange(r, 1, 1, 8).setBackground('#fff3cd');
-    }
+    let bg = null;
+    if (action.startsWith('🛑'))      bg = '#fce8e6';
+    else if (action.startsWith('⚠️')) bg = '#fef3c7';
+    else if (action.startsWith('🔄')) bg = '#fff9c4';
+    else if (action.startsWith('✅')) bg = '#e6f4ea';
+    else if (action.startsWith('📈')) bg = '#c8e6c9';
+    else if (action.startsWith('🚀')) bg = '#a8d5a2';
+    if (bg) sheet.getRange(r, 1, 1, 9).setBackground(bg);
     r++;
   });
 
   sheet.setColumnWidth(1, 300);
-  sheet.setColumnWidth(9, 160);
+  sheet.setColumnWidth(9, 380);
+  sheet.setColumnWidth(10, 160);
 }
 
 // ─── MAIN ENTRY POINT ────────────────────────────────────────────────────────
