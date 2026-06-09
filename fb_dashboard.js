@@ -462,6 +462,67 @@ function pullCreativeInventory() {
   sheet.setColumnWidth(5, 100);
   sheet.setColumnWidth(6, 100);
   sheet.setColumnWidth(7, 80);
+
+  r += 2;
+
+  // ── Per-ad performance table (last 30 days) ──
+  sheet.getRange(r, 1).setValue('ALL ADS — 30-DAY PERFORMANCE')
+    .setFontWeight('bold').setFontSize(12);
+  r++;
+
+  const adPerfHeaders = ['Ad Name', 'Campaign', 'Status', 'Spend ($)', 'Leads', 'Cost/Lead ($)', 'CTR (%)', 'Impressions', 'View Ad'];
+  sheet.getRange(r, 1, 1, adPerfHeaders.length).setValues([adPerfHeaders])
+    .setFontWeight('bold').setBackground('#e8f0fe');
+  r++;
+
+  const adInsights = callAPI(`${AD_ACCOUNT}/insights`, {
+    fields: 'ad_id,ad_name,campaign_name,spend,impressions,clicks,actions,cost_per_action_type,ctr',
+    date_preset: 'last_30d',
+    level: 'ad',
+    limit: '200'
+  });
+
+  // Build ad id → status map
+  const adStatusMap = {};
+  (ads.data || []).forEach(ad => { adStatusMap[ad.id] = ad.status; });
+
+  (adInsights.data || []).forEach(row => {
+    const spend = parseFloat(row.spend || 0);
+    const purchases = getPurchases(row.actions);
+    const cpp = getCPP(row.cost_per_action_type);
+    const ctr = parseFloat(row.ctr || 0);
+    const impressions = parseInt(row.impressions || 0);
+    const status = adStatusMap[row.ad_id] || '—';
+
+    const adUrl = `https://adsmanager.facebook.com/adsmanager/manage/ads?act=${AD_ACCOUNT.replace('act_','')}&selected_ad_ids=${row.ad_id}`;
+
+    const shortCampaign = (row.campaign_name || '')
+      .replace('A&S - Challenge Funnel ', '')
+      .replace('- Event: Purchase - COLD - WC', '')
+      .trim();
+
+    sheet.getRange(r, 1, 1, 8).setValues([[
+      row.ad_name || '—',
+      shortCampaign,
+      status,
+      spend.toFixed(2),
+      purchases,
+      cpp !== null ? cpp.toFixed(2) : '—',
+      ctr.toFixed(2),
+      impressions
+    ]]);
+
+    // Add clickable link in column 9
+    sheet.getRange(r, 9).setFormula(`=HYPERLINK("${adUrl}","View in Ads Manager")`);
+
+    if (spend > 0 && purchases === 0) {
+      sheet.getRange(r, 1, 1, 8).setBackground('#fff3cd');
+    }
+    r++;
+  });
+
+  sheet.setColumnWidth(1, 300);
+  sheet.setColumnWidth(9, 160);
 }
 
 // ─── MAIN ENTRY POINT ────────────────────────────────────────────────────────
