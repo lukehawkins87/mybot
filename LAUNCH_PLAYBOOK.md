@@ -190,6 +190,110 @@ The 8 workstreams:
 
 ---
 
+### The exact AI prompt — copy/paste this
+
+> **How to run it:** Paste the prompt below, then attach or paste your data underneath where it says `[PASTE DATA HERE]`. Best results: give it (a) the buyer list/spreadsheet for the last 2 AUS + 2 USA launches, and (b) the call transcripts of buyers who took calls. If you have a lot of transcripts, run it per market (one pass for AUS, one for USA) and then ask it to compare. Use the most capable model available.
+
+```
+ROLE
+You are a senior direct-response market researcher and offer strategist. You
+specialise in analysing real buyer data and sales-call transcripts to extract
+Ideal Customer Profiles (ICPs), buyer language, and targeting decisions for paid
+acquisition. You are rigorous: you only draw conclusions the data supports, you
+quantify where you can, and you flag where evidence is thin.
+
+CONTEXT
+- The offer is a program that teaches and helps people BUY a business (an
+  existing business / acquisition), sold via a 3-day live masterclass.
+- Backend offer value is $8,000.
+- We run this in two markets: AUSTRALIA and the USA. Buyer behaviour differs by
+  market (example we've already seen: "coaches" converted well in the USA but
+  not in Australia).
+- The data I'm giving you is the BUYERS (people who purchased) from our last 2
+  Australian launches and last 2 USA launches, plus call transcripts of buyers
+  who took sales calls.
+- IMPORTANT POSITIONING CONSTRAINT: This is NOT to be marketed as a
+  "certification." Any language, angle, or hook you propose must attract these
+  buyers WITHOUT framing the offer as a certification or qualification.
+
+YOUR TASK
+Analyse the data and produce the following 7 deliverables. Keep AUSTRALIA and
+USA findings SEPARATE unless I tell you to merge them, because they differ.
+
+1) MARKET-LEVEL CLIENT AVATAR (one for AUS, one for USA)
+   For each market, describe the typical buyer across these data points:
+   - Demographics (age range, gender skew, location type, income/career stage,
+     family situation)
+   - Professional background / current occupation
+   - Financial situation & access to capital (since they're buying a business)
+   - Core PROBLEMS and frustrations (in their own words where possible)
+   - DESIRES / the outcome they're really buying
+   - Fears, objections, and hesitations they raised on calls
+   - Triggering event / "why now"
+   - Level of business experience (first-timer vs experienced)
+
+2) TOP 3 ICPs PER MARKET (ranked)
+   - List the Top 3 ICPs for AUSTRALIA and the Top 3 ICPs for the USA,
+     ranked by how well they actually CONVERTED in the data.
+   - For each ICP give: a short name/label, who they are, why they convert,
+     approx share of buyers (count or %), and 2–3 verbatim quotes from the data
+     that prove this segment exists.
+
+3) WHO NOT TO TARGET
+   - List the segments, occupations, or mindsets that did NOT convert, churned,
+     refunded, were poor-fit, or were time-wasters.
+   - Explain the tell-tale signals (language, situation) so we can EXCLUDE them
+     in ad targeting and setter qualification.
+
+4) BUYER LANGUAGE MAP
+   - Pull the actual words, phrases, metaphors, and emotional triggers buyers
+     used to describe their problem, their desire, and their decision to buy.
+   - Group by: pain language, desire/outcome language, objection language, and
+     "moment they decided" language.
+   - These are for direct use in ad copy, landing pages, and emails — so quote
+     verbatim and keep it punchy.
+
+5) NON-CERTIFICATION POSITIONING ANGLES
+   - Propose 3–5 hooks/angles that would attract the top ICPs WITHOUT calling
+     this a certification or qualification.
+   - For each angle, give: the core promise, the emotional driver it taps, the
+     ICP it best fits, and 1 example headline.
+
+6) EQUAL-VOLUME RE-RANK (remove traffic bias)
+   - Our current buyer mix is skewed by however much traffic each segment got.
+   - Re-rank the ICPs assuming we sent EQUAL lead volume to every segment —
+     i.e., rank by CONVERSION RATE / quality per lead, not by raw buyer count.
+   - Tell me which ICPs would win if volume were equalised, and which only look
+     good today because they got more traffic. Show your reasoning.
+
+7) THREE WHATSAPP GROUP MESSAGING ANGLES
+   - We will run 3 separate WhatsApp groups, one per top ICP.
+   - For each of the 3 groups, give: which ICP it's for, how to "call out" that
+     ICP so they feel personally spoken to, the tone, and 2 sample opening
+     messages that would resonate with that exact ICP.
+
+OUTPUT FORMAT
+- Use clear headers per deliverable, and per market where relevant.
+- Quantify with counts/percentages whenever the data allows.
+- Use verbatim buyer quotes as evidence (mark them in "quotes").
+- End with a "CONFIDENCE & GAPS" section: state which conclusions are
+  well-evidenced vs. thin, and what extra data would sharpen the analysis.
+- Do not invent data. If something isn't in what I gave you, say so.
+
+DATA
+[PASTE DATA HERE — buyer lists for last 2 AUS + 2 USA launches, and buyer call
+transcripts. Label each clearly as AUS or USA and which launch.]
+```
+
+**Optional follow-up prompts (run after the main one):**
+- *"Now merge AUS and USA and tell me the single strongest cross-market ICP, and where the markets most disagree."*
+- *"Turn the Buyer Language Map into 10 ad hooks per top ICP, non-certification."*
+- *"Write the 3 WhatsApp group welcome sequences (first 3 messages each) from section 7."*
+
+> **Tip:** If you're using me (Claude) for this, I can pull the buyer call transcripts straight from your Fathom recordings and the buyer lists from Drive/Jotform, then run this analysis directly — no copy/paste needed. Just ask.
+
+---
+
 ## 8. Next Launch Build (Ads, Pages, Sequences)
 **Owner:** Marketing
 
