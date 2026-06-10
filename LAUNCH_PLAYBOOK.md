@@ -6,6 +6,53 @@
 
 ---
 
+## The whole system in one flow (read this first)
+
+This is the entire launch as one connected machine, start to finish. The numbered
+workstreams further down are just the detailed reference for each piece.
+
+**Before the launch — get the right people in the room.**
+First we figure out *who* to target. We feed every buyer from the **last 2 AUS
+and last 2 USA launches** — plus their **call transcripts** — into AI to pull
+out **client avatars, the top 3 ICPs per market, who NOT to target, the exact
+buyer language, and non-certification angles** *(Workstream 7)*. Those ICPs and
+that language become the raw material for **ads, landing pages, and email
+sequences — 3 ICPs × 2 markets — for the next masterclass running 2–3 weeks out**
+*(Workstream 8)*. The same 3 ICPs also each get their **own WhatsApp group** so
+messaging speaks to each one directly.
+
+**The week before — warm them up and lock attendance.**
+Buyers are pulled into a **WhatsApp "concierge" community**: a pinned selfie
+video, then 2–3 videos a day for the 3 days before the event *(Workstream 3)*.
+Meanwhile the **3 setters** start calling — non-buyers to get them on a ticket
+(just talking to a setter lifts conversion ~**+4%**), and **every purchaser the
+day before to confirm** (~300 calls each), to stop the drop-off *(Workstream 1)*.
+All calls are recorded and coached.
+
+**During the 3-day live — engagement, workbook, and the VIP push.**
+The **speaker/host** runs the room: forces cameras on, uses the "teenager"
+accountability framing, and brings a **guest success-story testimonial each day**
+*(Workstream 6)*. Every attendee gets the **workbook (really a survey)**; the
+**password is revealed ¾ through Day 1, on screen ~1 minute, live-only and
+stripped from the replay**, with the incentive "fill out all 3 workbooks → get
+the AI workbook" *(Workstream 4)*. Throughout — especially the **start of each
+day and Day 3** — the speaker pushes **VIP** (founder 1-on-1 day, giveaway, extra
+training, case studies, formula calculator) *(Workstream 5)*.
+
+**After each day / after the launch — call, qualify, convert.**
+Setters call **attendees AND non-attendees** after Day 1, tell them to show up
+for Day 2, and prioritise **high-ICP leads and those who completed the most
+workbooks**. For every buyer they run the core loop: **triage → book a calendar
+event + SMS live on the call → send content → upsell anyone who skipped VIP**
+*(Workstream 1)*. When someone buys, they're walked through onboarding and added
+to WhatsApp. Behind it all, the **setter pay model** (5% backend = $400/sale)
+gets stress-tested so commission-only actually works *(Workstream 2)*.
+
+**Order of operations:** **#7 (data/ICPs) first** → it feeds **#8 (marketing
+build)** → then **#1–#6 run together** for the live event.
+
+---
+
 ## How to use this doc
 Each section below is a **workstream** with:
 - **Owner** — who you delegate it to
