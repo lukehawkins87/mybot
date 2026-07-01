@@ -172,13 +172,43 @@
 
 ## Notes on Message Script Usage
 
-| Attempt Number | Message to Send |
-|---|---|
-| 2nd no-answer on Day 1 | Voicemail Script (SOP 3) |
-| 2nd no-answer from Day 2 onward | Text/WhatsApp Script 1 (SOP 3) |
-| Every 2 unanswered attempts thereafter | Text/WhatsApp Script 1 (SOP 3) |
+| Attempt Number | Days 1–6 | Days 7–10 |
+|---|---|---|
+| 2nd no-answer on Day 1 | Voicemail Script (SOP 3) | — |
+| 2nd no-answer from Day 2 onward | Text/WhatsApp Script 1 (SOP 3) | Text/WhatsApp Script 1 (SOP 3) |
+| Every 2 unanswered attempts thereafter | Text/WhatsApp Script 1 (SOP 3) | **Text/WhatsApp Script 2 — Urgency** (see below) |
 
-> **Note:** With only 2 scripts across 10 days, some leads will receive Text/WhatsApp Script 1 multiple times. See the options below for how to handle this.
+> **Days 7–10 rule:** Any lead who has already received Text/WhatsApp Script 1 at least once switches to Text/WhatsApp Script 2 — Urgency on their next message trigger.
+
+---
+
+## Text/WhatsApp Script 2 — Urgency (Days 7–10 Only)
+
+> *Use this script from Day 7 onward for any lead who has already received Script 1 at least once and still hasn't picked up.*
+
+---
+
+Hey [Name],
+
+Just [X] days until our Masterclass — *How to Quit Your Job in 90 Days & Make $30k/month as a Coach using AI and Neuro Transformation Therapy* — and you're registered.
+
+We're setting aside personal concierge support for a small number of attendees before we go live, and I want to make sure you're on that list.
+
+Can you just reply **YES** to confirm you're coming, or let me know if something's changed?
+
+Don't want you to miss this.
+
+Fernando/Sarika
+
+---
+
+**Why this script works differently to Script 1:**
+
+- **Countdown** ("Just X days") — activates time pressure without feeling pushy
+- **Commitment consistency** — "you're registered" reminds them of their own decision; people feel compelled to follow through on choices they've already made
+- **Scarcity** — "small number of attendees" for concierge support makes the spot feel exclusive and worth protecting
+- **Loss aversion** — "Don't want you to miss this" is more powerful than "here's what you'll gain" — people act harder to avoid losing something than to acquire something equivalent
+- **Micro-commitment CTA** — "reply YES" is the lowest possible friction response; it doesn't ask them to call back or fill anything in
 
 ---
 
@@ -188,13 +218,9 @@
 
 ---
 
-## Option 1 — Add a Third Script for Later-Stage Follow-Up *(Minimal Change)*
+## Option 1 — Third Script for Days 7–10 *(IMPLEMENTED)*
 
-**The issue:** Leads who haven't picked up by Day 5+ will start receiving the same Text/WhatsApp Script 1 for the 3rd or 4th time. This reduces impact.
-
-**The fix:** Write one additional "urgency" version of the text script specifically for Days 7–10 ("The Masterclass is in X days — last chance to speak before we begin"). This script replaces Script 1 only for leads who have already received it twice or more.
-
-Everything else in the 10-day sequence stays exactly the same.
+Text/WhatsApp Script 2 — Urgency is now included above. It replaces Script 1 from Day 7 onward for any lead who has already received Script 1 at least once. Everything else in the 10-day sequence stays exactly the same.
 
 ---
 
