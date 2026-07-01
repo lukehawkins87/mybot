@@ -4,170 +4,87 @@
 
 ---
 
-## Lesson 1: Leads Must Be Properly Set Before You Get Them
+## Lesson 1: Follow the Line — Don't Jump Ahead
 
-**What went wrong:** Some calls were booked where setters (Sarika/Fernando) never found the prospect's goals, challenges, or financial situation — in some cases just booking whoever replied with a time. Predictably, those leads no-showed.
-
-**Luke's rule:** Every lead must have three things confirmed before booking:
-1. A need or challenge identified
-2. Goals found
-3. Financial qualification completed
-
-If a setter skips these, you're not getting a sales call — you're getting a time block that hurts your calendar and your numbers. Screenshot and flag any conversations that look like this so Luke can coach on it.
-
----
-
-## Lesson 2: Follow the Line — Don't Jump Ahead
-
-**What went wrong:** Lisa (and Sarah by her own admission) sometimes moved to the next question in the script instead of chunking down on what the prospect just said. Once you skip a thread, it's hard to go back, and if you do go back, it can compound into multiple unresolved threads that break the flow.
-
-**Luke's rule:** If a prospect says something significant, stay on that line until it's exhausted. The next step in the script will still be there. One unresolved thread is manageable; three stacked ones become impossible to navigate smoothly.
+When a prospect says something significant, the instinct is often to acknowledge it quickly and move on to the next question in the script. That's a mistake — if you skip a thread, it's hard to come back to it cleanly, and if you try, you can end up with multiple unresolved threads stacking on top of each other, which breaks the natural flow of the conversation. The script isn't going anywhere; whatever step comes next will still be there after you've fully explored what the prospect just gave you. Stay on the line they opened until it's exhausted, then move forward.
 
 > *"I always, if I'm following the line, and it means I'm missing the next thing in the script, then I'm going to come to that next step after anyway."* — Luke
 
 ---
 
-## Lesson 3: When Someone Mentions a Death or Trauma, Ask Who It Was
+## Lesson 2: When Someone Mentions a Death or Trauma, Ask Who It Was
 
-**What went wrong:** The prospect mentioned a close family member's suicide on the call. Lisa acknowledged it but didn't chunk down on it.
-
-**Luke's rule:** Always ask who passed away and what that meant to them. This is not just empathy — it directly connects to their purpose, their calling to heal, and their urgency. It becomes the strongest lever you have for why they need to act now.
+If a prospect tells you a close family member died or took their own life, you must chunk down on it — ask who that person was and what it meant to them. This isn't just about being human and empathetic, although that matters too; it's because that kind of loss is almost always directly connected to why this person wants to become a healer or coach. The grief, the sense of helplessness, the desire to make sure it doesn't happen to someone else — that's your strongest lever for purpose and urgency, and it's been handed to you on a plate. If you acknowledge it and move on without asking, you've missed the most powerful emotional connection available on that call, and the prospect will also notice that you didn't care enough to ask.
 
 > *"If someone tells me a close family member just committed suicide, I'm going to ask who that was. Because it's going to lead to them connecting to a purpose of why they want to do this."* — Luke
 
-Failing to ask can also come across as robotic and make the prospect feel you're not genuinely listening.
+---
+
+## Lesson 3: Surface the Partner's Alignment Early — Don't Wait
+
+The moment you find out a prospect has a partner — especially one who is the main breadwinner — you need to get in front of that relationship straight away. Ask whether the partner knows they've been doing the training, whether they know about this call, what they think about this type of personal development, what they'd love about it, and what they might push back on. If you leave it until later, you're pitching someone who still has a landmine sitting in their pocket that they haven't defused yet. Brad's framing is a great way to introduce it: "If you're trying to get your dream body but every night your partner brings home pizza, that's a hidden sabotage energy — is your partner aligned with where you want to go?"
+
+If the partner has never spent money on personal development themselves, do not accept the prospect's assurance that "he'll be supportive." People's values show up in where they spend their time, energy, and money — and if this person has never handed over a dollar for anything like this, it's not a value of theirs. When they hear their partner is about to spend thousands on coaching, the conditioning of a lifetime kicks in and the default is scepticism. You need to know this before the pitch, not after.
 
 ---
 
-## Lesson 4: Surface the Partner's Alignment Early — Don't Wait
+## Lesson 4: Get the Identity Shift Early — "You're Already a Life Coach"
 
-**What went wrong:** The prospect's partner was a night-shift abattoir worker who had never done personal development and wasn't aware of the call. This only became fully clear late in the conversation.
-
-**Luke's rule:** The moment you know there's a partner (especially a breadwinner), ask:
-- Does he know you've been doing this training?
-- Does he know you're on this call?
-- What does he think about this type of thing?
-- What would he love about it? What might he be opposed to?
-
-**Brad's framing (endorsed by Luke):** "If you're trying to hit a fitness goal but every night your partner brings home pizza, that's a sabotage energy. Is your partner aligned with where you want to go?"
-
-If the partner has never spent money on personal development themselves, don't believe the prospect when they say "he'll be supportive." People's values show up in how they spend their time, energy, and money. If he's never done it, he doesn't value it — and when he hears a large investment figure, the risk is very high he'll kill the sale.
+Before you get too deep into goals and challenges, plant the seed that the prospect is already a life coach by nature. Ask them what they believe a life coach is — let them define it — and then reframe it: a life coach is simply someone who helps another human being, and by that definition, they've been doing it their whole life. Once they can see themselves through that lens, they stop thinking of coaching as something they might one day become and start owning it as something they already are. This matters because it deepens their emotional investment in the outcome and gives you powerful leverage later in the call — a life coach is a leader of themselves, not someone who is led by other people's fear. When they face an objection from a partner or parent, you can call back to that identity: "What would the life coach in you do here?"
 
 ---
 
-## Lesson 5: Get the Identity Shift Early — "You're Already a Life Coach"
+## Lesson 5: Handle the "Nothing Has Ever Stuck for Me" Belief
 
-**What Luke would do:** Before getting too deep into goals and challenges, plant the seed that the prospect is already a life coach by nature. Ask them what they think a life coach is, then reframe it: anyone helping a human being is coaching. Connect it to who they already are.
-
-This does two things:
-1. It deepens their emotional investment in the outcome
-2. It gives you leverage later — "A life coach is a leader of themselves. How would a life coach make this decision?"
+When someone says nothing has ever stuck for them, they're saying it out loud partly to process it — but they're quietly carrying the fear that this won't stick either. They won't offer you that fear directly; you have to get in front of it before it quietly kills the sale later. Ask them why they think the other things didn't stick, how passionate they actually were about those things, and then ask them to compare that to how passionate they feel about coaching right now. Walk them to the realisation themselves that passion drives commitment and commitment is what makes things stick — and that this time is categorically different. Then use pull energy to lock it in during the close: "Are you someone who shows up when it gets hard? Who asks for help when you get stuck? Because that's what it takes, and I need to know you're that person."
 
 ---
 
-## Lesson 6: Handle the "Nothing Has Ever Stuck for Me" Belief
+## Lesson 6: Don't Pitch Until You Know What Date They're Coming
 
-**What Luke would do:** When someone says nothing has stuck, they're quietly carrying the fear that this won't either — they just won't say it out loud. Get in front of it:
-
-- Why do you think the other things didn't stick?
-- How passionate were you about them really?
-- How does that compare to how passionate you are about coaching?
-- If you don't get this to work, what will you do instead?
-
-Walk them to the realisation that passion drives commitment, and commitment drives sticking. Then use pull energy in the room: "Are you someone who shows up? Who asks for help when stuck?"
+This is a non-negotiable. If a prospect hasn't told you with certainty whether they're coming in July or October, you do not drop the price and present the offer. A prospect who doesn't know which event they're attending cannot make a real, grounded commitment — any "yes" they give you is built on sand, and the moment they walk away from the call and hit a real-world obstacle (a funeral, a worried partner, a sceptical parent), they're going to cancel. In this call, the prospect went from "send me the payment link" to requesting a cancellation within an hour — because the date uncertainty never got resolved, and once she was off the call everything that had been left unaddressed filled that gap. Ask directly: why are you unsure about the dates, what would need to be true for you to lock one in, and if July doesn't work can you feel certain about October? Get the answer before you go anywhere near the offer.
 
 ---
 
-## Lesson 7: Don't Pitch Until You Know What Date They're Coming
+## Lesson 7: Don't Pitch Until You Know Where the Money Is Coming From
 
-**What went wrong:** Lisa pitched and took a $200 deposit from a prospect who hadn't confirmed whether she could make July or October, because there was a funeral in the way.
-
-**Luke's rule (non-negotiable):** No pitch until you have date certainty. Ask directly:
-- Why aren't you sure about July vs October?
-- If July doesn't work, would you feel certain about October?
-- What would need to be true for you to know which one?
-
-A prospect who doesn't know which event they're attending can't make a real commitment. And once they go away uncertain, outside forces (partner, sick dad, Google reviews) fill the gap. The result in this call: the prospect went from "send me the payment link!" to "please cancel" within an hour — because she'd gone away, talked to her partner, and possibly Googled the company.
+If a prospect has less than $500 available and mentions that someone else might be able to help them financially, you need to understand that situation completely before you pitch. Find out who that person is, whether they've ever done anything like this before, whether they even know about this call, and what you think their reaction will be when they hear the investment amount. In this call, the funding source turned out to be a terminally ill father who had never done personal development, had no idea his daughter was on a sales call, and was going to be asked for $8,000 out of nowhere for something he had likely never heard of — a recipe for a refund. If the third party is going to be part of the financial decision, they need to be on a call with you. Don't hand that risk to the prospect and hope it works out on the other side.
 
 ---
 
-## Lesson 8: Don't Pitch Until You Know Where the Money Is Coming From
+## Lesson 8: No Neediness Energy — "They Need Me, I Don't Need Them"
 
-**What went wrong:** The prospect said she had less than $500 to her name. She mentioned her dad might help. Luke found out only after the pitch that the dad was terminally ill, hadn't done any personal development, didn't even know about the call, and would be hearing about an $8K spend for the first time out of nowhere.
-
-**Luke's rule:** If the prospect isn't self-funding, find out:
-- Who is the funding source?
-- Have they ever done anything like this before?
-- Do they know about this call?
-- What do you think they would say when they hear the investment amount?
-- Can we get them on a three-way call?
-
-A terminally ill father who's never met a coach in his life and doesn't know his daughter is on a sales call is not a funding source. Pitching into that situation gives the risk away and almost guarantees a refund request.
+Fear of losing a lead — especially after a quiet run of calls — can quietly push you into taking what you can get rather than holding the frame that you're the one deciding whether to let someone in. When that energy shows up, prospects feel it, and it destroys the pull dynamic that makes the whole conversation work. Drill this into yourself before every single call, and especially when you're in a dry streak: "I don't need them. They need me." The people you don't pitch because the boxes aren't ticked are not your failure — their life just doesn't get better. That's on them. When a prospect asks about a deposit or payment plan, resist the urge to immediately take whatever they offer. Instead, pause and check the certainty first: "Before we get to that, I just want to ask — what do you think about the value of what we've talked about? Do you genuinely believe this will work for you?" Taking money from someone who is at 6/10 certainty almost always ends in a refund request, because the doubts that were already there just needed a little time and a conversation with the wrong person to surface.
 
 ---
 
-## Lesson 9: No Neediness Energy — "They Need Me, I Don't Need Them"
+## Lesson 9: Pre-Handle Urgency — Problem-Solve Dates on the Call, Not After
 
-**What went wrong:** Lisa moved to the pitch and took a $200 deposit before key boxes were ticked, partly driven by a fear of losing the lead. The energy of "let me secure whatever I can get" was visible in the call.
-
-**Luke's rule:** Drill this into yourself before every call, especially in a dry streak:
-
-> *"I don't need them. They need me."*
-
-The moment you flip to needing them, you lose all the pull energy that makes the frame work. The prospect feels it and either buys into it or runs. The people you didn't pitch because the boxes weren't ticked? Too bad for them — their life doesn't get better. The right mindset is: "I'm assessing whether I should let you in."
-
-When a prospect asks about a deposit or payment plan, don't just take it. Instead: "Before we get to that — tell me what you think about the value of this. Do you believe this will work for you? Do you believe you'll succeed?" Check the certainty first. Taking money from a 6/10 certainty almost always ends in a refund.
+When a prospect is uncertain about dates, the wrong move is to tell them it's fine and that they can always be moved to the next event if something comes up. That's not reassurance — it's you taking the urgency out of the decision for them, which means they leave the call with no reason to act now. Instead, make the date uncertainty a problem to solve together, in real time, before the call ends. Brad's framing captures this well: the version of this person who has transformed their life and is earning what they want to earn — is she the kind of person who goes away and figures it out later, or is she the kind of person who figures it out right now? Use that to get them problem-solving with you so that they leave having locked in a date, not a vague intention that evaporates the moment real life shows up.
 
 ---
 
-## Lesson 10: Pre-Handle Urgency — Problem-Solve Dates NOW
+## Lesson 10: Frame External Sceptics Before the Prospect Talks to Them
 
-**Brad's insight (endorsed by Luke):** Don't let date uncertainty sit as an unresolved future problem. Use urgency framing during the call:
-
-> "The version of you who's changed her life and earning 10K a month — do you think she's someone who waited to figure out what date worked, or do you think she'd have figured it out on this call?"
-
-Get them problem-solving the obstacle with you, in real time, so they leave with a date locked, not a vague intention.
+Before the call ends, the prospect is almost certainly going to talk to someone — a partner, a parent, a friend — about what they've decided. If that person has never done personal development themselves, they have spent decades being conditioned to believe that anything outside of a university, a government, or a traditional employer is either a risk or a scam. When your prospect goes to them excited and asks them for money or support, that person's conditioning kicks in and their default response is fear. You need to arm the prospect before that conversation happens — help them understand why that person might react with scepticism (it's not personal, it's programming), what they might say, and how to think about it. If you let them walk away uncoached into that conversation, you're essentially handing the close over to someone who has every reason to undo it.
 
 ---
 
-## Lesson 11: Frame External Skeptics Before the Prospect Talks to Them
+## Lesson 11: Know the Review Statistics — Address the Elephant Proactively
 
-**What went wrong:** The prospect was going to talk to her partner and her dad about the investment after the call, with no framing from Lisa about how those conversations might go.
-
-**Luke's rule:** Before the call ends, condition the prospect on how to think about outside opinions. People who haven't done this type of training have been conditioned their whole lives to see anything outside of university/government/corporate as suspicious. When your prospect asks someone like that for thousands of dollars, that person's default is "scam." 
-
-Help the prospect understand:
-- Why their person might react with fear (it's not about you)
-- What to say to them
-- That the scepticism is just conditioning, not truth
-
-Otherwise you're sending an un-coached prospect into a conversation with someone who's going to buy into their fear and undo the whole call.
+When a prospect is borrowing money from someone who hasn't done personal development, that person will Google the company. You need to know the numbers cold so you can address this before it becomes an ambush. Facebook: 657 reviews, 98% recommended — roughly 7 people who didn't recommend out of 657. Google: 504 reviews, 4.9 stars, with 5 one-star reviews — none from someone who paid in full, completed the program, and then said it was a waste of their time. Trustpilot: approximately 12 negative reviews out of over 1,160, most of them anonymous, most from people who either never purchased or didn't get a refund after changing their mind. Not one person who paid in full, engaged with the program, and saw it through has written a negative review. That's the fact — and it's worth sharing proactively if you know a sceptical third party is about to go looking.
 
 ---
 
-## Lesson 12: Know the Review Statistics — Address Elephants Proactively
+## Lesson 12: Mirror Testimonials Back to the Prospect's Specific Story
 
-When a prospect is trying to borrow money from someone who hasn't done personal development, that person will Google the company. Know the numbers:
-
-- **Facebook:** 657 reviews, 98% recommended (roughly 7 non-recommendations)
-- **Google:** 504 reviews, 4.9 stars (5 one-star reviews — none from people who completed the program and paid in full)
-- **Trustpilot:** ~12 negative reviews out of 1,160+ (most are anonymous, most never purchased)
-
-Not one person who paid in full, used the service, and finished the program left a negative review.
-
-If you sense a sceptical external party is in the picture, address it directly: "The only people who've written negative reviews are people who didn't get a refund after changing their mind, or people who never even bought — that's worth knowing when you have that conversation."
+Don't just share a testimonial and move on — connect it directly to the person you're speaking to. In this call, the training brought someone on live who went from rock bottom to running a seven-figure healing clinic. The prospect on Lisa's call had a dysfunctional childhood, was looking after adults at age seven, carried trauma, lacked confidence, and had never felt like she had the tools to change her situation. That's almost exactly the same starting point as the testimonial. The question to ask is: "You just heard her story — can you see how that could be you?" That simple question is what turns a testimonial from something the prospect passively hears into something they actively see themselves inside. Without that bridge, it's just a success story about someone else.
 
 ---
 
-## Lesson 13: Connect Testimonials to the Prospect's Story
+## Lesson 13: Connect the Prospect's Pain to the People They Haven't Helped Yet
 
-**What went wrong:** The training's live testimonial (Sheree — went from rock bottom to running a 7-figure healing clinic) wasn't actively connected back to this prospect's specific situation.
-
-**Luke's rule:** Don't just share testimonials — mirror them back. This prospect had a dysfunctional childhood, was caring for adults at age 7, had trauma, lacked confidence. Sheree had the same profile. Make the connection explicit:
-
-> "You just heard Sheree's story. She was in a place very similar to where you are. Can you see how what happened for her could happen for you?"
-
-That's what turns a testimonial from background noise into proof that works.
+When you've uncovered trauma, missed time with family, or a recurring cycle that's kept someone stuck, you can connect it outward — not just to their own healing, but to the people they haven't been able to help yet. This prospect had missed experiences with children living two and a half hours away, had helped family members through addiction and suicidality without any proper tools, and had seen someone in her circle take their own life. Every one of those things is a person who needed a trained coach or healer and didn't have one. When you frame it that way — "getting this to stick isn't just about you, it's about every person who crosses your path and needs what you're going to learn" — the decision stops being about money and starts being about whether they're going to show up for their calling. That's where real commitment comes from.
 
 ---
 
@@ -176,6 +93,6 @@ That's what turns a testimonial from background noise into proof that works.
 Luke's bottom line from the Lisa review:
 
 1. **No pitch without date certainty.** They must know whether they're coming in July or October before you share the offer.
-2. **No pitch without knowing where the money is coming from** — and if it's from a third party, that person needs to be on a call with you.
+2. **No pitch without knowing where the money is coming from** — and if it's from a third party, that person needs to be on a call with you first.
 
 With both of those in place, Luke's view is the money was there to be made on this call.
