@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOP 6 & 7 Flowcharts – Setter Team</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --brand:    #e94560;
+    --dark:     #1a1a2e;
+    --mid:      #16213e;
+    --cat1:     #1e6b4a;
+    --cat2:     #1a4a8a;
+    --action:   #dbeafe;
+    --action-b: #2563eb;
+    --q:        #fef3c7;
+    --q-b:      #d97706;
+    --pos:      #dcfce7;
+    --pos-b:    #16a34a;
+    --neg:      #fee2e2;
+    --neg-b:    #dc2626;
+    --note:     #f3e8ff;
+    --note-b:   #9333ea;
+    --script:   #f0f9ff;
+    --script-b: #0369a1;
+    --radius:   10px;
+    --shadow:   0 2px 14px rgba(0,0,0,.09);
+  }
+
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #eef0f4; color: var(--dark); line-height: 1.45; }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, var(--dark), var(--mid));
+    color: #fff; padding: 22px 32px;
+    border-bottom: 4px solid var(--brand);
+    display: flex; align-items: center; gap: 16px;
+  }
+  header .badge {
+    background: var(--brand); color: #fff;
+    font-size: .7rem; font-weight: 800; letter-spacing: 1px;
+    padding: 4px 10px; border-radius: 20px; text-transform: uppercase;
+  }
+  header h1 { font-size: 1.45rem; }
+  header p  { font-size: .85rem; opacity: .7; margin-top: 3px; }
+
+  /* ── NAV ── */
+  nav {
+    display: flex; gap: 10px; padding: 14px 32px; flex-wrap: wrap;
+    background: #fff; border-bottom: 1px solid #dde1e7;
+    position: sticky; top: 0; z-index: 200;
+  }
+  nav button {
+    padding: 8px 22px; border: 2px solid var(--brand);
+    border-radius: 999px; background: #fff; color: var(--brand);
+    cursor: pointer; font-weight: 700; font-size: .85rem;
+    transition: background .15s, color .15s;
+  }
+  nav button.active, nav button:hover { background: var(--brand); color: #fff; }
+
+  /* ── PAGES ── */
+  .page { display: none; max-width: 1280px; margin: 0 auto; padding: 28px 32px 60px; }
+  .page.active { display: block; }
+
+  /* ── SECTION HEADINGS ── */
+  .section-title {
+    font-size: 1.2rem; font-weight: 800; margin-bottom: 4px;
+  }
+  .section-sub { color: #666; font-size: .88rem; margin-bottom: 22px; }
+
+  /* ── LEGEND ── */
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    background: #fff; border-radius: var(--radius);
+    padding: 12px 18px; margin-bottom: 22px;
+    box-shadow: var(--shadow);
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: .78rem; }
+  .lswatch { width: 13px; height: 13px; border-radius: 3px; flex-shrink: 0; }
+
+  /* ── TWO-COLUMN SPLIT ── */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  @media (max-width: 820px) { .split { grid-template-columns: 1fr; } }
+
+  /* ── FLOW CARD ── */
+  .fc { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+  .fc-head {
+    padding: 13px 18px; font-weight: 800; font-size: .92rem; color: #fff;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .fc-head.c1 { background: var(--cat1); }
+  .fc-head.c2 { background: var(--cat2); }
+  .fc-head .tag {
+    font-size: .65rem; font-weight: 700; letter-spacing: .8px;
+    background: rgba(255,255,255,.2); padding: 2px 8px; border-radius: 999px;
+    text-transform: uppercase;
+  }
+  .fc-body { padding: 18px; }
+
+  /* ── NODES ── */
+  .n {
+    padding: 9px 13px; border-radius: 8px; font-size: .83rem;
+    line-height: 1.45; margin-bottom: 3px;
+  }
+  .n-start  { background: var(--dark); color: #fff; font-weight: 800;
+              border-radius: 999px; text-align: center; letter-spacing: .5px; }
+  .n-action { background: var(--action); border-left: 4px solid var(--action-b); }
+  .n-q      { background: var(--q); border-left: 4px solid var(--q-b); font-weight: 700; }
+  .n-pos    { background: var(--pos); border-left: 4px solid var(--pos-b); }
+  .n-neg    { background: var(--neg); border-left: 4px solid var(--neg-b); }
+  .n-note   { background: var(--note); border-left: 4px solid var(--note-b);
+              font-style: italic; font-size: .78rem; }
+  .n-win    { background: var(--cat1); color: #fff; font-weight: 800;
+              border-radius: 8px; text-align: center; }
+  .n-lose   { background: #7f1d1d; color: #fff; font-weight: 700;
+              border-radius: 8px; text-align: center; font-size: .8rem; }
+
+  /* arrows */
+  .arr { text-align: center; color: #aaa; font-size: 1rem; line-height: 1; margin: 3px 0; }
+
+  /* branch */
+  .branch { display: flex; gap: 10px; margin: 3px 0; }
+  .bcol   { flex: 1; }
+  .blabel { font-size: .72rem; font-weight: 800; text-transform: uppercase;
+            letter-spacing: .6px; margin-bottom: 4px; }
+  .blabel.yes, .blabel.pos  { color: var(--pos-b); }
+  .blabel.no,  .blabel.neg  { color: var(--neg-b); }
+  .blabel.qual { color: var(--action-b); }
+  .blabel.nq   { color: var(--neg-b); }
+
+  /* stage pill */
+  .pill {
+    display: inline-block; background: var(--dark); color: #fff;
+    font-size: .65rem; font-weight: 800; letter-spacing: .9px;
+    padding: 3px 10px; border-radius: 999px; margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+
+  /* ── SCRIPT SECTION ── */
+  .script-section {
+    margin-top: 32px; background: #fff; border-radius: var(--radius);
+    box-shadow: var(--shadow); overflow: hidden;
+  }
+  .script-head {
+    background: var(--dark); color: #fff;
+    padding: 14px 22px; font-weight: 800; font-size: 1rem;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .script-head .pill2 {
+    background: var(--brand); font-size: .68rem; font-weight: 700;
+    padding: 3px 10px; border-radius: 999px; letter-spacing: .5px;
+  }
+  .script-body { padding: 22px; }
+
+  .cat-block { margin-bottom: 30px; }
+  .cat-block:last-child { margin-bottom: 0; }
+  .cat-label {
+    display: inline-block; color: #fff; font-weight: 800; font-size: .8rem;
+    padding: 5px 14px; border-radius: 999px; margin-bottom: 14px;
+  }
+  .cat-label.c1 { background: var(--cat1); }
+  .cat-label.c2 { background: var(--cat2); }
+
+  .stage-block { margin-bottom: 14px; }
+  .stage-name {
+    font-size: .72rem; font-weight: 800; text-transform: uppercase;
+    letter-spacing: .8px; color: var(--action-b); margin-bottom: 6px;
+  }
+  .script-box {
+    background: var(--script); border-left: 3px solid var(--script-b);
+    padding: 10px 14px; border-radius: 6px; font-size: .84rem;
+    line-height: 1.6; white-space: pre-wrap;
+  }
+  .script-box em { color: #555; font-style: normal; }
+  .if-block { margin: 8px 0; }
+  .if-label {
+    font-size: .73rem; font-weight: 800; text-transform: uppercase;
+    letter-spacing: .5px; margin-bottom: 3px;
+  }
+  .if-label.pos { color: var(--pos-b); }
+  .if-label.neg { color: var(--neg-b); }
+  .if-label.qual { color: var(--action-b); }
+  .if-label.nq   { color: var(--neg-b); }
+  .if-body {
+    padding: 8px 12px; border-radius: 6px; font-size: .83rem; line-height: 1.5;
+  }
+  .if-body.pos  { background: var(--pos);  border-left: 3px solid var(--pos-b); }
+  .if-body.neg  { background: var(--neg);  border-left: 3px solid var(--neg-b); }
+  .if-body.qual { background: var(--action); border-left: 3px solid var(--action-b); }
+  .if-body.nq   { background: var(--neg);  border-left: 3px solid var(--neg-b); }
+  .note-box {
+    background: var(--note); border-left: 3px solid var(--note-b);
+    padding: 8px 12px; border-radius: 6px; font-size: .8rem;
+    font-style: italic; margin: 6px 0;
+  }
+  .eoc-box {
+    background: #f8fafc; border: 1px solid #e2e8f0;
+    border-radius: 8px; padding: 12px 16px; margin-top: 10px;
+  }
+  .eoc-box .eoc-title { font-weight: 800; font-size: .8rem; margin-bottom: 6px; color: var(--dark); }
+  .eoc-box ol { padding-left: 18px; font-size: .83rem; line-height: 1.7; }
+
+  hr.divider { border: none; border-top: 1px dashed #d1d5db; margin: 18px 0; }
+
+  .options-list {
+    margin: 6px 0 6px 18px; font-size: .83rem; line-height: 1.7;
+  }
+
+  .budget-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 8px 0;
+  }
+  @media (max-width: 600px) { .budget-grid { grid-template-columns: 1fr; } }
+  .budget-item {
+    padding: 8px 12px; border-radius: 6px; font-size: .82rem; font-weight: 600;
+  }
+  .budget-item.nq   { background: var(--neg); border-left: 3px solid var(--neg-b); }
+  .budget-item.low  { background: #fff7ed;    border-left: 3px solid #f97316; }
+  .budget-item.mid  { background: #fefce8;    border-left: 3px solid #eab308; }
+  .budget-item.high { background: var(--pos); border-left: 3px solid var(--pos-b); }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="badge">Setter Team</div>
+    <h1>SOP 6 &amp; 7 — Post Masterclass Message Scripts</h1>
+    <p>Prospect flowcharts + full scripts · Use these after the masterclass for leads who did NOT book a call</p>
+  </div>
+</header>
+
+<nav>
+  <button class="active" onclick="show('sop6', this)">SOP 6 · Message Option 1</button>
+  <button onclick="show('sop7', this)">SOP 7 · Message Option 2</button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SOP 6
+     ══════════════════════════════════════════════════════ -->
+<div id="sop6" class="page active">
+
+  <div class="section-title">SOP 6 — Post Masterclass Message Script · Option 1</div>
+  <p class="section-sub">Full conversational message sequence · Opens by asking how they found the Masterclass (Cat 1) or offering the replay (Cat 2), then qualifies through goals → needs → financial → book.</p>
+
+  <div class="legend">
+    <div class="legend-item"><div class="lswatch" style="background:var(--dark)"></div> Start / End</div>
+    <div class="legend-item"><div class="lswatch" style="background:var(--action);border:1.5px solid var(--action-b)"></div> Message / Action</div>
+    <div class="legend-item"><div class="lswatch" style="background:var(--q);border:1.5px solid var(--q-b)"></div> Decision point</div>
+    <div class="legend-item"><div class="lswatch" style="background:var(--pos);border:1.5px solid var(--pos-b)"></div> Positive path</div>
+    <div class="legend-item"><div class="lswatch" style="background:var(--neg);border:1.5px solid var(--neg-b)"></div> Negative / exit path</div>
+    <div class="legend-item"><div class="lswatch" style="background:var(--note);border:1.5px solid var(--note-b)"></div> Setter note</div>
+  </div>
+
+  <!-- FLOWCHARTS -->
+  <div class="split">
+
+    <!-- CAT 1 -->
+    <div class="fc">
+      <div class="fc-head c1">
+        Category 1 <span class="tag">Showed up · Did NOT book</span>
+      </div>
+      <div class="fc-body">
+        <div class="n n-start">SEND OPENING MESSAGE</div>
+        <div class="arr">↓</div>
+
+        <div class="pill">Stage 1 · Intro</div>
+        <div class="n n-action">"Hey [Name], it's Fernando from Luke Hawkins Life Coaching Certification School — I see you attended the Masterclass. How did you find it?"</div>
+        <div class="arr">↓</div>
+        <div class="n n-q">Their reaction to the Masterclass?</div>
+        <div class="branch">
+          <div class="bcol">
+            <div class="blabel neg">Negative</div>
+            <div class="n n-neg">Thank for feedback · Mention future offers</div>
+            <div class="arr">↓</div>
+            <div class="n n-lose">END</div>
+          </div>
+          <div class="bcol">
+            <div class="blabel pos">Positive</div>
+            <div class="n n-pos">"Oh great, glad to hear!"</div>
+            <div class="arr">↓</div>
+
+            <div class="pill">Stage 2 · Goals</div>
+            <div class="n n-action">What were they looking to get?<br>· Personal transformation?<br>· Coaching skills?<br>· Start a coaching business?<br>· Career change? Or all of the above?</div>
+            <div class="arr">↓</div>
+            <div class="n n-action">Ask current job → validate → link to coaching potential</div>
+            <div class="arr">↓</div>
+            <div class="n n-action">· Program built to sell?<br>· Social media following?<br>· Niche clarity?<br>· Timeline to go full-time?<br>· Want help getting clients online?</div>
+            <div class="n n-note">Validate every answer — build trust before qualifying</div>
+            <div class="arr">↓</div>
+
+            <div class="pill">Stage 3 · Qualify</div>
+            <div class="n n-action">"You're in a powerful place. What do you think about getting further help — NTT training and/or 7 Figure Academy social media training?"</div>
+            <div class="arr">↓</div>
+            <div class="n n-q">Response to further help?</div>
+            <div class="branch">
+              <div class="bcol">
+                <div class="blabel neg">Negative</div>
+                <div class="n n-neg">Thank · Wish well</div>
+                <div class="arr">↓</div>
+                <div class="n n-lose">END</div>
+              </div>
+              <div class="bcol">
+                <div class="blabel pos">Positive</div>
+                <div class="n n-pos">Answer Qs · Share relevant testimonial</div>
+                <div class="arr">↓</div>
+
+                <div class="pill">Financial Qualify</div>
+                <div class="n n-action">If we get you to $30k/month in 90 days, could you access:<br>· Under $1k · $1k–$3k · $3k–$6k · $6k+?</div>
+                <div class="arr">↓</div>
+                <div class="n n-q">Budget?</div>
+                <div class="branch">
+                  <div class="bcol">
+                    <div class="blabel nq">Under $1k</div>
+                    <div class="n n-neg">Next masterclass · Luke IG/YT</div>
+                    <div class="arr">↓</div>
+                    <div class="n n-lose">NOT QUALIFIED</div>
+                  </div>
+                  <div class="bcol">
+                    <div class="blabel qual">$1k+</div>
+                    <div class="n n-pos">3 interviews available · expire 24 hrs · Offer booking link</div>
+                    <div class="arr">↓</div>
+                    <div class="pill">Stage 4 · Book</div>
+                    <div class="n n-action">Confirm date/time · Send booking link · Confirm cal invite + Zoom</div>
+                    <div class="arr">↓</div>
+                    <div class="pill">EOC</div>
+                    <div class="n n-action">Update pipeline · Save notes · Post #live-events: who booked + closer</div>
+                    <div class="arr">↓</div>
+                    <div class="n n-win">CALL BOOKED ✓</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAT 2 -->
+    <div class="fc">
+      <div class="fc-head c2">
+        Category 2 <span class="tag">Did NOT show up · Did NOT book</span>
+      </div>
+      <div class="fc-body">
+        <div class="n n-start">SEND OPENING MESSAGE</div>
+        <div class="arr">↓</div>
+
+        <div class="pill">Stage 1 · Intro</div>
+        <div class="n n-action">"Hey [Name], it's Fernando — we saw you weren't able to join us live. We're giving the replay to the first 5 people who couldn't make it — interested?"</div>
+        <div class="arr">↓</div>
+        <div class="n n-q">Interested in replay / respond?</div>
+        <div class="branch">
+          <div class="bcol">
+            <div class="blabel no">No / No reply</div>
+            <div class="n n-neg">Attempt re-engage per follow-up cadence</div>
+            <div class="arr">↓</div>
+            <div class="n n-lose">END if no response</div>
+          </div>
+          <div class="bcol">
+            <div class="blabel yes">Yes</div>
+            <div class="n n-pos">"Life can get in the way — just a few quick questions…"</div>
+            <div class="arr">↓</div>
+
+            <div class="pill">Stage 2 · Goals</div>
+            <div class="n n-action">What were they looking to get?<br>· Personal transformation?<br>· Coaching skills?<br>· Start a business?<br>· Career change? Or all?</div>
+            <div class="arr">↓</div>
+            <div class="n n-action">Ask current job → validate → link to coaching</div>
+            <div class="arr">↓</div>
+            <div class="n n-action">· Program built to sell?<br>· Social media following?<br>· Niche clarity?<br>· Timeline to go full-time?<br>· Want help getting clients online?</div>
+            <div class="n n-note">Validate every answer — build trust before qualifying</div>
+            <div class="arr">↓</div>
+
+            <div class="pill">Stage 3 · Qualify</div>
+            <div class="n n-action">"You're in a powerful place. What do you think about getting a personalised plan to bring your goals to life?"</div>
+            <div class="arr">↓</div>
+            <div class="n n-q">Response to personalised plan?</div>
+            <div class="branch">
+              <div class="bcol">
+                <div class="blabel neg">Negative</div>
+                <div class="n n-neg">Thank · Wish well</div>
+                <div class="arr">↓</div>
+                <div class="n n-lose">END</div>
+              </div>
+              <div class="bcol">
+                <div class="blabel pos">Positive</div>
+                <div class="n n-pos">Answer Qs · Share relevant testimonial</div>
+                <div class="arr">↓</div>
+
+                <div class="pill">Financial Qualify</div>
+                <div class="n n-action">If we get you to $30k/month in 90 days, could you access:<br>· Under $1k · $1k–$3k · $3k–$6k · $6k+?</div>
+                <div class="arr">↓</div>
+                <div class="n n-q">Budget?</div>
+                <div class="branch">
+                  <div class="bcol">
+                    <div class="blabel nq">Under $1k</div>
+                    <div class="n n-neg">Next masterclass · Luke IG/YT</div>
+                    <div class="arr">↓</div>
+                    <div class="n n-lose">NOT QUALIFIED</div>
+                  </div>
+                  <div class="bcol">
+                    <div class="blabel qual">$1k+</div>
+                    <div class="n n-pos">3 interviews · expire 24 hrs · Send booking link</div>
+                    <div class="arr">↓</div>
+                    <div class="pill">Stage 4 · Book</div>
+                    <div class="n n-action">Confirm date/time · Send booking link · Confirm cal invite + Zoom</div>
+                    <div class="arr">↓</div>
+                    <div class="pill">EOC</div>
+                    <div class="n n-action">Update pipeline · Save notes · Post #live-events: who booked + closer</div>
+                    <div class="arr">↓</div>
+                    <div class="n n-win">CALL BOOKED ✓</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end split -->
+
+
+  <!-- ── FULL SCRIPT ── -->
+  <div class="script-section">
+    <div class="script-head">
+      SOP 6 — Full Message Script
+      <span class="pill2">Option 1 · Full Conversational Sequence</span>
+    </div>
+    <div class="script-body">
+
+      <!-- CAT 1 -->
+      <div class="cat-block">
+        <div class="cat-label c1">Category 1 — Showed up · Did NOT book</div>
+
+        <div class="stage-block">
+          <div class="stage-name">Stage 1 · Introduce yourself</div>
+          <div class="script-box">Hey {{contact.first_name}} how's it going, it's Fernando from Luke Hawkins Life Coaching Certification School, how are you?
+
+I see you attended the Masterclass training on How to Quit your job in 90 days and make $30k/month as a Coach using AI and Neuro Transformation Therapy.
+
+Great to have you part of it, how did you find it all?</div>
+          <div class="if-block">
+            <div class="if-label neg">If negative response</div>
+            <div class="if-body neg">Just thank them for their feedback and say we wish them the best, and we'll have other offers down the track of other things they might like.</div>
+          </div>
+          <div class="if-block">
+            <div class="if-label pos">If positive response</div>
+            <div class="if-body pos">"Oh great, that's good, glad to hear!"</div>
+          </div>
+        </div>
+
+        <div class="stage-block">
+          <div class="stage-name">Stage 2 · Get their goals</div>
+          <div class="script-box">Can I ask what you were looking to get out of it, was it mainly for…
+
+• Personal transformation? or
+• Learning coaching skills? or
+• Starting a coaching business / Helping others? or
+• A career change into coaching? Or a combination of all of the above?</div>
+          <div class="note-box">They respond → "That's good. We have a lot of people joining us who are in a similar boat. We actually have over 630+ six-figure coaches now, 40+ seven-figure coaches who all started in a similar place."</div>
+          <div class="script-box">Can I ask what work you are doing at the moment?</div>
+          <div class="note-box">Link their background / skills to how they could use it in coaching.</div>
+          <div class="script-box">That sounds good. Actually, we have a lot of students who start in that background and transition into coaching.
+
+Did you have a program already built to sell that you've already sold before?</div>
+          <div class="script-box">I see, so you don't have a program yet. Did you have a bit of a social media following already? Or just starting out?
+
+And did you have a clear idea of what your niche was already or have any ideas around that?
+
+And how soon would you say you are looking to get out of your career or transition into full-time coaching?
+
+And how did you feel about getting some extra knowledge on how to get clients online?</div>
+        </div>
+
+        <div class="stage-block">
+          <div class="stage-name">Stage 3 · Qualify for an interview</div>
+          <div class="script-box">Okay great, well you're actually in a really powerful place to launch, and I think we could definitely help further to create more of a personalised plan based on where you're at.
+
+What did you think of the idea of getting further help from us in terms of the Neuro Transformation Therapy training and/or the Seven Figure Academy social media business training?</div>
+          <div class="if-block">
+            <div class="if-label pos">If positive response</div>
+            <div class="if-body pos">Answer any questions they may have. Then get them booked in for an interview. Mention testimonials relevant to their situation — people who broke free of their 9–5 and became a full-time coach.</div>
+          </div>
+          <div class="if-block">
+            <div class="if-label neg">If negative response</div>
+            <div class="if-body neg">Just thank them for their feedback and say we wish them the best, and we'll have other offers down the track of other things they might like.</div>
+          </div>
+        </div>
+
+        <div class="stage-block">
+          <div class="stage-name">Financial Qualify</div>
+          <div class="script-box">So we have different levels of support that we offer. The more support that we offer, the faster people achieve their goals, and normally the bigger the size of the goals that they achieve.
+
+Can I ask, if we were to help you to get to $30k per month within the next 90 days or less, were you in the place where you would access:</div>
+          <div class="budget-grid">
+            <div class="budget-item nq">Under $1,000 → NOT QUALIFIED</div>
+            <div class="budget-item low">$1,000 – $3,000</div>
+            <div class="budget-item mid">$3,000 – $6,000</div>
+            <div class="budget-item high">$6,000+ → HIGHLY QUALIFIED</div>
+          </div>
+          <div class="if-block">
+            <div class="if-label nq">If not qualified (under $1k)</div>
+            <div class="if-body nq">Okay I understand — we're probably going to run this Masterclass again at some point, so just keep an eye on your emails and texts. In the meantime, check out Luke's Instagram and YouTube channel at Luke Hawkins for more free content. Thanks a lot!</div>
+          </div>
+          <div class="if-block">
+            <div class="if-label qual">If qualified ($1k+)</div>
+            <div class="if-body qual">Okay no worries. You actually qualify for one of the interviews. I've been allowed to give away three in the next 24 hours before they expire. Will you free some time in the next day or two — between [suggest times]?</div>
+          </div>
+        </div>
+
+        <div class="stage-block">
+          <div class="stage-name">Stage 4 · Book them in</div>
+          <div class="script-box">Great, we have you booked in at [time]. You should see it in your Google Calendar — can you see the invite and Zoom link?
+
+I'm excited for you and seeing what you bring to life. I look forward to hearing how it all goes. Let me know if you have any questions along the way. Have a great call!</div>
+        </div>
+
+        <div class="eoc-box">
+          <div class="eoc-title">EOC Process — End of Conversation</div>
+          <ol>
+            <li>Update the stage in the pipeline to the correct stage</li>
+            <li>Save the client notes taken</li>
+            <li>Announce in the #live-events Slack channel: who you booked + which closer it went to</li>
+          </ol>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- CAT 2 -->
+      <div class="cat-block">
+        <div class="cat-label c2">Category 2 — Did NOT show up · Did NOT book</div>
+
+        <div class="stage-block">
+          <div class="stage-name">Stage 1 · Introduce yourself</div>
+          <div class="script-box">Hey {{contact.first_name}} how's it going, it's Fernando from Luke Hawkins Life Coaching Certification School, how are you?
+
+I see you registered for the Masterclass training on How to Quit your job in 90 days and make $30k/month as a Coach using AI and Neuro Transformation Therapy.
+
+We saw you weren't able to join us live this time.
+
+We are happy to give the replay to the first 5 people who couldn't make it — would you be interested?</div>
+          <div class="note-box">Goal: Financially qualify them and get them booked in for an interview.</div>
+        </div>
+
+        <div class="stage-block">
+          <div class="stage-name">Stage 2 · Get their goals</div>
+          <div class="script-box">I understand. I know life can get in the way.
+
+I just have to ask a few more questions — can I ask what you were looking to get out of it, was it mainly for…
+
+• Personal transformation? or
+• Learning coaching skills? or
+• Starting a coaching business / Helping others? or
+• A career change into coaching? Or a combination of all of the above?</div>
+          <div class="note-box">They respond → "That's good. We have a lot of people joining us who are in a similar boat. Over 630+ six-figure coaches and 40+ seven-figure coaches all started in a similar place."</div>
+          <div class="script-box">Can I ask what you are doing for work at the moment?</div>
+          <div class="note-box">Link their background to coaching potential. Validate: "That sounds good — we have a lot of students who start in that background and transition into coaching."</div>
+          <div class="script-box">Did you have a program already built to sell that you've already sold before?
+
+I see, so you don't have a program yet. Did you have a bit of a social media following already? Or just starting out?
+
+And did you have a clear idea of what your niche was already or any ideas around that?
+
+And how soon would you say you are looking to get out of your career or transition into full-time coaching?
+
+And how did you feel about getting some extra knowledge on how to get clients online?</div>
+        </div>
+
+        <div class="stage-block">
+          <div class="stage-name">Stage 3 · Qualify for an interview</div>
+          <div class="script-box">Okay great, well you're actually in a really powerful place to launch, and I think we could definitely help further to create more of a personalised plan based on where you're at.
+
+What did you think of the idea of getting further help from us in terms of bringing your goals to life?</div>
+          <div class="if-block">
+            <div class="if-label pos">If positive response</div>
+            <div class="if-body pos">Answer any questions they may have. Then get them booked in for an interview. Mention testimonials relevant to their situation.</div>
+          </div>
+          <div class="if-block">
+            <div class="if-label neg">If negative response</div>
+            <div class="if-body neg">Thank them · Wish them well · Mention future offers.</div>
+          </div>
+        </div>
+
+        <div class="stage-block">
+          <div class="stage-name">Financial Qualify</div>
+          <div class="script-box">So we have different levels of support that we offer. The more support that we offer, the faster people achieve their goals, and normally the bigger the size of the goals that they achieve.
+
+Can I ask, if we were to help you to get to $30k per month within the next 90 days or less, were you in the place where you would access:</div>
+          <div class="budget-grid">
+            <div class="budget-item nq">Under $1,000 → NOT QUALIFIED</div>
+            <div class="budget-item low">$1,000 – $3,000</div>
+            <div class="budget-item mid">$3,000 – $6,000</div>
+            <div class="budget-item high">$6,000+ → HIGHLY QUALIFIED</div>
+          </div>
+          <div class="if-block">
+            <div class="if-label nq">If not qualified (under $1k)</div>
+            <div class="if-body nq">Okay I understand — keep an eye on emails for the next masterclass. Check out Luke's Instagram and YouTube at Luke Hawkins for free content. Thanks a lot!</div>
+          </div>
+          <div class="if-block">
+            <div class="if-label qual">If qualified ($1k+)</div>
+            <div class="if-body qual">You actually qualify for one of the interviews. I've been allowed to give away three in the next 24 hours before they expire. Will you free some time in the next day or two — between [suggest times]?</div>
+          </div>
+        </div>
+
+        <div class="stage-block">
+          <div class="stage-name">Stage 4 · Book them in</div>
+          <div class="script-box">Great, we have you booked in at [time]. You should see it in your Google Calendar — can you see the invite and Zoom link?
+
+I'm excited for you. Let me know if you have any questions along the way. Have a great call!</div>
+        </div>
+
+        <div class="eoc-box">
+          <div class="eoc-title">EOC Process — End of Conversation</div>
+          <ol>
+            <li>Update the stage in the pipeline to the correct stage</li>
+            <li>Save the client notes taken</li>
+            <li>Announce in the #live-events Slack channel: who you booked + which closer it went to</li>
+          </ol>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SOP 7
+     ══════════════════════════════════════════════════════ -->
+<div id="sop7" class="page">
+
+  <div class="section-title">SOP 7 — Post Masterclass Message Script · Option 2</div>
+  <p class="section-sub">Lead with the offer upfront — shorter, punchier opener designed for prospects who didn't respond to calls. Once they engage, qualify through goals → needs → financial → book.</p>
+
+  <div class="legend">
+    <div class="legend-item"><div class="lswatch" style="background:var(--dark)"></div> Start / End</div>
+    <div class="legend-item"><div class="lswatch" style="background:var(--action);border:1.5px solid var(--action-b)"></div> Message / Action</div>
+    <div class="legend-item"><div class="lswatch" style="background:var(--q);border:1.5px solid var(--q-b)"></div> Decision point</div>
+    <div class="legend-item"><div class="lswatch" style="background:var(--pos);border:1.5px solid var(--pos-b)"></div> Positive path</div>
+    <div class="legend-item"><div class="lswatch" style="background:var(--neg);border:1.5px solid var(--neg-b)"></div> Negative / exit path</div>
+    <div class="legend-item"><div class="lswatch" style="background:var(--note);border:1.5px solid var(--note-b)"></div> Setter note</div>
+  </div>
+
+  <!-- FLOWCHARTS -->
+  <div class="split">
+
+    <!-- CAT 1 -->
+    <div class="fc">
+      <div class="fc-head c1">
+        Category 1 <span class="tag">Showed up · Did NOT book</span>
+      </div>
+      <div class="fc-body">
+        <div class="n n-start">SEND OFFER MESSAGE</div>
+        <div class="arr">↓</div>
+
+        <div class="pill">Stage 1 · Give the Offer</div>
+        <div class="n n-action">"Hi [Name] — I've tried calling a few times. It was great to have you at the Masterclass. I wanted to invite you for a special offer: a personalised plan to earn $30k/month in 90 days. Interested? Available for 24 hrs — first 3 people only."</div>
+        <div class="arr">↓</div>
+        <div class="n n-q">Do they respond / show interest?</div>
+        <div class="branch">
+          <div class="bcol">
+            <div class="blabel no">No / No reply</div>
+            <div class="n n-neg">Follow up per cadence (Days 1–4)</div>
+            <div class="arr">↓</div>
+            <div class="n n-lose">END after 4 attempts</div>
+          </div>
+          <div class="bcol">
+            <div class="blabel yes">Yes / Interested</div>
+
+            <div class="pill">Stage 2 · Goals</div>
+            <div class="n n-action">What were they looking to get?<br>· Personal transformation?<br>· Coaching skills?<br>· Start a business?<br>· Career change? Or all?</div>
+            <div class="arr">↓</div>
+            <div class="n n-action">Ask current job → validate → link to coaching</div>
+            <div class="arr">↓</div>
+            <div class="n n-action">· Program built to sell?<br>· Social media following?<br>· Niche clarity?<br>· Timeline to full-time?<br>· Want help getting clients online?</div>
+            <div class="n n-note">Validate every answer to build rapport</div>
+            <div class="arr">↓</div>
+
+            <div class="pill">Stage 3 · Qualify</div>
+            <div class="n n-action">"You're in a powerful place. What do you think about getting further help — NTT training and/or 7 Figure Academy?"</div>
+            <div class="arr">↓</div>
+            <div class="n n-q">Response to further help?</div>
+            <div class="branch">
+              <div class="bcol">
+                <div class="blabel neg">Negative</div>
+                <div class="n n-neg">Thank · Wish well</div>
+                <div class="arr">↓</div>
+                <div class="n n-lose">END</div>
+              </div>
+              <div class="bcol">
+                <div class="blabel pos">Positive</div>
+                <div class="n n-pos">Answer Qs · Share testimonial</div>
+                <div class="arr">↓</div>
+
+                <div class="pill">Financial Qualify</div>
+                <div class="n n-action">Could you access to reach $30k/month in 90 days:<br>· Under $1k · $1k–$3k · $3k–$6k · $6k+?</div>
+                <div class="arr">↓</div>
+                <div class="n n-q">Budget?</div>
+                <div class="branch">
+                  <div class="bcol">
+                    <div class="blabel nq">Under $1k</div>
+                    <div class="n n-neg">Next masterclass · Luke IG/YT</div>
+                    <div class="arr">↓</div>
+                    <div class="n n-lose">NOT QUALIFIED</div>
+                  </div>
+                  <div class="bcol">
+                    <div class="blabel qual">$1k+</div>
+                    <div class="n n-pos">3 interviews · expire 24 hrs · Send booking link</div>
+                    <div class="arr">↓</div>
+                    <div class="pill">Stage 4 · Book</div>
+                    <div class="n n-action">Confirm date/time · Send link · Confirm cal + Zoom</div>
+                    <div class="arr">↓</div>
+                    <div class="pill">EOC</div>
+                    <div class="n n-action">Update pipeline · Save notes · Post #live-events Slack</div>
+                    <div class="arr">↓</div>
+                    <div class="n n-win">CALL BOOKED ✓</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAT 2 -->
+    <div class="fc">
+      <div class="fc-head c2">
+        Category 2 <span class="tag">Did NOT show up · Did NOT book</span>
+      </div>
+      <div class="fc-body">
+        <div class="n n-start">SEND OFFER MESSAGE</div>
+        <div class="arr">↓</div>
+
+        <div class="pill">Stage 1 · Give the Offer</div>
+        <div class="n n-action">"Hi [Name] — I've tried calling a few times. You registered for the Masterclass on quitting your job in 90 days and making $30k/month as a Coach. I wanted to invite you for a special offer: a personalised plan to earn $30k/month in 90 days. Interested? Available 24 hrs — first 3 people only."</div>
+        <div class="arr">↓</div>
+        <div class="n n-q">Do they respond / show interest?</div>
+        <div class="branch">
+          <div class="bcol">
+            <div class="blabel no">No / No reply</div>
+            <div class="n n-neg">Follow up per cadence (Days 1–4)</div>
+            <div class="arr">↓</div>
+            <div class="n n-lose">END after 4 attempts</div>
+          </div>
+          <div class="bcol">
+            <div class="blabel yes">Yes / Interested</div>
+
+            <div class="pill">Stage 2 · Goals</div>
+            <div class="n n-action">"Life can get in the way — totally understand. Just a few questions…"<br><br>· Personal transformation?<br>· Coaching skills?<br>· Start a business?<br>· Career change? Or all?</div>
+            <div class="arr">↓</div>
+            <div class="n n-action">Ask current job → validate → link to coaching</div>
+            <div class="arr">↓</div>
+            <div class="n n-action">· Program built to sell?<br>· Social media following?<br>· Niche clarity?<br>· Timeline to full-time?<br>· Want help getting clients online?</div>
+            <div class="n n-note">Validate every answer to build rapport</div>
+            <div class="arr">↓</div>
+
+            <div class="pill">Stage 3 · Qualify</div>
+            <div class="n n-action">"You're in a powerful place. What do you think about getting a personalised plan to bring your goals to life?"</div>
+            <div class="arr">↓</div>
+            <div class="n n-q">Response to personalised plan?</div>
+            <div class="branch">
+              <div class="bcol">
+                <div class="blabel neg">Negative</div>
+                <div class="n n-neg">Thank · Wish well</div>
+                <div class="arr">↓</div>
+                <div class="n n-lose">END</div>
+              </div>
+              <div class="bcol">
+                <div class="blabel pos">Positive</div>
+                <div class="n n-pos">Answer Qs · Share testimonial</div>
+                <div class="arr">↓</div>
+
+                <div class="pill">Financial Qualify</div>
+                <div class="n n-action">Could you access to reach $30k/month in 90 days:<br>· Under $1k · $1k–$3k · $3k–$6k · $6k+?</div>
+                <div class="arr">↓</div>
+                <div class="n n-q">Budget?</div>
+                <div class="branch">
+                  <div class="bcol">
+                    <div class="blabel nq">Under $1k</div>
+                    <div class="n n-neg">Next masterclass · Luke IG/YT</div>
+                    <div class="arr">↓</div>
+                    <div class="n n-lose">NOT QUALIFIED</div>
+                  </div>
+                  <div class="bcol">
+                    <div class="blabel qual">$1k+</div>
+                    <div class="n n-pos">3 interviews · expire 24 hrs · Send booking link</div>
+                    <div class="arr">↓</div>
+                    <div class="pill">Stage 4 · Book</div>
+                    <div class="n n-action">Confirm date/time · Send link · Confirm cal + Zoom</div>
+                    <div class="arr">↓</div>
+                    <div class="pill">EOC</div>
+                    <div class="n n-action">Update pipeline · Save notes · Post #live-events Slack</div>
+                    <div class="arr">↓</div>
+                    <div class="n n-win">CALL BOOKED ✓</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end split -->
+
+
+  <!-- ── FULL SCRIPT ── -->
+  <div class="script-section">
+    <div class="script-head">
+      SOP 7 — Full Message Script
+      <span class="pill2">Option 2 · Lead with the Offer</span>
+    </div>
+    <div class="script-body">
+
+      <!-- CAT 1 -->
+      <div class="cat-block">
+        <div class="cat-label c1">Category 1 — Showed up · Did NOT book</div>
+
+        <div class="stage-block">
+          <div class="stage-name">Stage 1 · Give the Offer</div>
+          <div class="script-box">Hi [their name] how's it going!
+
+I've tried to call a few times. I imagine you've been busy. It was so great to have you part of the Masterclass.
+
+I wanted to invite you for a special offer that would allow you to get an interview. We will give you a personalised plan to earn $30k per month within the next 90 days. Would this be something you're interested in?
+
+It's something we're offering for the next 24 hours for the first three people.
+
+I look forward to hearing, [your name].</div>
+        </div>
+
+        <div class="stage-block">
+          <div class="stage-name">Stage 2 · Get their goals</div>
+          <div class="script-box">Can I ask what you were looking to get out of it, was it mainly for…
+
+• Personal transformation? or
+• Learning coaching skills? or
+• Starting a coaching business / Helping others? or
+• A career change into coaching? Or a combination of all of the above?</div>
+          <div class="note-box">They respond → "That's good. We have a lot of people in a similar boat. Over 630+ six-figure coaches and 40+ seven-figure coaches all started in a similar place."</div>
+          <div class="script-box">Can I ask what work you are doing at the moment?</div>
+          <div class="note-box">Validate: "That sounds good — we have a lot of students who start in that background and transition into coaching."</div>
+          <div class="script-box">Did you have a program already built to sell that you've already sold before?
+
+I see, so you don't have a program yet. Did you have a bit of a social media following already? Or just starting out?
+
+And did you have a clear idea of what your niche was already or have any ideas around that?
+
+And how soon would you say you are looking to get out of your career or transition into full-time coaching?
+
+And how did you feel about getting some extra knowledge on how to get clients online?</div>
+        </div>
+
+        <div class="stage-block">
+          <div class="stage-name">Stage 3 · Qualify for an interview</div>
+          <div class="script-box">Okay great, well you're actually in a really powerful place to launch, and I think we could definitely help further to create more of a personalised plan based on where you're at.
+
+What did you think of the idea of getting further help from us in terms of the Neuro Transformation Therapy training and/or the Seven Figure Academy social media business training?</div>
+          <div class="if-block">
+            <div class="if-label pos">If positive response</div>
+            <div class="if-body pos">Answer any questions they have. Get them booked in for an interview. Mention testimonials relevant to their situation — people who broke free of their 9–5 and became a full-time coach.</div>
+          </div>
+          <div class="if-block">
+            <div class="if-label neg">If negative response</div>
+            <div class="if-body neg">Thank them for their feedback and say we wish them the best — we'll have other offers down the track they might like.</div>
+          </div>
+        </div>
+
+        <div class="stage-block">
+          <div class="stage-name">Financial Qualify</div>
+          <div class="script-box">So we have different levels of support that we offer. The more support that we offer, the faster people achieve their goals, and normally the bigger the size of the goals that they achieve.
+
+Can I ask, if we were to help you to get to $30k per month within the next 90 days or less, were you in the place where you would access:</div>
+          <div class="budget-grid">
+            <div class="budget-item nq">Under $1,000 → NOT QUALIFIED</div>
+            <div class="budget-item low">$1,000 – $3,000</div>
+            <div class="budget-item mid">$3,000 – $6,000</div>
+            <div class="budget-item high">$6,000+ → HIGHLY QUALIFIED</div>
+          </div>
+          <div class="if-block">
+            <div class="if-label nq">If not qualified</div>
+            <div class="if-body nq">Okay I understand — keep an eye on emails for the next masterclass. Check out Luke's Instagram and YouTube at Luke Hawkins for free content. Thanks a lot!</div>
+          </div>
+          <div class="if-block">
+            <div class="if-label qual">If qualified ($1k+)</div>
+            <div class="if-body qual">You actually qualify for one of the interviews. I've been allowed to give away three in the next 24 hours before they expire. Will you free some time in the next day or two — between [suggest times]?</div>
+          </div>
+        </div>
+
+        <div class="stage-block">
+          <div class="stage-name">Stage 4 · Book them in</div>
+          <div class="script-box">Great, we have you booked in at [time]. You should see it in your Google Calendar — can you see the invite and Zoom link?
+
+I'm excited for you and seeing what you bring to life. Let me know if you have any questions. Have a great call!</div>
+        </div>
+
+        <div class="eoc-box">
+          <div class="eoc-title">EOC Process — End of Conversation</div>
+          <ol>
+            <li>Update the stage in the pipeline to the correct stage</li>
+            <li>Save the client notes taken</li>
+            <li>Announce in the #live-events Slack channel: who you booked + which closer it went to</li>
+          </ol>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- CAT 2 -->
+      <div class="cat-block">
+        <div class="cat-label c2">Category 2 — Did NOT show up · Did NOT book</div>
+
+        <div class="stage-block">
+          <div class="stage-name">Stage 1 · Give the Offer</div>
+          <div class="script-box">Hi [their name] how's it going!
+I've tried to call a few times.
+
+I imagine you've been busy. So you registered for the Masterclass on How to Quit your job in 90 days and make $30k/month as a Coach using AI and Neuro Transformation Therapy.
+
+I wanted to invite you for a special offer that would allow you to get an interview. We will give you a personalised plan to earn $30k per month within the next 90 days. Would this be something you're interested in?
+
+It's something we're offering for the next 24 hours for the first three people.
+
+I look forward to hearing, [your name].</div>
+        </div>
+
+        <div class="stage-block">
+          <div class="stage-name">Stage 2 · Get their goals</div>
+          <div class="script-box">I understand. I know life can get in the way.
+
+I just have to ask a few more questions — can I ask what you were looking to get out of it, was it mainly for…
+
+• Personal transformation? or
+• Learning coaching skills? or
+• Starting a coaching business / Helping others? or
+• A career change into coaching? Or a combination of all of the above?</div>
+          <div class="note-box">They respond → validate with social proof: 630+ six-figure coaches, 40+ seven-figure coaches all started in a similar place.</div>
+          <div class="script-box">Can I ask what you are doing for work at the moment?</div>
+          <div class="note-box">Validate: "That sounds good — we have a lot of students who start in that background and transition into coaching."</div>
+          <div class="script-box">Did you have a program already built to sell that you've already sold before?
+
+I see, so you don't have a program yet. Did you have a bit of a social media following already? Or just starting out?
+
+And did you have a clear idea of what your niche was already or any ideas around that?
+
+And how soon would you say you are looking to get out of your career or transition into full-time coaching?
+
+And how did you feel about getting some extra knowledge on how to get clients online?</div>
+        </div>
+
+        <div class="stage-block">
+          <div class="stage-name">Stage 3 · Qualify for an interview</div>
+          <div class="script-box">Okay great, well you're actually in a really powerful place to launch, and I think we could definitely help further to create more of a personalised plan based on where you're at.
+
+What did you think of the idea of getting further help from us in terms of bringing your goals to life?</div>
+          <div class="if-block">
+            <div class="if-label pos">If positive response</div>
+            <div class="if-body pos">Answer any questions they have. Get them booked in for an interview. Mention testimonials relevant to their situation.</div>
+          </div>
+          <div class="if-block">
+            <div class="if-label neg">If negative response</div>
+            <div class="if-body neg">Thank them · Wish them well · Mention future offers.</div>
+          </div>
+        </div>
+
+        <div class="stage-block">
+          <div class="stage-name">Financial Qualify</div>
+          <div class="script-box">So we have different levels of support that we offer. The more support that we offer, the faster people achieve their goals, and normally the bigger the size of the goals that they achieve.
+
+Can I ask, if we were to help you to get to $30k per month within the next 90 days or less, were you in the place where you would access:</div>
+          <div class="budget-grid">
+            <div class="budget-item nq">Under $1,000 → NOT QUALIFIED</div>
+            <div class="budget-item low">$1,000 – $3,000</div>
+            <div class="budget-item mid">$3,000 – $6,000</div>
+            <div class="budget-item high">$6,000+ → HIGHLY QUALIFIED</div>
+          </div>
+          <div class="if-block">
+            <div class="if-label nq">If not qualified</div>
+            <div class="if-body nq">Keep an eye on emails for the next masterclass. Check out Luke's Instagram and YouTube at Luke Hawkins for free content. Thanks a lot!</div>
+          </div>
+          <div class="if-block">
+            <div class="if-label qual">If qualified ($1k+)</div>
+            <div class="if-body qual">You actually qualify for one of the interviews. I've been allowed to give away three in the next 24 hours before they expire. Will you free some time in the next day or two — between [suggest times]?</div>
+          </div>
+        </div>
+
+        <div class="stage-block">
+          <div class="stage-name">Stage 4 · Book them in</div>
+          <div class="script-box">Great, we have you booked in at [time]. You should see it in your Google Calendar — can you see the invite and Zoom link?
+
+I'm excited for you. Let me know if you have any questions. Have a great call!</div>
+        </div>
+
+        <div class="eoc-box">
+          <div class="eoc-title">EOC Process — End of Conversation</div>
+          <ol>
+            <li>Update the stage in the pipeline to the correct stage</li>
+            <li>Save the client notes taken</li>
+            <li>Announce in the #live-events Slack channel: who you booked + which closer it went to</li>
+          </ol>
+        </div>
+
+        <div class="note-box" style="margin-top:14px;">
+          <strong>Important:</strong> After each call or message, always update people to the appropriate pipeline stage in the Go High Level CRM.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  function show(id, btn) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
