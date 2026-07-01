@@ -432,11 +432,74 @@ That's it. You'll go straight in — you won't need to log in every time.
 1. **Read the error message out loud** — sometimes just reading it helps you spot what went wrong
 2. **Try the troubleshooting step** listed directly below the stage where you got stuck
 3. **Restart your computer** and try that step again — this fixes a surprising number of issues
-4. **Take a screenshot** of your screen and send it to your manager so they can see exactly what's happening
+4. **Ask Claude Chat for help** — see the full instructions below
+5. **Take a screenshot** of your screen and send it to your manager so they can see exactly what's happening
 
 To take a screenshot:
 - **Windows:** Press **Windows key + Shift + S**, then drag over the area you want to capture
 - **Mac:** Press **Command (⌘) + Shift + 4**, then drag over the area you want to capture
+
+---
+
+## How to Ask Claude Chat for Help When You're Stuck
+
+If you're stuck at any point, Claude Chat can walk you through it — any time of day, on any device including your phone. Here's how to do it properly so you get the most helpful answer.
+
+**Step 1: Open Claude Chat**
+
+Open your internet browser and go to:
+
+```
+https://claude.ai
+```
+
+Log in if asked (you can create a free personal account, or log in with the company account).
+
+---
+
+**Step 2: Take a screenshot of the problem first**
+
+Before you type anything, take a screenshot of exactly what you're seeing on your screen — especially any error messages. Don't try to remember or retype the error — a screenshot is much more accurate.
+
+To take a screenshot:
+- **Windows:** Press **Windows key + Shift + S**, then drag over the area you want to capture. It saves to your clipboard automatically.
+- **Mac:** Press **Command (⌘) + Shift + 4**, then drag over the area you want to capture. It saves to your Desktop.
+
+---
+
+**Step 3: Type your message to Claude Chat using this structure**
+
+When you write to Claude Chat, include these four things in your message. Copy this template and fill in the blanks:
+
+---
+
+*"I am trying to set up Claude Code on my [Windows computer / Mac — delete as appropriate]. I was following the setup manual and I got stuck on [Stage 1 / Stage 2 / Stage 3 — delete as appropriate].*
+
+*What I was trying to do: [describe the step you were on — e.g. "I was trying to check that Node.js installed correctly" or "I typed the install command and pressed Enter"]*
+
+*What happened instead: [describe what went wrong — e.g. "I saw a red error message" or "nothing happened" or "it said command not found"]*
+
+*The exact error message I can see is: [type the exact words of any error message, or say "I have attached a screenshot"]*"*
+
+---
+
+Then attach your screenshot by clicking the **paperclip icon** or the **+** button in the Claude Chat message box, and select the screenshot file.
+
+Click **Send**.
+
+---
+
+**Step 4: Follow Claude's instructions**
+
+Claude will reply with step-by-step instructions tailored exactly to your problem. Follow them one at a time. If you don't understand something it says, just reply:
+
+*"I don't understand that step — can you explain it more simply?"*
+
+Or if something still doesn't work after following its advice, reply with a new screenshot and say:
+
+*"I tried that but this is what I'm seeing now — can you help me with the next step?"*
+
+Claude Chat is very patient and will keep helping you until it's resolved.
 
 ---
 
