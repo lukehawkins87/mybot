@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOP 4 & 5 Flowcharts – Setter Team</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #1a1a2e; }
+
+  header {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: white; padding: 24px 32px;
+    border-bottom: 4px solid #e94560;
+  }
+  header h1 { font-size: 1.6rem; letter-spacing: 0.5px; }
+  header p { margin-top: 6px; opacity: 0.75; font-size: 0.9rem; }
+
+  nav {
+    display: flex; gap: 12px; padding: 16px 32px;
+    background: #fff; border-bottom: 1px solid #ddd;
+    position: sticky; top: 0; z-index: 100; flex-wrap: wrap;
+  }
+  nav button {
+    padding: 8px 18px; border: 2px solid #e94560; border-radius: 20px;
+    background: white; color: #e94560; cursor: pointer; font-weight: 600;
+    transition: all 0.2s;
+  }
+  nav button.active, nav button:hover {
+    background: #e94560; color: white;
+  }
+
+  .page { display: none; padding: 28px 32px; max-width: 1200px; margin: 0 auto; }
+  .page.active { display: block; }
+
+  h2 { font-size: 1.3rem; color: #1a1a2e; margin-bottom: 6px; }
+  .subtitle { color: #666; font-size: 0.9rem; margin-bottom: 28px; }
+
+  /* ── FLOWCHART STYLES ── */
+  .flow-split { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 800px) { .flow-split { grid-template-columns: 1fr; } }
+
+  .flow-card {
+    background: white; border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+  .flow-card-header {
+    padding: 14px 20px; font-weight: 700; font-size: 0.95rem;
+    color: white;
+  }
+  .flow-card-header.cat1 { background: #2d6a4f; }
+  .flow-card-header.cat2 { background: #1a4a8a; }
+  .flow-card-body { padding: 20px; }
+
+  /* nodes */
+  .node {
+    padding: 10px 14px; border-radius: 8px; font-size: 0.85rem;
+    line-height: 1.4; margin-bottom: 4px; position: relative;
+  }
+  .node-start  { background: #1a1a2e; color: white; font-weight: 700; border-radius: 20px; text-align: center; }
+  .node-action { background: #dbeafe; border-left: 4px solid #2563eb; }
+  .node-question{ background: #fef9c3; border-left: 4px solid #d97706; font-weight: 600; }
+  .node-good   { background: #dcfce7; border-left: 4px solid #16a34a; }
+  .node-bad    { background: #fee2e2; border-left: 4px solid #dc2626; }
+  .node-end-win{ background: #14532d; color: white; font-weight: 700; border-radius: 8px; text-align: center; }
+  .node-end-lose{ background: #7f1d1d; color: white; font-weight: 700; border-radius: 8px; text-align: center; }
+  .node-info   { background: #f3e8ff; border-left: 4px solid #9333ea; font-style: italic; font-size: 0.8rem; }
+
+  /* connector arrows & branches */
+  .arrow {
+    text-align: center; color: #999; font-size: 1rem;
+    line-height: 1.2; margin: 2px 0;
+  }
+  .branch { display: flex; gap: 12px; margin: 4px 0; }
+  .branch-col { flex: 1; }
+  .branch-label {
+    font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.5px; margin-bottom: 4px;
+  }
+  .branch-label.yes { color: #16a34a; }
+  .branch-label.no  { color: #dc2626; }
+  .branch-label.pos { color: #16a34a; }
+  .branch-label.neg { color: #dc2626; }
+  .branch-label.qual{ color: #2563eb; }
+  .branch-label.nq  { color: #dc2626; }
+
+  /* stage header pill */
+  .stage-pill {
+    display: inline-block; background: #1a1a2e; color: white;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+    padding: 3px 10px; border-radius: 10px; margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  .divider { border: none; border-top: 1px dashed #ccc; margin: 8px 0; }
+
+  /* legend */
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    background: white; border-radius: 10px; padding: 14px 20px;
+    margin-bottom: 24px; box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; }
+  .legend-swatch { width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>SOP 4 &amp; 5 — Prospect Flowcharts</h1>
+  <p>Setter team reference · Post Masterclass follow-up</p>
+</header>
+
+<nav>
+  <button class="active" onclick="show('sop4-call')">SOP 4 · Calls</button>
+  <button onclick="show('sop5-msg')">SOP 5 · Messages</button>
+</nav>
+
+<!-- ════════════════════════════════════════════════
+     SOP 4 — POST MASTERCLASS CALL SCRIPTS
+     ════════════════════════════════════════════════ -->
+<div id="sop4-call" class="page active">
+  <h2>SOP 4 — Post Masterclass <strong>Call</strong> Scripts</h2>
+  <p class="subtitle">Use these after the masterclass for prospects who did NOT book a call. Two categories below.</p>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-swatch" style="background:#1a1a2e"></div> Start / End</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#dbeafe; border:2px solid #2563eb"></div> Action / Script</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#fef9c3; border:2px solid #d97706"></div> Decision point</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#dcfce7; border:2px solid #16a34a"></div> Positive response path</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#fee2e2; border:2px solid #dc2626"></div> Negative response path</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#f3e8ff; border:2px solid #9333ea"></div> Notes for setter</div>
+  </div>
+
+  <div class="flow-split">
+
+    <!-- CAT 1 -->
+    <div class="flow-card">
+      <div class="flow-card-header cat1">Category 1 — Showed up · Did NOT book</div>
+      <div class="flow-card-body">
+
+        <div class="node node-start">CALL PROSPECT</div>
+        <div class="arrow">↓</div>
+
+        <div class="node node-question">Do they pick up?</div>
+        <div class="branch">
+          <div class="branch-col">
+            <div class="branch-label no">NO</div>
+            <div class="node node-action">Send text:<br>"Selected out of 300 people for a special opportunity. Good time to chat?"</div>
+            <div class="arrow">↓</div>
+            <div class="node node-end-lose">Await reply — re-dial in 3+ hrs</div>
+          </div>
+          <div class="branch-col">
+            <div class="branch-label yes">YES</div>
+
+            <div class="stage-pill">Stage 1 · Intro</div>
+            <div class="node node-action">Introduce yourself · Ask how they found the Masterclass<br><em>(max 3 min)</em></div>
+            <div class="arrow">↓</div>
+            <div class="node node-question">Their reaction to the training?</div>
+            <div class="branch">
+              <div class="branch-col">
+                <div class="branch-label neg">Negative</div>
+                <div class="node node-bad">Thank for feedback · Mention future offers</div>
+                <div class="arrow">↓</div>
+                <div class="node node-end-lose">END CALL</div>
+              </div>
+              <div class="branch-col">
+                <div class="branch-label pos">Positive</div>
+                <div class="node node-good">"Oh great, glad to hear!"</div>
+                <div class="arrow">↓</div>
+
+                <div class="stage-pill">Stage 2 · Goals</div>
+                <div class="node node-action">Ask what they wanted from it:<br>· Personal transformation?<br>· Coaching skills?<br>· Start a business?<br>· Career change?</div>
+                <div class="arrow">↓</div>
+                <div class="node node-action">Ask current job · Link to coaching potential</div>
+                <div class="arrow">↓</div>
+
+                <div class="stage-pill">Stage 3 · Find Need</div>
+                <div class="node node-action">· Program built to sell already?<br>· Social media following?<br>· Know their niche?<br>· Want help getting clients online?</div>
+                <div class="node node-info">Reinforce they need your help for each gap</div>
+                <div class="arrow">↓</div>
+
+                <div class="stage-pill">Stage 4 · Qualify</div>
+                <div class="node node-action">"What do you think of getting further help from us — NTT training and/or 7 Figure Academy?"</div>
+                <div class="arrow">↓</div>
+                <div class="node node-question">Response to further help?</div>
+                <div class="branch">
+                  <div class="branch-col">
+                    <div class="branch-label neg">Negative</div>
+                    <div class="node node-bad">Thank · Wish well · Mention future offers</div>
+                    <div class="arrow">↓</div>
+                    <div class="node node-end-lose">END CALL</div>
+                  </div>
+                  <div class="branch-col">
+                    <div class="branch-label pos">Positive</div>
+                    <div class="node node-good">Answer questions · Share relevant testimonial</div>
+                    <div class="arrow">↓</div>
+
+                    <div class="stage-pill">Financial Qualify</div>
+                    <div class="node node-action">If we get you to $30k/month in 90 days, could you access:<br>· Under $1,000?<br>· $1k–$3k?<br>· $3k–$6k?<br>· $6k+?</div>
+                    <div class="arrow">↓</div>
+                    <div class="node node-question">Budget level?</div>
+                    <div class="branch">
+                      <div class="branch-col">
+                        <div class="branch-label nq">Under $1k</div>
+                        <div class="node node-bad">Direct to next masterclass · Check Luke's IG/YT</div>
+                        <div class="arrow">↓</div>
+                        <div class="node node-end-lose">NOT QUALIFIED</div>
+                      </div>
+                      <div class="branch-col">
+                        <div class="branch-label qual">$1k+</div>
+                        <div class="node node-good">Offer one of 3 interviews (expire in 24 hrs) · Suggest time slots</div>
+                        <div class="arrow">↓</div>
+
+                        <div class="stage-pill">Stage 5 · Book</div>
+                        <div class="node node-action">Confirm date/time · Check Google Cal invite · Send Zoom link · Confirm they can see it</div>
+                        <div class="arrow">↓</div>
+
+                        <div class="stage-pill">Stage 6 · EOC</div>
+                        <div class="node node-action">· Update pipeline stage<br>· Save call notes<br>· Post in #live-events Slack: who booked + which closer</div>
+                        <div class="arrow">↓</div>
+                        <div class="node node-end-win">CALL BOOKED ✓</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CAT 2 -->
+    <div class="flow-card">
+      <div class="flow-card-header cat2">Category 2 — Did NOT show up · Did NOT book</div>
+      <div class="flow-card-body">
+
+        <div class="node node-start">CALL PROSPECT</div>
+        <div class="arrow">↓</div>
+
+        <div class="node node-question">Do they pick up?</div>
+        <div class="branch">
+          <div class="branch-col">
+            <div class="branch-label no">NO</div>
+            <div class="node node-action">Send text:<br>"Selected out of 300 people for a special opportunity. Good time to chat?"</div>
+            <div class="arrow">↓</div>
+            <div class="node node-end-lose">Await reply — re-dial in 3+ hrs</div>
+          </div>
+          <div class="branch-col">
+            <div class="branch-label yes">YES</div>
+
+            <div class="stage-pill">Stage 1 · Intro</div>
+            <div class="node node-action">Introduce yourself · Acknowledge they missed the live session<br><em>(max 3 min)</em></div>
+            <div class="arrow">↓</div>
+
+            <div class="stage-pill">Stage 2 · Goals</div>
+            <div class="node node-action">Ask what they registered for:<br>· Personal transformation?<br>· Coaching skills?<br>· Start a business?<br>· Career change?</div>
+            <div class="arrow">↓</div>
+            <div class="node node-action">Ask current job · Link to coaching potential</div>
+            <div class="arrow">↓</div>
+
+            <div class="stage-pill">Stage 3 · Find Need</div>
+            <div class="node node-action">· Program built to sell already?<br>· Social media following?<br>· Know their niche?<br>· Want help getting clients online?</div>
+            <div class="node node-info">Reinforce they need your help for each gap</div>
+            <div class="arrow">↓</div>
+
+            <div class="stage-pill">Stage 4 · Qualify</div>
+            <div class="node node-action">"How do you feel about getting a personalised action plan to earn $30k/month in 90 days?"</div>
+            <div class="arrow">↓</div>
+            <div class="node node-question">Response to personalised plan?</div>
+            <div class="branch">
+              <div class="branch-col">
+                <div class="branch-label neg">Negative</div>
+                <div class="node node-bad">Thank · Wish well · Mention future offers</div>
+                <div class="arrow">↓</div>
+                <div class="node node-end-lose">END CALL</div>
+              </div>
+              <div class="branch-col">
+                <div class="branch-label pos">Positive</div>
+                <div class="node node-good">Answer questions · Share relevant testimonial</div>
+                <div class="arrow">↓</div>
+
+                <div class="stage-pill">Financial Qualify</div>
+                <div class="node node-action">If we get you to $30k/month in 90 days, could you access:<br>· Under $1,000?<br>· $1k–$3k?<br>· $3k–$6k?<br>· $6k+?</div>
+                <div class="arrow">↓</div>
+                <div class="node node-question">Budget level?</div>
+                <div class="branch">
+                  <div class="branch-col">
+                    <div class="branch-label nq">Under $1k</div>
+                    <div class="node node-bad">Next masterclass + Luke's IG/YT</div>
+                    <div class="arrow">↓</div>
+                    <div class="node node-end-lose">NOT QUALIFIED</div>
+                  </div>
+                  <div class="branch-col">
+                    <div class="branch-label qual">$1k+</div>
+                    <div class="node node-good">Offer one of 3 interviews (expire 24 hrs) · Suggest time slots</div>
+                    <div class="arrow">↓</div>
+
+                    <div class="stage-pill">Stage 5 · Book</div>
+                    <div class="node node-action">Confirm date/time · Check Google Cal invite · Send Zoom link · Confirm they can see it</div>
+                    <div class="arrow">↓</div>
+
+                    <div class="stage-pill">Stage 6 · EOC</div>
+                    <div class="node node-action">· Update pipeline stage<br>· Save call notes<br>· Post in #live-events Slack: who booked + which closer</div>
+                    <div class="arrow">↓</div>
+                    <div class="node node-end-win">CALL BOOKED ✓</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- end flow-split -->
+
+  <!-- Objection box -->
+  <div style="margin-top:28px; background:white; border-radius:12px; padding:20px; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+    <h3 style="margin-bottom:12px; font-size:1rem;">Key Objection — "Is this recognised / accredited?"</h3>
+    <div class="node node-action" style="max-width:700px;">
+      Life coaching is an unregulated industry (unlike medicine, law or financial brokerage). The coaches who get the most clients are those who get the best results — which is exactly what we train for. Luke will go deeper into this in the training.
+    </div>
+  </div>
+
+  <!-- Busy / callback objection -->
+  <div style="margin-top:16px; background:white; border-radius:12px; padding:20px; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+    <h3 style="margin-bottom:12px; font-size:1rem;">Objection — "Call me back later, I'm busy"</h3>
+    <div class="node node-question" style="max-width:700px; margin-bottom:8px;">Are they genuinely interested in $30k/month as a coach?</div>
+    <div class="branch" style="max-width:700px;">
+      <div class="branch-col">
+        <div class="branch-label no">NO</div>
+        <div class="node node-bad">No problem — keep an eye on emails. END.</div>
+      </div>
+      <div class="branch-col">
+        <div class="branch-label yes">YES</div>
+        <div class="node node-action">Ask: Do they have a program ($2k–$5k) to sell? → Niche? → Why do they want this? → Current job?<br>Then loop back to financial qualify and book interview.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     SOP 5 — POST MASTERCLASS MESSAGE SCRIPTS
+     ════════════════════════════════════════════════ -->
+<div id="sop5-msg" class="page">
+  <h2>SOP 5 — Post Masterclass <strong>Message</strong> Scripts</h2>
+  <p class="subtitle">Use these when messaging (not calling) prospects who did NOT book. Two categories below.</p>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-swatch" style="background:#1a1a2e"></div> Start / End</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#dbeafe; border:2px solid #2563eb"></div> Message to send</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#fef9c3; border:2px solid #d97706"></div> Decision point</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#dcfce7; border:2px solid #16a34a"></div> Positive path</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#fee2e2; border:2px solid #dc2626"></div> Negative path</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#f3e8ff; border:2px solid #9333ea"></div> Notes for setter</div>
+  </div>
+
+  <div class="flow-split">
+
+    <!-- CAT 1 MSG -->
+    <div class="flow-card">
+      <div class="flow-card-header cat1">Category 1 — Showed up · Did NOT book</div>
+      <div class="flow-card-body">
+
+        <div class="node node-start">SEND OPENING MESSAGE</div>
+        <div class="arrow">↓</div>
+
+        <div class="stage-pill">Stage 1 · Intro</div>
+        <div class="node node-action">"Hey [Name], it's Fernando from Luke Hawkins Life Coaching Certification School. I saw you attended the Masterclass — how did you find it?"</div>
+        <div class="arrow">↓</div>
+        <div class="node node-question">Their reaction?</div>
+        <div class="branch">
+          <div class="branch-col">
+            <div class="branch-label neg">Negative</div>
+            <div class="node node-bad">Thank for feedback · Mention future offers</div>
+            <div class="arrow">↓</div>
+            <div class="node node-end-lose">END</div>
+          </div>
+          <div class="branch-col">
+            <div class="branch-label pos">Positive</div>
+            <div class="node node-good">"Oh great, glad to hear!"</div>
+            <div class="arrow">↓</div>
+
+            <div class="stage-pill">Stage 2 · Goals</div>
+            <div class="node node-action">Ask what they wanted from it:<br>· Personal transformation?<br>· Coaching skills?<br>· Start a business?<br>· Career change?<br>Or combo of all?</div>
+            <div class="arrow">↓</div>
+            <div class="node node-action">Ask current job · Validate background → coaching link</div>
+            <div class="arrow">↓</div>
+            <div class="node node-action">· Program built to sell?<br>· Social media following?<br>· Clear niche idea?<br>· How soon to go full-time?<br>· Want help getting clients online?</div>
+            <div class="node node-info">Keep validating their answers to build trust</div>
+            <div class="arrow">↓</div>
+
+            <div class="stage-pill">Stage 3 · Qualify</div>
+            <div class="node node-action">"You're in a powerful place to launch. What do you think about getting further help from us — NTT training and/or 7 Figure Academy social media training?"</div>
+            <div class="arrow">↓</div>
+            <div class="node node-question">Response to further help?</div>
+            <div class="branch">
+              <div class="branch-col">
+                <div class="branch-label neg">Negative</div>
+                <div class="node node-bad">Thank · Wish well</div>
+                <div class="arrow">↓</div>
+                <div class="node node-end-lose">END</div>
+              </div>
+              <div class="branch-col">
+                <div class="branch-label pos">Positive</div>
+                <div class="node node-good">Answer Qs · Share relevant testimonial</div>
+                <div class="arrow">↓</div>
+
+                <div class="stage-pill">Financial Qualify</div>
+                <div class="node node-action">If we get you to $30k/month in 90 days, could you access:<br>· Under $1,000?<br>· $1k–$3k?<br>· $3k–$6k?<br>· $6k+?</div>
+                <div class="arrow">↓</div>
+                <div class="node node-question">Budget level?</div>
+                <div class="branch">
+                  <div class="branch-col">
+                    <div class="branch-label nq">Under $1k</div>
+                    <div class="node node-bad">Next masterclass · Luke IG/YT</div>
+                    <div class="arrow">↓</div>
+                    <div class="node node-end-lose">NOT QUALIFIED</div>
+                  </div>
+                  <div class="branch-col">
+                    <div class="branch-label qual">$1k+</div>
+                    <div class="node node-good">3 interviews available — expire in 24 hrs. Offer booking link.</div>
+                    <div class="arrow">↓</div>
+
+                    <div class="stage-pill">Stage 4 · Book</div>
+                    <div class="node node-action">Send booking link · Confirm Google Cal invite & Zoom link received</div>
+                    <div class="arrow">↓</div>
+
+                    <div class="stage-pill">Stage 6 · EOC</div>
+                    <div class="node node-action">· Update pipeline stage<br>· Save notes<br>· Post in #live-events Slack: who booked + closer</div>
+                    <div class="arrow">↓</div>
+                    <div class="node node-end-win">CALL BOOKED ✓</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CAT 2 MSG -->
+    <div class="flow-card">
+      <div class="flow-card-header cat2">Category 2 — Did NOT show up · Did NOT book</div>
+      <div class="flow-card-body">
+
+        <div class="node node-start">SEND OPENING MESSAGE</div>
+        <div class="arrow">↓</div>
+
+        <div class="stage-pill">Stage 1 · Intro</div>
+        <div class="node node-action">"Hey [Name], it's Fernando from Luke Hawkins Life Coaching Certification School. We saw you weren't able to join us live. We're giving the replay to the first 5 people who couldn't make it — interested?"</div>
+        <div class="arrow">↓</div>
+        <div class="node node-question">Interested in replay?</div>
+        <div class="branch">
+          <div class="branch-col">
+            <div class="branch-label no">NO / No reply</div>
+            <div class="node node-bad">Attempt re-engage 1–2 more times across follow-up days</div>
+            <div class="arrow">↓</div>
+            <div class="node node-end-lose">END if no response</div>
+          </div>
+          <div class="branch-col">
+            <div class="branch-label yes">YES</div>
+            <div class="node node-good">"Life can get in the way — totally understand. Just a few quick questions to make sure I send you the right info…"</div>
+            <div class="arrow">↓</div>
+
+            <div class="stage-pill">Stage 2 · Goals</div>
+            <div class="node node-action">Ask what they registered for:<br>· Personal transformation?<br>· Coaching skills?<br>· Start a business?<br>· Career change?</div>
+            <div class="arrow">↓</div>
+            <div class="node node-action">Ask current job · Validate · Link to coaching</div>
+            <div class="arrow">↓</div>
+            <div class="node node-action">· Program built to sell?<br>· Social media following?<br>· Clear niche idea?<br>· Timeline to go full-time?<br>· Want help getting clients online?</div>
+            <div class="node node-info">Keep validating their answers to build trust</div>
+            <div class="arrow">↓</div>
+
+            <div class="stage-pill">Stage 3 · Qualify</div>
+            <div class="node node-action">"You're in a powerful place. What do you think about getting a personalised plan to bring your goals to life?"</div>
+            <div class="arrow">↓</div>
+            <div class="node node-question">Response to personalised plan?</div>
+            <div class="branch">
+              <div class="branch-col">
+                <div class="branch-label neg">Negative</div>
+                <div class="node node-bad">Thank · Wish well</div>
+                <div class="arrow">↓</div>
+                <div class="node node-end-lose">END</div>
+              </div>
+              <div class="branch-col">
+                <div class="branch-label pos">Positive</div>
+                <div class="node node-good">Answer Qs · Share relevant testimonial</div>
+                <div class="arrow">↓</div>
+
+                <div class="stage-pill">Financial Qualify</div>
+                <div class="node node-action">If we get you to $30k/month in 90 days, could you access:<br>· Under $1,000?<br>· $1k–$3k?<br>· $3k–$6k?<br>· $6k+?</div>
+                <div class="arrow">↓</div>
+                <div class="node node-question">Budget level?</div>
+                <div class="branch">
+                  <div class="branch-col">
+                    <div class="branch-label nq">Under $1k</div>
+                    <div class="node node-bad">Next masterclass · Luke IG/YT</div>
+                    <div class="arrow">↓</div>
+                    <div class="node node-end-lose">NOT QUALIFIED</div>
+                  </div>
+                  <div class="branch-col">
+                    <div class="branch-label qual">$1k+</div>
+                    <div class="node node-good">3 interviews available — expire 24 hrs. Send booking link.</div>
+                    <div class="arrow">↓</div>
+
+                    <div class="stage-pill">Stage 4 · Book</div>
+                    <div class="node node-action">Send booking link · Confirm Google Cal invite & Zoom link received</div>
+                    <div class="arrow">↓</div>
+
+                    <div class="stage-pill">Stage 6 · EOC</div>
+                    <div class="node node-action">· Update pipeline stage<br>· Save notes<br>· Post in #live-events Slack: who booked + closer</div>
+                    <div class="arrow">↓</div>
+                    <div class="node node-end-win">CALL BOOKED ✓</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- end flow-split -->
+
+  <!-- Follow up cadence -->
+  <div style="margin-top:28px; background:white; border-radius:12px; padding:20px; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+    <h3 style="margin-bottom:14px; font-size:1rem;">Message Follow-Up Cadence (if no reply)</h3>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <div style="flex:1; min-width:180px; background:#f8fafc; border-radius:8px; padding:12px; border-top:4px solid #2d6a4f;">
+        <div style="font-weight:700; margin-bottom:6px;">Day of Masterclass</div>
+        <div style="font-size:0.82rem;">First message out to both Cat 1 &amp; Cat 2</div>
+      </div>
+      <div style="flex:1; min-width:180px; background:#f8fafc; border-radius:8px; padding:12px; border-top:4px solid #1a4a8a;">
+        <div style="font-weight:700; margin-bottom:6px;">Day 1 After</div>
+        <div style="font-size:0.82rem;">Re-message both categories if no reply</div>
+      </div>
+      <div style="flex:1; min-width:180px; background:#f8fafc; border-radius:8px; padding:12px; border-top:4px solid #9333ea;">
+        <div style="font-weight:700; margin-bottom:6px;">Days 2–4 After</div>
+        <div style="font-size:0.82rem;">Repeat until each person has received at least 2 texts · Stop after 4 attempts</div>
+      </div>
+      <div style="flex:1; min-width:180px; background:#f8fafc; border-radius:8px; padding:12px; border-top:4px solid #e94560;">
+        <div style="font-weight:700; margin-bottom:6px;">2nd Text Template</div>
+        <div style="font-size:0.82rem;">"Hi [Name] — tried a few times. Inviting you for a special interview to get a personalised $30k/month plan. Available for the next 24 hrs — first 3 people only."</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function show(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+  }
+</script>
+</body>
+</html>
