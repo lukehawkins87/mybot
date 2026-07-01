@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOP 3 – Precall & VIP Upsell Flowchart</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #fff; padding: 40px; width: 900px; }
+.chart-title { font-size: 22px; font-weight: 900; color: #1a1a2e; border-left: 6px solid #e94560; padding-left: 14px; margin-bottom: 6px; }
+.chart-sub { font-size: 13px; color: #666; margin-bottom: 28px; padding-left: 20px; }
+.flow { display: flex; flex-direction: column; align-items: center; width: 100%; }
+.node { width: 100%; padding: 12px 18px; border-radius: 10px; font-size: 14px; line-height: 1.5; text-align: center; }
+.node-start { background: #1a1a2e; color: #fff; font-weight: 900; font-size: 15px; border-radius: 999px; letter-spacing: .5px; }
+.node-action { background: #dbeafe; border: 2px solid #2563eb; text-align: left; font-size: 13.5px; }
+.node-action strong { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .8px; color: #1d4ed8; margin-bottom: 4px; }
+.node-q { background: #fef3c7; border: 2px solid #d97706; font-weight: 800; font-size: 15px; }
+.node-end-win { background: #14532d; color: #fff; font-weight: 900; font-size: 15px; border-radius: 10px; }
+.node-end-lose { background: #7f1d1d; color: #fff; font-weight: 700; font-size: 14px; border-radius: 10px; }
+.node-pos { background: #dcfce7; border: 2px solid #16a34a; font-size: 13.5px; text-align: left; }
+.node-neg { background: #fee2e2; border: 2px solid #dc2626; font-size: 13.5px; text-align: left; }
+.node-note { background: #f3e8ff; border: 2px solid #9333ea; font-size: 12.5px; font-style: italic; text-align: left; }
+.arr { text-align: center; color: #94a3b8; font-size: 22px; line-height: 1; margin: 5px 0; }
+.split-row { display: flex; width: 100%; gap: 16px; align-items: flex-start; }
+.split-col { flex: 1; display: flex; flex-direction: column; align-items: center; }
+.split-label { font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: .8px; padding: 4px 12px; border-radius: 999px; color: #fff; margin-bottom: 8px; align-self: flex-start; }
+.split-label.yes { background: #16a34a; }
+.split-label.no { background: #dc2626; }
+.split-label.pos { background: #16a34a; }
+.split-label.neg { background: #dc2626; }
+.merge-label { background: #1a1a2e; color: #fff; font-size: 11px; font-weight: 800; letter-spacing: .8px; text-transform: uppercase; padding: 4px 16px; border-radius: 999px; margin: 4px 0; }
+ul { padding-left: 18px; margin-top: 4px; }
+ul li { margin-bottom: 2px; }
+</style>
+</head>
+<body>
+
+<div class="chart-title">SOP 3 – Precall &amp; VIP Upsell</div>
+<div class="chart-sub">Calling leads to confirm attendance, add to WhatsApp group &amp; get referrals | KPI: 20 confirmations/day · 5 VIP · 5 referrals</div>
+
+<div class="flow">
+
+  <!-- START -->
+  <div class="node node-start node">START: PRECALL SETUP</div>
+  <div class="arr">↓</div>
+
+  <!-- PRE-CALL PREP -->
+  <div class="node node-action node">
+    <strong>Pre-Call Prep — Have Ready</strong>
+    Open Go High Level · Prepare to type ALL notes in real time · Call from GHL<br>
+    Have ready to send from FLC sheet:
+    <ul>
+      <li>WhatsApp group link</li>
+      <li>"Add Event" calendar link (all sessions)</li>
+      <li>Pre-training video link</li>
+      <li>Link to buy VIP</li>
+    </ul>
+  </div>
+  <div class="arr">↓</div>
+
+  <!-- NO ANSWER? -->
+  <div class="node node-q node">Does the lead answer the call?</div>
+  <div class="arr">↓</div>
+
+  <div class="split-row">
+
+    <!-- NO ANSWER BRANCH -->
+    <div class="split-col">
+      <span class="split-label no">No Answer</span>
+      <div class="node node-action node">
+        <strong>Double Dial</strong>
+        Call twice. If still no answer, send SMS &amp; WhatsApp:
+      </div>
+      <div class="arr">↓</div>
+      <div class="node node-neg node">
+        <strong style="color:#991b1b">Text / WhatsApp Template</strong>
+        "Hey ______,<br>
+        Fernando/Sarika here from Luke Hawkins Life Coaching Training School. Just tried calling to share a few essentials before we start Monday, 6pm Sydney time plus some exciting news!<br><br>
+        We're covering How to Quit your job in 90 days and make $30k/month as a Coach using AI and Neuro Transformation Therapy. We have just 500 spots available to attend live out of over 3,000 people registered and just needing to confirm attendance.<br><br>
+        Can I put you down as a 100% confirmed for Live on Monday?<br><br>
+        Appreciate you getting back,<br>Fernando/Sarika"
+      </div>
+      <div class="arr">↓</div>
+      <div class="node node-end-lose node">Awaiting callback — follow up later</div>
+    </div>
+
+    <!-- ANSWERED BRANCH -->
+    <div class="split-col">
+      <span class="split-label yes">Answered</span>
+
+      <!-- STAGE 1 -->
+      <div class="node node-action node">
+        <strong>Stage 1.1 — Introduce Yourself</strong>
+        "Hey how's it going, it's __(your name)__ from Luke Hawkins Life Coaching Certification School, how are you? I see you are registered for the Masterclass training on How to Quit your Job in 90 Days and Make $30k/Month as a Coach using AI and Neuro Transformation Therapy on Wednesday 24th June 8pm Eastern / 5pm Pacific..."<br><br>
+        <em>Time zone reference: 10:00 AM Sydney = 8:00 PM previous day EST / 5:00 PM previous day PST</em>
+      </div>
+      <div class="arr">↓</div>
+
+      <!-- CALENDAR CHECK -->
+      <div class="node node-q node">1.2 — Have they booked &amp; blocked calendar for the session?</div>
+      <div class="arr">↓</div>
+
+      <div class="split-row">
+        <div class="split-col">
+          <span class="split-label no">Not Yet</span>
+          <div class="node node-action node">
+            <strong>1.3–1.5 Add to Calendar Now</strong>
+            Get them to add the masterclass using the "Add Event" link right now on the call.<br>
+            Send the SMS "Add Event" link while on call.<br>
+            Confirm they can see the masterclass in their calendar before continuing.
+          </div>
+        </div>
+        <div class="split-col">
+          <span class="split-label yes">Already Booked</span>
+          <div class="node node-pos node">
+            Calendar confirmed — proceed to commitment frame
+          </div>
+        </div>
+      </div>
+      <div class="arr">↓</div>
+      <div class="merge-label">Continue — Commitment Frame</div>
+      <div class="arr">↓</div>
+
+      <!-- LIVE COMMITMENT -->
+      <div class="node node-action node">
+        <strong>1.7 — Live Coach Activation Workbook Frame</strong>
+        "This is a very interactive masterclass, and Luke's going to give those people who show up a special invitation to be able to make 30k per month as a coach within the next 90 days.<br><br>
+        So my one ask… block out the full time for the masterclass because the people who show up live are the ones who walk away with their plan to make 30k per month as a coach within the next 90 days. You're coming live?"<br><br>
+        Then: "I need to know if you're certain you're attending live, because if you are, I need to put you in a different category of support — personalised concierge support from me. That's something that gets assigned to you as well, but I can only give it if I know you're actually coming live. If you're saying yes but you're not sure, it's better I put you down as not sure. If you want to share with me what's in the way, sometimes I can help coach you to see there are other options to get you there live."
+      </div>
+      <div class="arr">↓</div>
+
+      <div class="node node-q node">Are they 100% confirmed to attend live?</div>
+      <div class="arr">↓</div>
+
+      <div class="split-row">
+        <div class="split-col">
+          <span class="split-label no">Not Sure / Can't Make It</span>
+          <div class="node node-neg node">
+            Offer to coach them through what's in the way.<br>
+            Mark as "Not Sure" in GHL pipeline.<br>
+            Keep conversation warm — do not hang up yet.
+          </div>
+        </div>
+        <div class="split-col">
+          <span class="split-label yes">100% Confirmed</span>
+          <div class="node node-pos node">
+            Mark as "Confirmed Live" in GHL pipeline.<br>
+            Assign personalised concierge support.
+          </div>
+        </div>
+      </div>
+      <div class="arr">↓</div>
+      <div class="merge-label">Continue — WhatsApp Check</div>
+      <div class="arr">↓</div>
+
+      <!-- WHATSAPP -->
+      <div class="node node-action node">
+        <strong>1.8 — WhatsApp Group Check</strong>
+        "And you're in the WhatsApp group and can see all the updates?"<br>
+        If not — send the WhatsApp group link via SMS now.
+      </div>
+      <div class="node node-note node">
+        ⏱ MAX TIME for Stage 1: 5–8 minutes
+      </div>
+      <div class="arr">↓</div>
+
+      <!-- STAGE 2 -->
+      <div class="node node-action node">
+        <strong>Stage 2 — Discover Their Goals</strong>
+        2.1 "Out of curiosity, are you mainly attending for:<br>
+        <ul>
+          <li>Personal transformation?</li>
+          <li>Learning coaching skills?</li>
+          <li>Starting a coaching business?</li>
+          <li>Helping others?</li>
+          <li>A career change?</li>
+        </ul>
+        We have over 630+ six-figure coaches and 40+ seven-figure coaches who all started out with this training and were in a similar place."<br><br>
+        2.2 "And what work are you doing at the moment?"
+      </div>
+      <div class="arr">↓</div>
+
+      <!-- STAGE 3 -->
+      <div class="node node-q node">Stage 3 — Do they want to become a coach?</div>
+      <div class="arr">↓</div>
+
+      <div class="split-row">
+        <div class="split-col">
+          <span class="split-label yes">Yes — Wants to Coach</span>
+          <div class="node node-action node">
+            <strong>3.1–3.3 Find the Need</strong>
+            "Did you have a bit of a social media following already?"<br>
+            "Did you want help knowing what to post on social media once you are trained?"<br>
+            "Did you want to get some knowledge on how to get clients online?"
+          </div>
+        </div>
+        <div class="split-col">
+          <span class="split-label no">Other Goal</span>
+          <div class="node node-pos node">
+            Note their goal in GHL.<br>
+            Affirm the Masterclass covers their area.<br>
+            Continue to Stage 4.
+          </div>
+        </div>
+      </div>
+      <div class="arr">↓</div>
+      <div class="merge-label">Stage 4 — Excitement &amp; Referral</div>
+      <div class="arr">↓</div>
+
+      <!-- STAGE 4 -->
+      <div class="node node-action node">
+        <strong>Stage 4.1 — Get Excited &amp; Invite a Referral</strong>
+        "Okay great, well it's so great to have you part of it. We will be covering all that in the Masterclass training session.<br><br>
+        A lot of people asked us if they could invite a friend or a family member. Do you know anyone else who might like to share the journey with you?<br><br>
+        Well in case you do, I'm emailing you a link to invite up to 5 people maximum."
+      </div>
+      <div class="arr">↓</div>
+
+      <div class="node node-action node">
+        <strong>Send Referral Email (on call or immediately after)</strong>
+        Subject: Invite your friends &amp; family to be a certified Life Coach<br><br>
+        "Hey ___,<br>
+        It was a pleasure talking to you!<br><br>
+        So great to have you part of the Masterclass training session on How to Quit your Job in 90 Days and Make $30k/Month as a Coach using AI and Neuro Transformation Therapy on Wednesday, June 24th 8pm Eastern / 5pm Pacific.<br><br>
+        In case you would like to invite up to 5 friends/family members. Here is the referral link: (PUT CORRECT REFERRAL LINK HERE)<br><br>
+        Facebook group community: https://www.facebook.com/groups/thecoachescornerlukehawkins<br><br>
+        We look forward to having you,<br>Sarika<br>(Team Luke Hawkins)"
+      </div>
+      <div class="arr">↓</div>
+
+      <!-- STAGE 5 -->
+      <div class="node node-action node">
+        <strong>Stage 5 — Farewell</strong>
+        "Great to have you part of it, look forward to having you on Wednesday, June 24th 8pm Eastern / 5pm Pacific."
+      </div>
+      <div class="arr">↓</div>
+
+      <!-- STAGE 6 EOC -->
+      <div class="node node-action node">
+        <strong>Stage 6 — End of Call (EOC) Process</strong>
+        <ul>
+          <li>Update the stage in the GHL pipeline to the correct stage</li>
+          <li>Save all client notes taken during the call</li>
+          <li>Put a green tick emoji ✅ in the "new registrations" life coach Slack channel</li>
+          <li>Announce in Slack chat if you got someone to book VIP</li>
+        </ul>
+      </div>
+      <div class="arr">↓</div>
+
+      <div class="node node-end-win node">CALL COMPLETE ✓ — KPI: 20 confirmations/day · 5 VIP · 5 referrals</div>
+
+    </div><!-- end answered col -->
+  </div><!-- end answered/no-answer split -->
+
+  <!-- ============================== -->
+  <!-- OBJECTION HANDLING SECTION -->
+  <!-- ============================== -->
+
+  <div class="arr" style="margin-top:40px;">↓</div>
+  <div class="node node-start node" style="background:#7c3aed;">OBJECTION HANDLING</div>
+  <div class="arr">↓</div>
+
+  <!-- OBJ: Accreditation -->
+  <div class="node node-q node">Objection: "Is this recognised / accredited?"</div>
+  <div class="arr">↓</div>
+  <div class="node node-pos node">
+    <strong style="color:#166534">Response:</strong>
+    "What we have found is like Australia, in the US it's not like medicine or law or financial brokerage — life coaching is an unregulated industry. So what we have seen with our US coaches is the coaches who get the most clients are the ones who just get them the best results, and that's why we make sure we give you that. And Luke will go further into it in the training."
+  </div>
+  <div class="arr">↓</div>
+
+  <!-- OBJ: Call back later -->
+  <div class="node node-q node">Objection: "Call back later, I'm busy"</div>
+  <div class="arr">↓</div>
+
+  <div class="split-row">
+    <div class="split-col">
+      <span class="split-label" style="background:#7c3aed;">Option 1</span>
+      <div class="node node-action node">
+        "I hear you and I know that life can get busy. Can I ask you — because I know that whatever is a priority in life, people are going to decide to focus on that priority — probably to serve you best, it's better if I just know: were you genuinely interested in making 30k per month in the next 90 days as a coach or not?"
+      </div>
+      <div class="arr">↓</div>
+      <div class="node node-q node">Are they genuinely interested?</div>
+      <div class="arr">↓</div>
+      <div class="split-row">
+        <div class="split-col">
+          <span class="split-label yes">Yes</span>
+          <div class="node node-pos node">Continue call — go back to Stage 1 intro</div>
+        </div>
+        <div class="split-col">
+          <span class="split-label no">No</span>
+          <div class="node node-neg node">"No problem at all. Keep an eye out for our emails. We have other free invitations for things and appreciate you letting me know. Have a good day."</div>
+          <div class="arr">↓</div>
+          <div class="node node-end-lose node">End call — mark disqualified in GHL</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="split-col">
+      <span class="split-label" style="background:#7c3aed;">Option 2</span>
+      <div class="node node-action node">
+        "Ah cool, that's awesome. What are you up to?"<br>
+        Ask 1–2 general questions about what they're doing, build rapport, then loop back to Option 1.
+      </div>
+    </div>
+
+    <div class="split-col">
+      <span class="split-label" style="background:#7c3aed;">Option 3 — News Hook</span>
+      <div class="node node-action node">
+        "Did you see what happened on the news yesterday? It said it's never been easier to make 30k per month within 90 days as a coach. All it requires is 60 seconds of somebody's life for someone to receive $30,000."
+      </div>
+      <div class="arr">↓</div>
+      <div class="node node-q node">Do they engage / say yes?</div>
+      <div class="arr">↓</div>
+      <div class="split-row">
+        <div class="split-col">
+          <span class="split-label yes">Yes</span>
+
+          <!-- DEEP QUALIFY STEPS -->
+          <div class="node node-action node">
+            <strong>Qualify Step 1</strong>
+            "Do you have a programme offer to sell already or not? It needs to be $2,000–$5,000."
+          </div>
+          <div class="arr">↓</div>
+          <div class="node node-action node">
+            <strong>Qualify Step 2</strong>
+            "Do you have a niche already that you're working with, or are you still trying to figure that out?"<br>
+            If yes: "How do you describe your niche and who you're trying to target?"
+          </div>
+          <div class="arr">↓</div>
+          <div class="node node-action node">
+            <strong>Qualify Step 3 — Uncover Why</strong>
+            "Why do you want this coaching business to work? Why do you want to make 30k per month in the next 90 days doing coaching?<br><br>
+            What's your work right now? And so I'm imagining that you've just thought about it and you've been thinking in your head that you don't want to keep doing this work full-time the way you are for another 10, 20, or 30 years. Is that how it is?"
+          </div>
+          <div class="arr">↓</div>
+          <div class="node node-action node">
+            <strong>Qualify Step 4 — Bridge to Team Call</strong>
+            "Okay, great. You've got this goal. You [do/don't] have a programme and [have/don't have] a niche.<br><br>
+            What needs to happen now is I need to give you a call with the team so that they can help you get some more clarity on this so that we can actually get some progress happening and get you towards this goal.<br><br>
+            Full disclaimer — if they think they can help, they're going to offer you something. If it gets you to 30k per month in 90 days, are you okay with that? It costs definitely less than that amount of money."
+          </div>
+          <div class="arr">↓</div>
+          <div class="node node-action node">
+            <strong>Qualify Step 5 — Pre-Brief the Team</strong>
+            "Now, so I know how to give them the right feedback from you and so they have the best information on how they can serve you best, I need to know..."<br>
+            Ask 2 qualification questions and follow from there.
+          </div>
+          <div class="arr">↓</div>
+          <div class="node node-end-win node">Book team strategy call — update GHL</div>
+        </div>
+
+        <div class="split-col">
+          <span class="split-label no">No</span>
+          <div class="node node-neg node">Disengage politely — mark in GHL</div>
+          <div class="arr">↓</div>
+          <div class="node node-end-lose node">End call</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end .flow -->
+</body>
+</html>
