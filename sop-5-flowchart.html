@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOP 5 – Post Masterclass Call Scripts</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --brand:    #e94560;
+    --dark:     #1a1a2e;
+    --mid:      #16213e;
+    --action:   #dbeafe;
+    --action-b: #2563eb;
+    --q:        #fef3c7;
+    --q-b:      #d97706;
+    --pos:      #dcfce7;
+    --pos-b:    #16a34a;
+    --neg:      #fee2e2;
+    --neg-b:    #dc2626;
+    --note:     #f3e8ff;
+    --note-b:   #9333ea;
+    --script:   #f0f9ff;
+    --script-b: #0369a1;
+    --radius:   10px;
+    --shadow:   0 2px 14px rgba(0,0,0,.09);
+  }
+
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #eef0f4; color: var(--dark); line-height: 1.45; }
+
+  header {
+    background: linear-gradient(135deg, var(--dark), var(--mid));
+    color: #fff; padding: 22px 32px;
+    border-bottom: 4px solid var(--brand);
+    display: flex; align-items: center; gap: 16px;
+  }
+  header .badge {
+    background: var(--brand); color: #fff;
+    font-size: .7rem; font-weight: 800; letter-spacing: 1px;
+    padding: 4px 10px; border-radius: 20px; text-transform: uppercase;
+  }
+  header h1 { font-size: 1.45rem; }
+  header p  { font-size: .85rem; opacity: .7; margin-top: 3px; }
+
+  nav {
+    display: flex; gap: 10px; padding: 14px 32px; flex-wrap: wrap;
+    background: #fff; border-bottom: 1px solid #dde1e7;
+    position: sticky; top: 0; z-index: 200;
+  }
+  nav button {
+    padding: 8px 22px; border: 2px solid var(--brand);
+    border-radius: 999px; background: #fff; color: var(--brand);
+    cursor: pointer; font-weight: 700; font-size: .85rem;
+    transition: background .15s, color .15s;
+  }
+  nav button.active, nav button:hover { background: var(--brand); color: #fff; }
+
+  .page { display: none; max-width: 980px; margin: 0 auto; padding: 28px 32px 60px; }
+  .page.active { display: block; }
+
+  .section-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 4px; border-left: 5px solid var(--brand); padding-left: 12px; }
+  .section-sub { color: #666; font-size: .88rem; margin-bottom: 22px; padding-left: 17px; }
+
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    background: #fff; border-radius: var(--radius);
+    padding: 12px 18px; margin-bottom: 22px;
+    box-shadow: var(--shadow);
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: .78rem; }
+  .legend-dot { width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; }
+
+  /* ── FLOW ── */
+  .flow { display: flex; flex-direction: column; align-items: center; width: 100%; }
+
+  .node {
+    width: 100%; padding: 12px 18px; border-radius: var(--radius);
+    font-size: 13.5px; line-height: 1.5; text-align: center;
+    box-shadow: var(--shadow);
+  }
+  .node-start {
+    background: var(--dark); color: #fff; font-weight: 900; font-size: 15px;
+    border-radius: 999px; letter-spacing: .5px;
+  }
+  .node-action {
+    background: var(--action); border: 2px solid var(--action-b); text-align: left; font-size: 13.5px;
+  }
+  .node-action strong {
+    display: block; font-size: 11px; text-transform: uppercase;
+    letter-spacing: .8px; color: #1d4ed8; margin-bottom: 4px;
+  }
+  .node-script {
+    background: var(--script); border: 2px solid var(--script-b); text-align: left; font-size: 13px;
+    font-style: italic;
+  }
+  .node-script strong {
+    display: block; font-size: 11px; text-transform: uppercase;
+    letter-spacing: .8px; color: var(--script-b); margin-bottom: 4px; font-style: normal;
+  }
+  .node-q {
+    background: var(--q); border: 2px solid var(--q-b); font-weight: 800; font-size: 15px;
+  }
+  .node-end-win {
+    background: #14532d; color: #fff; font-weight: 900; font-size: 15px; border-radius: var(--radius);
+  }
+  .node-end-lose {
+    background: #7f1d1d; color: #fff; font-weight: 700; font-size: 14px; border-radius: var(--radius);
+  }
+  .node-pos {
+    background: var(--pos); border: 2px solid var(--pos-b); font-size: 13.5px; text-align: left;
+  }
+  .node-neg {
+    background: var(--neg); border: 2px solid var(--neg-b); font-size: 13.5px; text-align: left;
+  }
+  .node-note {
+    background: var(--note); border: 2px solid var(--note-b); font-size: 12.5px;
+    font-style: italic; text-align: left;
+  }
+
+  .arr { text-align: center; color: #94a3b8; font-size: 22px; line-height: 1; margin: 5px 0; }
+
+  .split-row { display: flex; width: 100%; gap: 16px; align-items: flex-start; }
+  .split-col { flex: 1; display: flex; flex-direction: column; align-items: center; }
+  .split-label {
+    font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: .8px;
+    padding: 4px 12px; border-radius: 999px; color: #fff; margin-bottom: 8px; align-self: flex-start;
+  }
+  .split-label.yes  { background: #16a34a; }
+  .split-label.no   { background: #dc2626; }
+  .split-label.pos  { background: #16a34a; }
+  .split-label.neg  { background: #dc2626; }
+  .split-label.pick { background: #2563eb; }
+  .split-label.nope { background: #7c3aed; }
+
+  .merge-label {
+    background: var(--dark); color: #fff; font-size: 11px; font-weight: 800;
+    letter-spacing: .8px; text-transform: uppercase; padding: 4px 16px;
+    border-radius: 999px; margin: 4px 0;
+  }
+
+  .stage-badge {
+    background: var(--brand); color: #fff; font-size: .72rem; font-weight: 800;
+    letter-spacing: 1px; text-transform: uppercase; padding: 3px 12px;
+    border-radius: 999px; margin-bottom: 8px; align-self: flex-start;
+  }
+
+  ul.script-list { padding-left: 18px; margin-top: 4px; }
+  ul.script-list li { margin-bottom: 3px; }
+
+  .divider {
+    width: 100%; border: none; border-top: 2px dashed #cbd5e1; margin: 28px 0;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="badge">SOP 5</div>
+  <div>
+    <h1>Post Masterclass Call Scripts</h1>
+    <p>Setter team reference — two lead categories with full call scripts and objection handling</p>
+  </div>
+</header>
+
+<nav>
+  <button class="active" onclick="show('overview',this)">Overview</button>
+  <button onclick="show('cat1',this)">Category 1 — Showed Up</button>
+  <button onclick="show('cat2',this)">Category 2 — No Show</button>
+  <button onclick="show('objections',this)">Objection Handling</button>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════ OVERVIEW -->
+<div id="overview" class="page active">
+  <div class="section-title">SOP 5: Lead Categories</div>
+  <div class="section-sub">Identify which category your lead falls into, then follow the matching script tab.</div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#1a1a2e"></div> Start / End</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#dbeafe;border:2px solid #2563eb"></div> Action step</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#fef3c7;border:2px solid #d97706"></div> Decision / Question</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#dcfce7;border:2px solid #16a34a"></div> Positive outcome</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#fee2e2;border:2px solid #dc2626"></div> Negative / exit</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#f0f9ff;border:2px solid #0369a1"></div> Call script text</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#f3e8ff;border:2px solid #9333ea"></div> Tip / Note</div>
+  </div>
+
+  <div class="flow">
+    <div class="node node-start">POST MASTERCLASS — IDENTIFY LEAD CATEGORY</div>
+    <div class="arr">▼</div>
+
+    <div class="split-row">
+      <div class="split-col">
+        <span class="split-label pick">Category 1</span>
+        <div class="node node-action" style="border-color:#16a34a;background:#dcfce7;">
+          <strong>Showed up &amp; did NOT book a call</strong>
+          Lead attended the Masterclass live but left without booking a strategy call.
+        </div>
+        <div class="arr">▼</div>
+        <div class="node node-note">See <strong>Category 1</strong> tab for the full call script.</div>
+      </div>
+      <div class="split-col">
+        <span class="split-label nope">Category 2</span>
+        <div class="node node-action" style="border-color:#dc2626;background:#fee2e2;">
+          <strong>Did NOT show up &amp; did NOT book a call</strong>
+          Lead registered but never attended the Masterclass.
+        </div>
+        <div class="arr">▼</div>
+        <div class="node node-note">See <strong>Category 2</strong> tab for the full call script.</div>
+      </div>
+    </div>
+
+    <div class="arr">▼</div>
+    <div class="node node-action">
+      <strong>For both categories — first contact method</strong>
+      <b>Option 1:</b> Call them. If they pick up → use the phone call script.<br>
+      <b>Option 2:</b> If they don't pick up → send the text / voicemail script immediately.
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ CATEGORY 1 -->
+<div id="cat1" class="page">
+  <div class="section-title">Category 1 — Showed Up &amp; Did NOT Book</div>
+  <div class="section-sub">Use this script for leads who attended the Masterclass but didn't book a call.</div>
+
+  <div class="flow">
+    <div class="node node-start">CALL LEAD (Category 1)</div>
+    <div class="arr">▼</div>
+
+    <!-- Pick up? -->
+    <div class="node node-q">Do they pick up?</div>
+    <div class="arr">▼</div>
+
+    <div class="split-row">
+
+      <!-- NO PICK UP -->
+      <div class="split-col">
+        <span class="split-label neg">No — voicemail / text</span>
+        <div class="node node-script">
+          <strong>Text / Voicemail Script</strong>
+          Hey [their name] how's it going!<br>
+          It's Sarika here from Luke Hawkins Life Coaching Certification School. How are you?<br><br>
+          I just called — you've been selected out of over 300 people for a special opportunity. I was wondering if there was a good time to catch you for a call? I look forward to hearing from you, Sarika.
+        </div>
+        <div class="arr">▼</div>
+        <div class="node node-note">Wait for callback. When they call back, resume from Stage 1 of the call script.</div>
+      </div>
+
+      <!-- PICK UP -->
+      <div class="split-col">
+        <span class="split-label pos">Yes — they pick up</span>
+
+        <!-- Stage 1 -->
+        <div class="stage-badge">Stage 1 — Introduce Yourself</div>
+        <div class="node node-action">
+          <strong>Max 3 minutes for this section</strong>
+          Goal: Build rapport. Financially qualify and get them booked for an interview.
+        </div>
+        <div class="arr">▼</div>
+        <div class="node node-script">
+          <strong>1.1 Opener</strong>
+          "Hey, how's it going? It's [your name] from Luke Hawkins Life Coaching Certification School — how are you? I see you attended the Masterclass training on <em>How to Quit Your Job in 90 Days and Make $30k/Month as a Coach Using AI and Neuro Transformation Therapy.</em>"
+        </div>
+        <div class="arr">▼</div>
+        <div class="node node-script">
+          <strong>1.2 Reaction check</strong>
+          "Great to have you as part of it — how did you find it all? What did you like most?"
+        </div>
+        <div class="arr">▼</div>
+
+        <div class="node node-q">How do they respond?</div>
+        <div class="arr">▼</div>
+        <div class="split-row">
+          <div class="split-col">
+            <span class="split-label neg">Negative</span>
+            <div class="node node-neg">Thank them for their feedback. Say you wish them the best and will have other offers they might like down the track. End call politely.</div>
+            <div class="arr">▼</div>
+            <div class="node node-end-lose">Call ended — no booking</div>
+          </div>
+          <div class="split-col">
+            <span class="split-label pos">Positive</span>
+            <div class="node node-pos">"Oh great — glad to hear it!" → Continue to Stage 2.</div>
+          </div>
+        </div>
+
+        <div class="arr">▼</div>
+        <div class="merge-label">Continue — Stage 2</div>
+        <div class="arr">▼</div>
+
+        <!-- Stage 2 -->
+        <div class="stage-badge">Stage 2 — Get Their Goals</div>
+        <div class="node node-script">
+          <strong>2.1 Explore motivation</strong>
+          "Can I ask what you were looking to get out of it? Out of curiosity, are you looking for mainly:<br>"
+          <ul class="script-list">
+            <li>Personal transformation?</li>
+            <li>Learning coaching skills?</li>
+            <li>Starting a coaching business / helping others?</li>
+            <li>A career change into coaching?</li>
+          </ul>
+          <br>"That's good. We have a lot of people joining us in a similar boat. We actually have over 630+ six-figure coaches and 40+ seven-figure coaches who all did our training and started in a similar place."
+        </div>
+        <div class="arr">▼</div>
+        <div class="node node-script">
+          <strong>2.2 Current work</strong>
+          "And what work are you doing at the moment?"<br>
+          <em>(Link their background and skills to coaching — show relevance.)</em>
+        </div>
+        <div class="arr">▼</div>
+
+        <!-- Stage 3 -->
+        <div class="stage-badge">Stage 3 — Find a Need</div>
+        <div class="node node-action">
+          <strong>Ask these discovery questions (if they want to be a coach)</strong>
+          Work through each — reinforce why they need help after each answer.
+        </div>
+        <div class="arr">▼</div>
+        <div class="node node-script">
+          <strong>3.1</strong> "Did you have a programme already built to sell that you've already sold before?" <em>(Reinforce you'll need to build one together.)</em><br><br>
+          <strong>3.2</strong> "Did you have a bit of a social media following already — or just starting out?" <em>(Reinforce the need to grow.)</em><br><br>
+          <strong>3.3</strong> "Did you want any help knowing what to post on social media once you're trained?"<br><br>
+          <strong>3.4</strong> "Did you have some ideas of what your niche could be, or any ideas around that?"<br><br>
+          <strong>3.5</strong> "Did you want to get some knowledge on how to get clients online?"
+        </div>
+        <div class="arr">▼</div>
+
+        <!-- Stage 4 -->
+        <div class="stage-badge">Stage 4 — Qualify for an Interview</div>
+        <div class="node node-script">
+          <strong>4.1 Transition to offer</strong>
+          "Okay great — you're actually in a really powerful place to launch. I think we could definitely help further to create a more personalised plan based on where you're at. What did you think of the idea of getting further help from us in terms of the Neuro Transformation Therapy training and/or the Seven Figure Academy social media business training?"
+        </div>
+        <div class="arr">▼</div>
+
+        <div class="node node-q">Response to offer idea?</div>
+        <div class="arr">▼</div>
+        <div class="split-row">
+          <div class="split-col">
+            <span class="split-label neg">Negative</span>
+            <div class="node node-neg">Thank them for their feedback. Wish them the best — let them know there will be other offers down the track. End call.</div>
+            <div class="arr">▼</div>
+            <div class="node node-end-lose">Call ended — no booking</div>
+          </div>
+          <div class="split-col">
+            <span class="split-label pos">Positive</span>
+            <div class="node node-pos">Answer any questions they have. Share a relevant testimonial of someone who left their 9-to-5 and became a full-time coach. Then → Financially Qualify.</div>
+          </div>
+        </div>
+
+        <div class="arr">▼</div>
+        <div class="merge-label">Financial Qualification</div>
+        <div class="arr">▼</div>
+
+        <div class="node node-script">
+          <strong>Financially qualify</strong>
+          "So we have different levels of support that we offer. The more support we offer, the faster people achieve their goals — and normally the bigger the goals they achieve.<br><br>
+          Can I ask: if we were to help you get to $30k per month within the next 90 days or less, were you in a place where you would access:<br>"
+          <ul class="script-list">
+            <li>A minimum of $1,000 to put towards a training, or</li>
+            <li>$1,000 to $3,000, or</li>
+            <li>$3,000 to $6,000, or</li>
+            <li>$6,000 plus?"</li>
+          </ul>
+        </div>
+        <div class="arr">▼</div>
+
+        <div class="node node-q">Are they financially qualified?</div>
+        <div class="arr">▼</div>
+        <div class="split-row">
+          <div class="split-col">
+            <span class="split-label neg">Not qualified</span>
+            <div class="node node-neg">
+              "Okay, I understand. We're probably going to run this Masterclass again at some point — keep an eye on your emails and texts, as we plan to run another one within a month.<br><br>
+              In the meantime, I recommend you check out Luke's Instagram at <strong>Luke Hawkins</strong> or his YouTube channel at <strong>Luke Hawkins</strong> for more free content. Thanks a lot!"
+            </div>
+            <div class="arr">▼</div>
+            <div class="node node-end-lose">Call ended — no booking</div>
+          </div>
+          <div class="split-col">
+            <span class="split-label pos">Qualified</span>
+            <div class="node node-pos">
+              "Okay, no worries — you actually qualify for one of the interviews. I've been allowed to give away three in the next 24 hours before they expire. Will you free some time in the next day or two between [suggest times]?"
+            </div>
+          </div>
+        </div>
+
+        <div class="arr">▼</div>
+        <div class="merge-label">Stage 5 — Book Them In</div>
+        <div class="arr">▼</div>
+
+        <!-- Stage 5 -->
+        <div class="stage-badge">Stage 5 — Book the Call</div>
+        <div class="node node-script">
+          <strong>Confirm booking</strong>
+          "Great — we have you booked in at [time]. You should see it in your Google Calendar with a Google invite to show up."<br><br>
+          <em>(Confirm they can see the calendar invite and Zoom link on their end.)</em><br><br>
+          "I'm excited for you and to see what you bring to life. I look forward to hearing how it goes. Let me know if you have any questions along the way. Have a great call!"<br><br>
+          <em>In case they need the content: Masterclass slides: (June 25) Masterclass</em>
+        </div>
+        <div class="arr">▼</div>
+
+        <!-- Stage 6 -->
+        <div class="stage-badge">Stage 6 — EOC Process</div>
+        <div class="node node-action">
+          <strong>Complete after every call</strong>
+          <ul class="script-list" style="padding-left:16px;">
+            <li>Update the lead's stage in the pipeline to the correct stage.</li>
+            <li>Save all client notes taken during the call.</li>
+            <li>Announce in the <strong>Live Events channel</strong> that you booked a call — include who it was with and which closer it went to.</li>
+          </ul>
+        </div>
+        <div class="arr">▼</div>
+        <div class="node node-end-win">Call booked — EOC complete</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ CATEGORY 2 -->
+<div id="cat2" class="page">
+  <div class="section-title">Category 2 — Did NOT Show Up &amp; Did NOT Book</div>
+  <div class="section-sub">Use this script for leads who registered but never attended the Masterclass.</div>
+
+  <div class="flow">
+    <div class="node node-start">CALL LEAD (Category 2)</div>
+    <div class="arr">▼</div>
+
+    <div class="node node-q">Do they pick up?</div>
+    <div class="arr">▼</div>
+
+    <div class="split-row">
+
+      <!-- NO PICK UP -->
+      <div class="split-col">
+        <span class="split-label neg">No — voicemail / text</span>
+        <div class="node node-script">
+          <strong>Text / Voicemail Script</strong>
+          Hey [their name] how's it going!<br>
+          It's Sarika here from Luke Hawkins Life Coaching Certification School. How are you?<br><br>
+          I just called — you've been selected out of over 300 people for a special opportunity. I was wondering if there was a good time to catch you for a call? I look forward to hearing from you, Sarika.
+        </div>
+        <div class="arr">▼</div>
+        <div class="node node-note">Wait for callback. When they call back, resume from Stage 1 of the call script.</div>
+      </div>
+
+      <!-- PICK UP -->
+      <div class="split-col">
+        <span class="split-label pos">Yes — they pick up</span>
+
+        <div class="stage-badge">Stage 1 — Introduce Yourself</div>
+        <div class="node node-action">
+          <strong>Max 3 minutes for this section</strong>
+          Goal: Get them to acknowledge they didn't show up. Build rapport and move to goals.
+        </div>
+        <div class="arr">▼</div>
+        <div class="node node-script">
+          <strong>1.1 Opener</strong>
+          "Hey, how's it going? It's [your name] from Luke Hawkins Life Coaching Certification School — how are you? I see you registered for the Masterclass training on <em>How to Quit Your Job in 90 Days and Make $30k/Month as a Coach Using AI and Neuro Transformation Therapy.</em>"
+        </div>
+        <div class="arr">▼</div>
+        <div class="node node-script">
+          <strong>1.2 Acknowledge absence</strong>
+          "On our records, it says you weren't able to make it to the live training this time?"
+          <br><br><em>(Goal: get them to be accountable for not showing up.)</em>
+        </div>
+        <div class="arr">▼</div>
+
+        <div class="stage-badge">Stage 2 — Get Their Goals</div>
+        <div class="node node-script">
+          <strong>2.1 Explore motivation</strong>
+          "Can I ask what you were looking to get out of it? Out of curiosity, are you looking for mainly:<br>"
+          <ul class="script-list">
+            <li>Personal transformation?</li>
+            <li>Learning coaching skills?</li>
+            <li>Starting a coaching business / helping others?</li>
+            <li>A career change into coaching?</li>
+          </ul>
+          <br>"That's good. We have a lot of people joining us in a similar boat. We actually have over 630+ six-figure coaches and 40+ seven-figure coaches who all did our training and started in a similar place."
+        </div>
+        <div class="arr">▼</div>
+        <div class="node node-script">
+          <strong>2.2 Current work</strong>
+          "And what work are you doing at the moment?"<br>
+          <em>(Link their background and skills to coaching.)</em>
+        </div>
+        <div class="arr">▼</div>
+
+        <div class="stage-badge">Stage 3 — Find a Need</div>
+        <div class="node node-action">
+          <strong>Ask these discovery questions (if they want to be a coach)</strong>
+        </div>
+        <div class="arr">▼</div>
+        <div class="node node-script">
+          <strong>3.1</strong> "Did you have a programme already built to sell that you've already sold before?" <em>(Reinforce you'll need to build one together.)</em><br><br>
+          <strong>3.2</strong> "Did you have a bit of a social media following already — or just starting out?" <em>(Reinforce the need to grow.)</em><br><br>
+          <strong>3.3</strong> "Did you want any help knowing what to post on social media once you're trained?"<br><br>
+          <strong>3.4</strong> "Did you have some ideas of what your niche could be, or any ideas around that?"<br><br>
+          <strong>3.5</strong> "Did you want to get some knowledge on how to get clients online?"
+        </div>
+        <div class="arr">▼</div>
+
+        <div class="stage-badge">Stage 4 — Qualify for an Interview</div>
+        <div class="node node-script">
+          <strong>4.1 Transition to offer</strong>
+          "Okay great — you're actually in a really powerful place to launch. I think we could definitely help further to create a more personalised plan based on where you're at. How do you feel about the idea of getting a personalised action plan to earn $30k per month within the next 90 days? If we think we can help, we may offer some more solutions for that too."
+        </div>
+        <div class="arr">▼</div>
+
+        <div class="node node-q">Response to personalised action plan idea?</div>
+        <div class="arr">▼</div>
+        <div class="split-row">
+          <div class="split-col">
+            <span class="split-label neg">Negative</span>
+            <div class="node node-neg">Thank them for their feedback. Wish them the best — let them know there will be other offers down the track. End call.</div>
+            <div class="arr">▼</div>
+            <div class="node node-end-lose">Call ended — no booking</div>
+          </div>
+          <div class="split-col">
+            <span class="split-label pos">Positive</span>
+            <div class="node node-pos">Answer any questions they have. Share a relevant testimonial of someone who left their 9-to-5 and became a full-time coach. Then → Financially Qualify.</div>
+          </div>
+        </div>
+
+        <div class="arr">▼</div>
+        <div class="merge-label">Financial Qualification</div>
+        <div class="arr">▼</div>
+
+        <div class="node node-script">
+          <strong>Financially qualify</strong>
+          "So we have different levels of support that we offer. The more support we offer, the faster people achieve their goals — and normally the bigger the goals they achieve.<br><br>
+          Can I ask: if we were to help you get to $30k per month within the next 90 days or less, were you in a place where you would access:<br>"
+          <ul class="script-list">
+            <li>A minimum of $1,000 to put towards a training, or</li>
+            <li>$1,000 to $3,000, or</li>
+            <li>$3,000 to $6,000, or</li>
+            <li>$6,000 plus?"</li>
+          </ul>
+        </div>
+        <div class="arr">▼</div>
+
+        <div class="node node-q">Are they financially qualified?</div>
+        <div class="arr">▼</div>
+        <div class="split-row">
+          <div class="split-col">
+            <span class="split-label neg">Not qualified</span>
+            <div class="node node-neg">
+              "Okay, I understand. We're probably going to run this Masterclass again at some point — keep an eye on your emails and texts, as we plan to run another one within a month.<br><br>
+              In the meantime, I recommend you check out Luke's Instagram at <strong>Luke Hawkins</strong> or his YouTube channel at <strong>Luke Hawkins</strong> for more free content. Thanks a lot!"
+            </div>
+            <div class="arr">▼</div>
+            <div class="node node-end-lose">Call ended — no booking</div>
+          </div>
+          <div class="split-col">
+            <span class="split-label pos">Qualified</span>
+            <div class="node node-pos">
+              "Okay, no worries — you actually qualify for one of the interviews. I've been allowed to give away three in the next 24 hours before they expire. Will you free some time in the next day or two between [suggest times]?"
+            </div>
+          </div>
+        </div>
+
+        <div class="arr">▼</div>
+        <div class="merge-label">Stage 5 — Book Them In</div>
+        <div class="arr">▼</div>
+
+        <div class="stage-badge">Stage 5 — Book the Call</div>
+        <div class="node node-script">
+          <strong>Confirm booking</strong>
+          "Great — we have you booked in at [time]. You should see it in your Google Calendar with a Google invite to show up."<br><br>
+          <em>(Confirm they can see the calendar invite and Zoom link on their end.)</em><br><br>
+          "I'm excited for you and to see what you bring to life. I look forward to hearing how it goes. Let me know if you have any questions along the way. Have a great call!"<br><br>
+          <em>In case they need the content: Masterclass slides: (June 25) Masterclass</em>
+        </div>
+        <div class="arr">▼</div>
+
+        <div class="stage-badge">Stage 6 — EOC Process</div>
+        <div class="node node-action">
+          <strong>Complete after every call</strong>
+          <ul class="script-list" style="padding-left:16px;">
+            <li>Update the lead's stage in the pipeline to the correct stage.</li>
+            <li>Save all client notes taken during the call.</li>
+            <li>Announce in the <strong>Live Events channel</strong> that you booked a call — include who it was with and which closer it went to.</li>
+          </ul>
+        </div>
+        <div class="arr">▼</div>
+        <div class="node node-end-win">Call booked — EOC complete</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ OBJECTIONS -->
+<div id="objections" class="page">
+  <div class="section-title">Objection Handling</div>
+  <div class="section-sub">Common objection: "Call me back later, I'm busy."</div>
+
+  <div class="flow">
+    <div class="node node-start">OBJECTION: "Call back later — I'm busy"</div>
+    <div class="arr">▼</div>
+    <div class="node node-note">You have three response options. Choose based on the vibe of the conversation.</div>
+    <div class="arr">▼</div>
+
+    <div class="split-row">
+
+      <!-- OPTION 1 -->
+      <div class="split-col">
+        <span class="split-label pick">Response Option 1</span>
+        <div class="node node-script">
+          <strong>Direct re-qualify</strong>
+          "I hear you and I know that life can get busy. Can I ask — because I know that whatever is a priority in life, people are going to decide to focus on that priority — were you genuinely interested in making $30k per month in the next 90 days as a coach, or not?"
+        </div>
+        <div class="arr">▼</div>
+        <div class="node node-q">Are they interested?</div>
+        <div class="arr">▼</div>
+        <div class="split-row">
+          <div class="split-col">
+            <span class="split-label neg">No</span>
+            <div class="node node-neg">"No problem at all. Keep an eye out for our emails — we have other free invitations and appreciate you letting me know. Have a good day."</div>
+            <div class="arr">▼</div>
+            <div class="node node-end-lose">End call</div>
+          </div>
+          <div class="split-col">
+            <span class="split-label pos">Yes</span>
+            <div class="node node-pos">Continue to discovery — go to Option 3 steps or resume main script from Stage 2.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OPTION 2 -->
+      <div class="split-col">
+        <span class="split-label pick">Response Option 2</span>
+        <div class="node node-script">
+          <strong>Rapport builder</strong>
+          "Ah cool — that's awesome! What are you up to?"<br><br>
+          Ask one or two more general questions about what they're doing, then naturally transition back to the main call script from Stage 1 / Option 1.
+        </div>
+        <div class="arr">▼</div>
+        <div class="node node-note">After 1–2 rapport questions, pivot back to Stage 2 — Goals.</div>
+      </div>
+
+      <!-- OPTION 3 -->
+      <div class="split-col">
+        <span class="split-label pick">Response Option 3</span>
+        <div class="node node-script">
+          <strong>News hook</strong>
+          "Did you see what happened on the news yesterday? It said it's never been easier to make $30k per month within 90 days as a coach. All it requires is 60 seconds of someone's life for them to receive $30,000."
+        </div>
+        <div class="arr">▼</div>
+
+        <div class="node node-action">
+          <strong>Step 1 — Programme check</strong>
+          "Do you have a programme offer to sell already? It needs to be $2,000–$5,000."
+        </div>
+        <div class="arr">▼</div>
+
+        <div class="node node-action">
+          <strong>Step 2 — Niche check</strong>
+          "Do you have a niche already that you're working with, or are you still trying to figure that out?"<br><br>
+          <em>If yes:</em> "Okay — how do you describe your niche and who you're trying to target?"
+        </div>
+        <div class="arr">▼</div>
+
+        <div class="node node-action">
+          <strong>Step 3 — Find their why</strong>
+          "Why do you want this coaching business to work? Why do you want to make $30k per month in the next 90 days doing coaching?"<br><br>
+          "What's your work right now? I'm imagining you've thought about this and you don't want to keep doing that work full-time for another 10, 20, or 30 years — is that how it is?"
+        </div>
+        <div class="arr">▼</div>
+
+        <div class="node node-action">
+          <strong>Step 4 — Set the interview</strong>
+          "Okay great — so you've got this goal. You [do/don't] have a programme, and you [have/are figuring out] your niche. What needs to happen now is I need to give you a call with the team so they can help you get clarity on this and get progress happening toward your goal.<br><br>
+          Full disclaimer: if they think they can help, they're going to offer you something. If it gets you to $30k per month in 90 days, are you okay with that? It definitely costs less than that amount of money."
+        </div>
+        <div class="arr">▼</div>
+
+        <div class="node node-action">
+          <strong>Step 5 — Financial qualification</strong>
+          "So I know how to give them the right feedback and so they have the best information on how to serve you best — I need to know…"<br><br>
+          Ask the financial qualification questions, then continue from the financial qualification branch in the main script.
+        </div>
+        <div class="arr">▼</div>
+        <div class="node node-note">After qualification, follow the main script: book interview → Stage 5 → EOC Process.</div>
+      </div>
+
+    </div>
+
+    <div class="arr">▼</div>
+    <div class="merge-label">Resume Main Script → Stage 5 / EOC</div>
+    <div class="arr">▼</div>
+    <div class="node node-end-win">Objection handled — call back on track</div>
+  </div>
+</div>
+
+<script>
+  function show(id, btn) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
