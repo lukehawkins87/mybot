@@ -40,7 +40,83 @@ Luke can also share documents, resources, and information directly into your Cla
 
 ---
 
-## SECTION 1 — Creating or Logging Into Your Claude Account
+## SECTION 1 — Understanding Claude Plans (What It Costs)
+
+Before you log in, it helps to understand the different levels of Claude — so you know which one you're on and why.
+
+> **Note:** Luke has already set up the company account. You won't need to choose or pay for a plan yourself — this section is just so you understand what's available and what you're using.
+
+---
+
+### The Three Plans at a Glance
+
+---
+
+#### Free Plan — £0/month
+
+**What you get:**
+- Access to Claude through the browser at `claude.ai`
+- A limited number of messages per day (the limit resets daily)
+- Access to standard Claude (not the most powerful version)
+
+**Who it's for:**
+- Someone who wants to try Claude out
+- Very light, occasional use only
+
+**Limitations:**
+- You'll hit the daily message limit quickly if using it for real work
+- No access to Claude's most powerful model
+- No Projects feature for team sharing
+- **Not suitable for regular business use**
+
+---
+
+#### Pro Plan — approximately £17/month (billed monthly) or £14/month (billed annually)
+
+**What you get:**
+- Much higher usage limits — enough for everyday business tasks
+- Access to Claude's most powerful models (including the ones best for business writing and strategy)
+- Access to **Projects** — where Luke can share resources and context with you
+- Priority access when Claude is busy
+- Ability to upload files and images directly into conversations
+
+**Who it's for:**
+- Anyone using Claude regularly for their coaching business
+- People who want to use Projects with their team
+- The **recommended level for Inner Circle students**
+
+**Typical usage this covers:**
+- Writing multiple SOPs, emails, and content pieces per day
+- Research tasks and content planning
+- Regular back-and-forth conversations with Claude
+
+---
+
+#### Team Plan — approximately £25/person/month (minimum 5 people)
+
+**What you get:**
+- Everything in Pro, plus:
+- Shared team workspace with proper admin controls
+- Higher usage limits per person
+- Central billing for the whole team
+- Ability for an admin (like Luke) to manage who has access
+
+**Who it's for:**
+- Businesses with multiple people using Claude regularly
+- Teams that need shared access and central management
+- **This is likely what your company account is set up on**
+
+---
+
+### Which Plan Should You Be On?
+
+Since you're using the company account Luke has set up, you're already on the right plan — you don't need to do anything. This section is here so you understand what you're getting access to and why it's valuable.
+
+If you ever want to set up your own personal Claude account in the future (separate from the company one), **Pro is the right starting point** for anyone doing regular business work.
+
+---
+
+## SECTION 2 — Creating or Logging Into Your Claude Account
 
 > You'll be using the **company Claude account** that Luke has set up. This means you use the email and password Luke has given you — you do NOT create your own.
 
@@ -75,7 +151,7 @@ Click **"Continue"** or **"Log in"** and you should be taken into the Claude das
 
 ---
 
-## SECTION 2 — Getting Familiar With Claude (The Website Version)
+## SECTION 3 — Getting Familiar With Claude (The Website Version)
 
 Before we install anything on your computer, let's get comfortable using Claude through the website. This is called **Claude Chat** and you'll use it every day.
 
@@ -100,7 +176,7 @@ On the left sidebar, look for a section called **"Projects"**. Click on it. You'
 
 ---
 
-## SECTION 3 — Installing Claude Code on Your Computer
+## SECTION 4 — Installing Claude Code on Your Computer
 
 Claude Code is a more powerful version of Claude that lives on your computer and can help you with more advanced tasks. Here's how to install it.
 
@@ -198,13 +274,13 @@ Once you log in through the browser, come back to the terminal. You should see a
 
 ---
 
-## SECTION 4 — Using Claude Code for Your Business
+## SECTION 5 — Using Claude Code for Your Business
 
 Now that you're set up, here are practical ways to use Claude Code every day.
 
 ### How to Start Claude Code Each Day
 
-1. Open your Terminal (follow the steps in Section 3, Part A)
+1. Open your Terminal (follow the steps in Section 4, Part A)
 2. Type `claude` and press Enter
 3. Start typing your request
 
@@ -232,7 +308,7 @@ Now that you're set up, here are practical ways to use Claude Code every day.
 
 ---
 
-## SECTION 5 — Using Projects With Your Team
+## SECTION 6 — Using Projects With Your Team
 
 Luke has set up a **Project** inside Claude where he can share information, resources, and context with you. This means Claude already knows key information about your role and your business when you work inside the Project.
 
@@ -251,7 +327,7 @@ Luke can also see your conversation history inside the project — so if you're 
 
 ---
 
-## SECTION 6 — TROUBLESHOOTING
+## SECTION 7 — TROUBLESHOOTING
 
 Things don't always go perfectly — and that's okay. This section covers the most common issues and what to do.
 
@@ -273,7 +349,7 @@ Things don't always go perfectly — and that's okay. This section covers the mo
 **Problem: "The terminal says 'npm is not recognised' or 'command not found'"**
 
 - This means Node.js didn't install correctly
-- Go back to Section 3, Part B and re-do the Node.js installation
+- Go back to Section 4, Part B and re-do the Node.js installation
 - On **Windows**: after installing, close the terminal completely, open a new one, and try again
 - On **Mac**: after installing, close the terminal, open a new one, and try again
 
@@ -385,7 +461,7 @@ A screenshot is a picture of exactly what's on your screen. It's the single most
 
 ---
 
-## SECTION 7 — Quick Reference Card
+## SECTION 8 — Quick Reference Card
 
 Save this or screenshot it for easy access:
 
@@ -407,7 +483,7 @@ Well done for getting this far. Whether you followed every step perfectly or nee
 
 From here, the best thing you can do is **start using it**. Open Claude Chat today and give it one real task from your business. See what comes back. Ask it to do it differently if needed. The more you use it, the more natural it becomes.
 
-If you get stuck, re-read the Troubleshooting section and use the Problem-Solving Template to ask Claude Chat for help. You don't need to know how to fix every problem — you just need to know how to describe it clearly.
+If you get stuck, re-read Section 7 (Troubleshooting) and use the Problem-Solving Template to ask Claude Chat for help. You don't need to know how to fix every problem — you just need to know how to describe it clearly.
 
 You've got this.
 
