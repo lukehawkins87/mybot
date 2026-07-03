@@ -1,38 +1,54 @@
 # NTT Live Event Sales Commissions
 
-Commission policy for crew members selling at NTT Live events.
+Thank you for being part of the NTT Live crew! This guide explains how sales
+commissions work at our live events, so everyone is on the same page and every
+sale is rewarded fairly. Please take a moment to read it — and if anything is
+unclear, just ask.
 
-## Commission Rates
+## Your Commission Rates
 
 - **5% on the front end**
 - **5% on the back end**
 
-## Eligibility Rules
+## When a Sale Is Yours
 
-A sale is only your commission when **both** of the following are true:
+A commission belongs to you when **both** of these are true:
 
 1. **Your name is on the sales Jotform** as the crew member, **and**
-2. **You were the one who got them to buy.**
+2. **You were the one who got them to buy** — you took the client through the
+   sales journey.
 
-## Collection Rule
+## Collecting the Money
 
-If the money was collected by somebody else, you cannot claim commission on
-it. You can only claim commission on money that:
+Commissions are earned on money **you personally collect** from a sale **you
+personally made**. If someone else collected the money, that commission isn't
+yours to claim — even if you were nearby or involved in other ways. Simply
+put: you can claim commission on what you specifically collected yourself
+*and* where you were the one who got the client to spend that money.
 
-- you specifically collected yourself, **and**
-- you got the customer to buy/spend.
+## Helping a Teammate (and Why It's Not a Commission)
 
-## What Does NOT Count as a Commission
+Sometimes a fellow crew member will ask for your help mid-sale — and we love
+to see it! However, the following kinds of help do **not** earn a commission:
 
-Helping another crew member does **not** earn you a commission when the help
-is limited to:
+- Helping with a **technical issue**, like how to fill out the Jotform
+- Helping with the **logistics of payment** — working out the math of what a
+  client owes, or explaining payment plan options
+- Helping explain **what's included in the course** the client is buying
 
-- a **technical issue** with how to fill out the Jotform,
-- a **logistical issue** working out the math of what the customer owes or
-  payment plan information, or
-- a **logistical issue** about what the customer gets inside the course
-  they're buying.
+In these situations, your teammate did the significant part of the sales
+process — they took the client on the journey, and the commission belongs to
+them.
 
-In these cases you did not do a reasonable or significant enough portion of
-the sales process — the other crew member did. The commission belongs to the
-crew member who made the sale.
+**Please know: your help still matters, and we genuinely appreciate it.**
+Jumping in to support a teammate is exactly the kind of crew spirit we value,
+and we're grateful for it. We also deeply value your honesty in recognising
+when you weren't the one who took that student on the entire journey
+yourself.
+
+This rule also protects your teammates. Crew members are instructed to put
+their name on the form when they're the ones who get the sale — meaning they
+took the client through the most significant portion of the sales journey —
+and honouring that keeps things fair and keeps our team strong.
+
+Thank you for everything you do at our live events — happy selling! 🎉
