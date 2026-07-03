@@ -61,19 +61,19 @@ Starting with a modest test budget:
 | Booked calls | 6 (20% call booking rate from masterclass) |
 | Sales | 2 @ $5,000 program |
 | Cost per acquisition | $350/client |
-| Cash collected upfront | $4,000 ($2,000 avg per close) |
+| Cash collected upfront | $5,000 ($2,500 avg per close) |
 
 **Your month-1 numbers:**
 
 | | Amount |
 |---|---|
-| Cash collected | $4,000 |
+| Cash collected | $5,000 |
 | Less ad spend | −$700 |
 | Less service fee | −$2,500 |
-| Less 10% commission | −$400 |
-| **Your net profit** | **+$400** |
+| Less 10% commission | −$500 |
+| **Your net profit** | **+$1,300** |
 
-Our side that month is $2,900 ($2,500 service fee + $400 commission). And remember — that's only the upfront cash. Both clients are now on payment plans, which keep paying you every month after this (more on that below).
+Our side that month is $3,000 ($2,500 service fee + $500 commission). And remember — that's only the upfront cash. Both clients are now on payment plans, which keep paying you every month after this (more on that below).
 
 ## Scenario 2 — Medium Case (our current lead cost, $15/lead)
 
@@ -85,51 +85,51 @@ Our side that month is $2,900 ($2,500 service fee + $400 commission). And rememb
 | Booked calls | 6 (20% call booking rate) |
 | Sales | 2 @ $5,000 program |
 | Cost per acquisition | $750/client |
-| Cash collected upfront | $4,000 ($2,000 avg per close) |
+| Cash collected upfront | $5,000 ($2,500 avg per close) |
 
 **Your month-1 numbers:**
 
 | | Amount |
 |---|---|
-| Cash collected | $4,000 |
+| Cash collected | $5,000 |
 | Less ad spend | −$1,500 |
 | Less service fee | −$2,500 |
-| Less 10% commission | −$400 |
-| **Your net profit** | **−$400** |
+| Less 10% commission | −$500 |
+| **Your net profit** | **+$500** |
 
-On upfront cash alone, month one is roughly break-even at this lead cost. But that's exactly why lifetime value matters:
+Even at our current lead cost, you're profitable from month one on upfront cash alone — and that's before a single payment-plan dollar lands. Here's why the real picture is much bigger:
 
 ## Client Lifetime Value: $9,000
 
-Each client is worth $9,000 over their lifetime with you. Here's how the cash actually lands: $2,000 collected at close, then $500/month on the payment plan until the remaining balance is banked. So every sale you make keeps paying you $500/month, month after month — and those payments stack on top of each new month's sales.
+Each client is worth $9,000 over their lifetime with you. Here's how the cash actually lands: $2,500 collected at close, then $500/month on the payment plan until the remaining balance is banked. So every sale you make keeps paying you $500/month, month after month — and those payments stack on top of each new month's sales.
 
 Even at the medium-case CPA of $750, you're paying $750 once to acquire a client worth $9,000 — a 12x return per client over their lifetime. That's why the month-1 snapshot understates what this actually builds.
 
 ## 6-Month Rolling Projection — Scaling Ad Spend by $5,000/Month
 
-Here's what happens when we scale spend by $5k each month, holding the same funnel numbers (30% show-up, 20% booking, 1-in-3 close, $2k upfront + $500/month payment plans stacking each month).
+Here's what happens when we scale spend by $5k each month, holding the same funnel numbers (30% show-up, 20% booking, 1-in-3 close, $2,500 upfront + $500/month payment plans stacking each month).
 
 **Good case ($7/lead):**
 
 | Month | Ad Spend | Leads | Attendees | Calls | Sales | Cash Collected | Your Net Profit* | Our Share** |
 |---|---|---|---|---|---|---|---|---|
-| 1 | $700 | 100 | 30 | 6 | 2 | $4,000 | $400 | $2,900 |
-| 2 | $5,700 | 814 | 244 | 49 | 16 | $33,000 | $21,500 | $5,800 |
-| 3 | $10,700 | 1,529 | 459 | 92 | 31 | $71,000 | $50,700 | $9,600 |
-| 4 | $15,700 | 2,243 | 673 | 135 | 45 | $114,500 | $84,850 | $13,950 |
-| 5 | $20,700 | 2,957 | 887 | 177 | 59 | $165,000 | $125,300 | $19,000 |
-| 6 | $25,700 | 3,671 | 1,101 | 220 | 73 | $222,500 | $172,050 | $24,750 |
+| 1 | $700 | 100 | 30 | 6 | 2 | $5,000 | $1,300 | $3,000 |
+| 2 | $5,700 | 814 | 244 | 49 | 16 | $41,000 | $28,700 | $6,600 |
+| 3 | $10,700 | 1,529 | 459 | 92 | 31 | $86,500 | $64,650 | $11,150 |
+| 4 | $15,700 | 2,243 | 673 | 135 | 45 | $137,000 | $105,100 | $16,200 |
+| 5 | $20,700 | 2,957 | 887 | 177 | 59 | $194,500 | $151,850 | $21,950 |
+| 6 | $25,700 | 3,671 | 1,101 | 220 | 73 | $259,000 | $204,900 | $28,400 |
 
 **Medium case ($15/lead — our current lead cost):**
 
 | Month | Ad Spend | Leads | Attendees | Calls | Sales | Cash Collected | Your Net Profit* | Our Share** |
 |---|---|---|---|---|---|---|---|---|
-| 1 | $1,500 | 100 | 30 | 6 | 2 | $4,000 | −$400 | $2,900 |
-| 2 | $6,500 | 433 | 130 | 26 | 9 | $19,000 | $8,100 | $4,400 |
-| 3 | $11,500 | 767 | 230 | 46 | 15 | $35,500 | $17,950 | $6,050 |
-| 4 | $16,500 | 1,100 | 330 | 66 | 22 | $57,000 | $32,300 | $8,200 |
-| 5 | $21,500 | 1,433 | 430 | 86 | 29 | $82,000 | $49,800 | $10,700 |
-| 6 | $26,500 | 1,767 | 530 | 106 | 35 | $108,500 | $68,650 | $13,350 |
+| 1 | $1,500 | 100 | 30 | 6 | 2 | $5,000 | $500 | $3,000 |
+| 2 | $6,500 | 433 | 130 | 26 | 9 | $23,500 | $12,150 | $4,850 |
+| 3 | $11,500 | 767 | 230 | 46 | 15 | $43,000 | $24,700 | $6,800 |
+| 4 | $16,500 | 1,100 | 330 | 66 | 22 | $68,000 | $42,200 | $9,300 |
+| 5 | $21,500 | 1,433 | 430 | 86 | 29 | $96,500 | $62,850 | $12,150 |
+| 6 | $26,500 | 1,767 | 530 | 106 | 35 | $126,000 | $84,400 | $15,100 |
 
 \* Your net profit = cash collected (upfront payments + all active payment plans) − ad spend − $2,500 service fee − 10% commission. The one-time $4,500 setup fee sits outside these monthly figures.
 \** Our share = $2,500 service fee + 10% commission on cash collected.
