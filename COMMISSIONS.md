@@ -26,6 +26,17 @@ yours to claim — even if you were nearby or involved in other ways. Simply
 put: you can claim commission on what you specifically collected yourself
 *and* where you were the one who got the client to spend that money.
 
+## Transferred Deposits
+
+Sometimes a student pays a deposit for one course and later chooses to
+transfer it to a different one — for example, moving an Inner Circle deposit
+across to Masters, Seven-Figure Academy, a package, or any other course.
+
+If the original deposit was taken by another sales person, there is **no
+commission on transferring that deposit**. The deposit was collected by
+someone else, so it isn't yours to claim — no matter which course it ends up
+going towards.
+
 ## Helping a Teammate (and Why It's Not a Commission)
 
 Sometimes a fellow crew member will ask for your help mid-sale — and we love
