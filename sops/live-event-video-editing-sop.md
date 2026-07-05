@@ -125,6 +125,8 @@ Audio quality is more important than picture quality — viewers forgive soft im
 ## 6. Graphics, Captions & Text
 
 - **Burned-in captions on all social cuts.** Most viewers start with sound off. Captions must be accurate — clean up filler words in captions to match the tightened audio.
+- **Question marks are mandatory on every question.** Whenever Luke asks a question, the caption must end with a question mark. This also applies when Luke is telling a story and voicing someone else asking a question (e.g. *"And she said to me, 'How do I let this go?'"*) — the quoted question still ends with a question mark. Questions are the core of the coaching; the punctuation must make them unmistakable on a silent watch.
+- **Caption readability standards:** maximum two lines on screen at a time, break lines at natural phrase boundaries (never mid-phrase), and keep each caption on screen long enough to read comfortably. Captions must match the spoken words — never paraphrase in a way that changes meaning.
 - **Context title card** at or near the top when the setup clip alone isn't enough (see 2.1).
 - **Lower third** identifying Luke ("Luke Hawkins — [role/company]") within the first 30 seconds of any video where a new viewer might not know who he is.
 - **Key-point callouts:** when Luke says a core line, a short on-screen text emphasis is allowed — sparingly (max 2–3 per long-form video).
@@ -183,7 +185,7 @@ Every short must still obey the context rule (2.1) — a hook line is fine, but 
 - [ ] Dialogue at target loudness; music ducked; no audio jumps; room tone filled
 - [ ] Music present throughout and matched to the mood of each beat; minimum two (ideally three to four) musical transitions, each landing on a content mood shift
 - [ ] Black-screen ending in place (unless this video is a deliberate exception): most powerful question(s)/point(s) from the video as end slides, share CTA with ❤️ on the final slide, music carried through
-- [ ] Captions accurate and synced (all vertical/social deliverables)
+- [ ] Captions accurate and synced (all vertical/social deliverables); every question — including questions quoted inside stories — ends with a question mark
 - [ ] Lower third and brand graphics correct; safe margins respected
 - [ ] Colour matched across angles; brand grade applied
 - [ ] Correct export specs per platform; filenames follow convention below
