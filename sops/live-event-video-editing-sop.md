@@ -106,9 +106,19 @@ Audio quality is more important than picture quality — viewers forgive soft im
 
 - **Dialogue first.** Use the lav/handheld mic feed, not camera audio. Denoise and de-reverb as needed, but keep it natural.
 - **Loudness:** normalise dialogue to approximately −16 LUFS (stereo) for social/web; keep true peak ≤ −1 dBTP.
-- **Music:** subtle underscore may be used to support emotional moments and openings/closings. Music must never compete with speech (duck at least 15–20 dB under dialogue). No music during raw breakthrough moments — silence is stronger.
 - **Room tone:** fill any gaps with room tone so cuts are inaudible. An audible audio jump breaks the "natural conversation" illusion instantly.
 - **Audience audio:** keep genuine laughter/applause from the room mics; never add canned reactions.
+
+### 5.1 Music (mandatory on every clip)
+
+**Every single clip must have music, and the music must reflect the mood of what Luke is saying at that moment.** Music is not decoration — it's how we create emotion in the viewer and hold their attention for the full video.
+
+- **Match music to mood, beat by beat.** Teaching with energy → driving, uplifting track. Vulnerable share or intervention → soft, emotional underscore. Breakthrough/resolution → swelling, hopeful. Humour → light. If the mood of the speech shifts and the music doesn't, the edit is wrong.
+- **Music transitions: minimum two per video, ideally three to four** wherever the content allows. Each transition should land on a mood shift in the content (problem surfaced → key question → breakthrough → resolution is a natural four-transition map). Transitions re-capture attention and carry the viewer's emotion through the arc.
+- **Make transitions musical, not jarring.** Crossfade, cut on a beat, or use a riser/moment of silence into the new track. A clumsy music change is worse than none.
+- **Ducking:** music must never compete with speech — keep it at least 15–20 dB under dialogue.
+- **Breakthrough moments:** keep music present but pull it right back (or strip to a minimal sustained pad) so the raw moment breathes; then let the music swell as the shift lands. The swell after the breakthrough is one of the most powerful emotional tools in the edit.
+- **Licensing:** only use tracks from the company's licensed music library.
 
 ---
 
@@ -119,6 +129,22 @@ Audio quality is more important than picture quality — viewers forgive soft im
 - **Lower third** identifying Luke ("Luke Hawkins — [role/company]") within the first 30 seconds of any video where a new viewer might not know who he is.
 - **Key-point callouts:** when Luke says a core line, a short on-screen text emphasis is allowed — sparingly (max 2–3 per long-form video).
 - Keep all graphics on brand (fonts, colours, logo placement) and inside title-safe margins for every target platform.
+
+### 6.1 Black-screen ending (standard on 80%+ of videos)
+
+At least 80% of published videos must end with a black screen sequence:
+
+1. **Cut to black** after the final content beat (let the last line or applause finish first — don't clip it).
+2. **Show one or two of the most powerful questions or points from the video** as white text on the black screen. Pull these directly from what Luke actually said — the lines most likely to make the viewer stop, reflect, or share. One idea per slide; hold each long enough to be read twice (roughly 4–6 seconds).
+3. **On the bottom of the final black slide, add the share call-to-action:**
+   > *Share this message to spread healing.* ❤️
+4. **Vary the final CTA line slightly on each video** so it stays fresh — same spirit, different wording. Approved variations include:
+   - *Share this with a friend* ❤️
+   - *Send this to someone who needs it* ❤️
+   - *Share this message to spread healing* ❤️
+5. **Music continues over the black screen** — hold or gently resolve the closing track under the end slides, per section 5.1. The music must match the emotional weight of the closing question/point.
+
+**Purpose:** the black screen strips away everything except the idea, giving the viewer a moment to sit with the most powerful question or point from the video — and then a direct, warm prompt to share it. Choose the closing lines with the same care as the opening hook.
 
 ---
 
@@ -155,6 +181,8 @@ Every short must still obey the context rule (2.1) — a hook line is fine, but 
 - [ ] Audience approval shown where it genuinely occurred; no misplaced reactions
 - [ ] Participant is portrayed with dignity throughout
 - [ ] Dialogue at target loudness; music ducked; no audio jumps; room tone filled
+- [ ] Music present throughout and matched to the mood of each beat; minimum two (ideally three to four) musical transitions, each landing on a content mood shift
+- [ ] Black-screen ending in place (unless this video is a deliberate exception): most powerful question(s)/point(s) from the video as end slides, share CTA with ❤️ on the final slide, music carried through
 - [ ] Captions accurate and synced (all vertical/social deliverables)
 - [ ] Lower third and brand graphics correct; safe margins respected
 - [ ] Colour matched across angles; brand grade applied
