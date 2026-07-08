@@ -2,7 +2,7 @@
 
 ---
 
-## THE MESSAGE (from the Head of Online Students & Team → the on-the-ground team)
+## THE MESSAGE (from Dan, Head of Online Students & Team → the on-the-ground team)
 
 Team,
 
@@ -25,7 +25,7 @@ We've had a long-running issue with students turning up to events overdue on pay
 
 The full step-by-step SOP is below. Any doubt on a case — escalate, don't improvise.
 
-— *[Head of Online Students & Online Team]*
+— *Dan, Head of Online Students & Online Team*
 
 ---
 
