@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Screencap — Team Evaluation Summary</title>
+<style>
+  :root{
+    --bg:#f6f7f5; --card:#ffffff; --ink:#16241c; --muted:#5b6b60;
+    --line:#e2e6e0; --accent:#1f8a4c; --accent-soft:#e7f5ec;
+    --warn-bg:#fff6e6; --warn-line:#f0d38a; --warn-ink:#7a5312;
+    --chip:#eef1ec;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0f1512; --card:#161d19; --ink:#e8efe9; --muted:#9db0a4;
+      --line:#26302a; --accent:#4fd487; --accent-soft:#16261d;
+      --warn-bg:#2a2214; --warn-line:#5c4a22; --warn-ink:#f0cf8a;
+      --chip:#1e2621;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0f1512; --card:#161d19; --ink:#e8efe9; --muted:#9db0a4;
+    --line:#26302a; --accent:#4fd487; --accent-soft:#16261d;
+    --warn-bg:#2a2214; --warn-line:#5c4a22; --warn-ink:#f0cf8a;
+    --chip:#1e2621;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:760px;margin:0 auto;padding:32px 20px 72px;}
+  header{margin:12px 0 28px;}
+  .kicker{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--accent);background:var(--accent-soft);
+    padding:5px 11px;border-radius:999px;}
+  h1{font-size:30px;line-height:1.2;margin:16px 0 8px;}
+  .lede{color:var(--muted);font-size:17px;margin:0;}
+  .url{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-weight:600;
+    color:var(--accent);text-decoration:none;font-size:17px;}
+  .url:hover{text-decoration:underline;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 24px;margin:18px 0;}
+  h2{font-size:15px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);
+    margin:0 0 14px;font-weight:600;}
+  h3{font-size:18px;margin:0 0 6px;}
+  p{margin:0 0 12px;}
+  .verdict{display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-top:1px solid var(--line);}
+  .verdict:first-of-type{border-top:none;}
+  .mark{flex:0 0 auto;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
+    font-size:15px;font-weight:700;color:#fff;margin-top:2px;}
+  .yes{background:var(--accent);}
+  .partial{background:#e0a52b;}
+  .verdict .body h3{margin-bottom:2px;}
+  .verdict .body p{color:var(--muted);margin:0;font-size:15px;}
+  ul{margin:0;padding-left:20px;}
+  li{margin:7px 0;}
+  .facts{list-style:none;padding:0;margin:0;}
+  .facts li{display:flex;gap:12px;padding:11px 0;border-top:1px solid var(--line);margin:0;}
+  .facts li:first-child{border-top:none;}
+  .facts .k{flex:0 0 116px;color:var(--muted);font-weight:600;font-size:14px;}
+  .facts .v{flex:1;}
+  .warn{background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-ink);
+    border-radius:14px;padding:18px 22px;margin:18px 0;}
+  .warn h2{color:var(--warn-ink);}
+  .warn p{margin:0;}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px;}
+  .chip{background:var(--chip);border:1px solid var(--line);border-radius:999px;
+    padding:4px 11px;font-size:13px;color:var(--muted);}
+  footer{margin-top:36px;color:var(--muted);font-size:13px;text-align:center;}
+  footer a{color:var(--accent);text-decoration:none;}
+  a{color:var(--accent);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="kicker">Tool Evaluation</span>
+    <h1>Screencap — can it record a workday & help build automations?</h1>
+    <p class="lede">Quick summary for the team on whether Screencap fits our two use cases.</p>
+    <a class="url" href="https://screencap.sh" target="_blank" rel="noopener">🔗 screencap.sh</a>
+  </header>
+
+  <div class="card">
+    <h2>What it is</h2>
+    <p>A <strong>local-first, source-available macOS app</strong> that runs in the background and automatically captures screen activity, clicks, keystrokes, and window context. An on-device AI model segments the whole day into labeled tasks — the <strong>“Moments”</strong> you see in the app (e.g. “Payroll run,” “Browser Issue”). Everything is auto-named, tagged, searchable, and exportable.</p>
+    <div class="chips">
+      <span class="chip">Auto-segmented</span>
+      <span class="chip">Tagged</span>
+      <span class="chip">Searchable</span>
+      <span class="chip">Exportable</span>
+      <span class="chip">Local-first</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Our two use cases</h2>
+    <div class="verdict">
+      <div class="mark yes">✓</div>
+      <div class="body">
+        <h3>Record an employee’s screen for the day</h3>
+        <p>Yes — directly. This is the core function. Runs in the background on a schedule, no manual start/stop, and produces a reviewable timeline of the full day.</p>
+      </div>
+    </div>
+    <div class="verdict">
+      <div class="mark partial">~</div>
+      <div class="body">
+        <h3>Record screen <em>and</em> create automations for the work</h3>
+        <p>Partly. It captures and structures the raw workflow (“turn real workflows into AI training data,” with MCP support to feed AI agents). It does <strong>not</strong> itself build or run bots that do the work — it gives you the source material you’d feed into a separate automation/AI tool.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Key details</h2>
+    <ul class="facts">
+      <li><span class="k">Platform</span><span class="v">macOS only today (Windows / browser / Android listed as coming soon). Everyone needs a Mac.</span></li>
+      <li><span class="k">Pricing</span><span class="v">Free for personal use · 7-day business trial · then <strong>$9/mo</strong> per user for team use.</span></li>
+      <li><span class="k">Privacy</span><span class="v">Local-first — recordings stay on the machine unless shared. Sensitive apps can be blocked or masked <em>before</em> anything is written to disk. E2E encryption for sharing; “App rules” to exclude personal browsers, banking, etc.</span></li>
+      <li><span class="k">Source</span><span class="v">Source-available on <a href="https://github.com/yahorbarkouski/screencap" target="_blank" rel="noopener">GitHub</a>.</span></li>
+    </ul>
+  </div>
+
+  <div class="warn">
+    <h2>⚠️ Before we deploy to employees</h2>
+    <p>Recording staff screens/keystrokes usually carries <strong>legal notice-and-consent requirements</strong> that vary by country/state. We should disclose the monitoring and get whatever consent our jurisdiction requires before rollout. The app’s privacy controls help, but they don’t replace that obligation.</p>
+  </div>
+
+  <footer>
+    <p>Sources:
+      <a href="https://screencap.sh" target="_blank" rel="noopener">screencap.sh</a> ·
+      <a href="https://www.producthunt.com/products/screencap" target="_blank" rel="noopener">Product Hunt</a> ·
+      <a href="https://github.com/yahorbarkouski/screencap" target="_blank" rel="noopener">GitHub</a></p>
+  </footer>
+</div>
+</body>
+</html>
