@@ -217,6 +217,31 @@
   footer.foot { margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--hair-strong); font-size: 13px; color: var(--ink-faint); }
   hr.rule { border: none; border-top: 1px solid var(--hair); margin: 40px 0; }
   .fn { font-size: 13px; color: var(--ink-faint); }
+
+  /* ---- build-it-yourself playbook ---- */
+  .appendix-band { margin-top: 66px; padding-top: 26px; border-top: 2px solid var(--accent); }
+  .persona { background: var(--surface); border: 1px solid var(--hair-strong); border-left: 4px solid var(--accent-2); border-radius: 6px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .persona .eyebrow { color: var(--accent-ink); }
+  .persona p { font-size: 16px; margin: 0; }
+  .nemotron { background: var(--surface); border: 1px solid var(--hair-strong); border-radius: 8px; padding: 22px 24px; box-shadow: var(--shadow); }
+  .nemotron .badge { display: inline-block; font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; color: var(--good); background: var(--good-bg); padding: 3px 9px; border-radius: 100px; margin-bottom: 10px; }
+  .nemotron h3 { margin-top: 0; }
+
+  .prompt { background: var(--surface-2); border: 1px solid var(--hair-strong); border-radius: 8px; margin: 16px 0 6px; overflow: hidden; box-shadow: var(--shadow); }
+  .prompt-h { display: flex; align-items: center; gap: 10px; padding: 11px 16px; background: color-mix(in srgb, var(--accent) 9%, var(--surface)); border-bottom: 1px solid var(--hair-strong); }
+  .prompt-h .step-no { font-family: ui-monospace, monospace; font-weight: 700; font-size: 13px; color: var(--accent); }
+  .prompt-h .step-t { font-weight: 800; font-size: 15.5px; letter-spacing: -.01em; }
+  .prompt-h .paste { margin-left: auto; font-size: 10.5px; text-transform: uppercase; letter-spacing: .07em; color: var(--ink-faint); font-weight: 700; white-space: nowrap; }
+  .prompt-body { padding: 15px 17px 17px; font-size: 14.5px; }
+  .art { display: grid; grid-template-columns: max-content 1fr; gap: 3px 13px; }
+  .art dt { font-family: ui-monospace, monospace; font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; padding-top: 4px; }
+  .art dt.r { color: var(--good); }
+  .art dt.t { color: var(--warn); }
+  .art dd { margin: 0 0 8px; }
+  .art dd:last-child { margin-bottom: 0; }
+  .art dd ul { margin: 2px 0 0; padding-left: 17px; }
+  .art dd li { margin-bottom: 3px; }
+  @media (max-width: 560px) { .art { grid-template-columns: 1fr; gap: 1px; } .art dt { padding-top: 8px; } }
 </style>
 
 <header class="mast">
@@ -331,7 +356,7 @@
         </div>
       </div>
       <p class="fn">Hard costs: Apple Developer <b>$99/yr</b>, Google Play <b>$25 once</b>, AI tooling <b>~$20&ndash;200/mo</b>, plus a Mac for iOS builds.</p>
-      <div class="verdict"><b>Verdict:</b> Realistically covers 70&ndash;80% of the remaining work for near-zero cash. The call-screen piece and the store-review back-and-forth are where a solo/AI effort tends to grind for weeks. Great for control and learning; risky as the <em>only</em> plan given an October revenue target.</div>
+      <div class="verdict"><b>Verdict:</b> Realistically covers 70&ndash;80% of the remaining work for near-zero cash. The call-screen piece and the store-review back-and-forth are where a solo/AI effort tends to grind for weeks. Great for control and learning; risky as the <em>only</em> plan given an October revenue target. <b>If you take this path, the <a href="#playbook">build-it-yourself playbook</a> at the end gives you the exact toolstack and copy-paste prompts.</b></div>
     </div>
 
     <!-- OPTION 2 -->
@@ -540,6 +565,187 @@
       <li><b>Make moderation, blocking, reporting and the age gate obvious to reviewers,</b> then submit. Expect one review round; keep going.</li>
       <li><b>Ship, then revisit Option 3 later</b> &mdash; only once revenue is real and scale demands native polish. Not before.</li>
     </ol>
+  </section>
+
+  <section id="playbook" class="appendix-band">
+    <p class="eyebrow">Appendix &mdash; for the DIY path (Option 1)</p>
+    <h2>The build-it-yourself playbook</h2>
+    <p class="lead">If Richard (with Luke&rsquo;s help) takes the app the last mile himself, this is the exact toolstack and the prompts to do it. It&rsquo;s written as a sequence: work top to bottom, and hand off only the one step that genuinely needs a specialist.</p>
+
+    <h3 style="margin-top:30px;">The toolstack a world-class dating app is built on</h3>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Job</th><th>Best tool (2026)</th><th>Why it&rsquo;s the right call</th><th class="num-col">Cost</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Build &amp; edit by prompt</strong></td><td>Claude Code (+ Cursor)</td><td>You already use it. It edits the real React/Capacitor code, not a toy builder</td><td class="num-col">~$20&ndash;200/mo</td></tr>
+          <tr><td><strong>The existing app</strong></td><td>React + TS, Supabase, Capacitor, Daily.co</td><td>It works &mdash; don&rsquo;t replace it. This whole playbook builds on top</td><td class="num-col">already paid</td></tr>
+          <tr><td><strong>Compile &amp; submit</strong></td><td>Xcode + Android Studio</td><td>Required to build native binaries. iOS needs a Mac</td><td class="num-col">free (Mac needed)</td></tr>
+          <tr><td><strong>In-app subscriptions</strong></td><td>RevenueCat (Capacitor SDK)</td><td>Wraps StoreKit + Play Billing + receipts + restore in one API. Saves weeks vs. raw billing code</td><td class="num-col">free to ~$2.5k/mo revenue, then %</td></tr>
+          <tr><td><strong>Paywall A/B testing</strong></td><td>Adapty (alt to RevenueCat)</td><td>If you want to optimise conversion on the $30/$50 tiers with experiments</td><td class="num-col">free tier</td></tr>
+          <tr><td><strong>Store submission automation</strong></td><td>Fastlane</td><td>Automates builds, screenshots, and store uploads &mdash; repeatable releases</td><td class="num-col">free</td></tr>
+          <tr><td><strong>Photo / in-call moderation</strong></td><td>Current provider, or NVIDIA Nemotron Safety + Nano Omni</td><td>Keeps members safe and passes dating review. See the Nemotron note below</td><td class="num-col">per-request or self-host</td></tr>
+          <tr><td><strong>Text AI (icebreakers, bio &amp; scam checks)</strong></td><td>Claude API now; Nemotron NIM at scale</td><td>Cheap intelligence for conversation starters, bio moderation, bot/scam detection</td><td class="num-col">per-token</td></tr>
+          <tr><td><strong>Crash &amp; error monitoring</strong></td><td>Sentry</td><td>See failures before members churn from them</td><td class="num-col">free tier</td></tr>
+          <tr><td><strong>Store listing assets</strong></td><td>Figma + a screenshot generator</td><td>Store screenshots are a conversion surface, not an afterthought</td><td class="num-col">free / low</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:34px;">The NVIDIA Nemotron question &mdash; answered straight</h3>
+    <div class="nemotron">
+      <span class="badge">Useful, but not what you think</span>
+      <p style="margin-top:0;"><strong>Nemotron is not an app builder &mdash; it&rsquo;s an AI engine.</strong> It will not get Richard to the App Store, and it isn&rsquo;t a substitute for Claude Code or a developer. It&rsquo;s a family of <em>open, commercially-usable AI models</em> from NVIDIA that you drop <em>inside</em> features to make them smart or cheap.</p>
+      <p><strong>What the 2026 family actually is:</strong> Nemotron 3 in Nano / Super / Ultra sizes for reasoning and agents; <strong>Nano Omni</strong> adds vision + audio (multimodal); and there are purpose-built <strong>Nemotron Safety</strong> (content moderation) and Retriever / Parse / Speech models. They&rsquo;re open-weight on Hugging Face, OpenRouter and build.nvidia.com (as NVIDIA NIM microservices), with very long context.</p>
+      <p><strong>Where it genuinely fits a dating app</strong> &mdash; the AI features, not the build:</p>
+      <ul class="tight">
+        <li><strong>Photo &amp; in-call moderation</strong> &mdash; Nano Omni is multimodal and Nemotron Safety is built for exactly this. Richard already pays per-request for AI moderation; an open model is a lever to cut that bill as volume grows.</li>
+        <li><strong>Text safety</strong> &mdash; bio and message moderation, scam/bot detection, and triaging the safety-report queue.</li>
+        <li><strong>Content generation</strong> &mdash; conversation starters and profile prompts.</li>
+      </ul>
+      <div class="verdict" style="margin-top:14px;"><b>Honest verdict for Richard&rsquo;s stage:</b> don&rsquo;t use it to launch. At ~680 members, a paid API (Claude or his current provider) is simpler and cheaper than standing up model infrastructure. Nemotron only wins once moderation volume &mdash; and its per-request bill &mdash; is large enough to justify self-hosting on a GPU (or NVIDIA&rsquo;s hosted NIM). File it under &ldquo;deliberate cost lever at thousands of active users,&rdquo; not &ldquo;launch requirement.&rdquo;</div>
+    </div>
+
+    <h3 style="margin-top:34px;">The prompts &mdash; built on the ART framework</h3>
+    <p>Every prompt below is written <strong>Act&nbsp;/&nbsp;Request&nbsp;/&nbsp;Terms</strong>. The <em>Act</em> (who the AI is being) stays the same for all of them &mdash; set it once, below &mdash; then paste each step&rsquo;s Request + Terms into Claude Code in order.</p>
+
+    <div class="persona">
+      <p class="eyebrow">Act as &mdash; paste this persona first, keep it for every step</p>
+      <p>&ldquo;You are the world&rsquo;s best dating-app engineer and product lead. You&rsquo;ve shipped category-leading, video-first dating apps to the App Store and Google Play. You know Capacitor, Supabase, WebRTC, StoreKit / Play Billing, CallKit / ConnectionService, and Trust &amp; Safety cold. You optimise for two things at once: <strong>passing store review the first time</strong>, and the metrics that make a dating app world-class &mdash; profile-completion rate, D1/D7 retention, first-date conversion, and a low safety-incident rate. You read my existing codebase before proposing changes, you never rewrite what already works, and you tell me plainly when a task needs a hired specialist rather than bluffing through it.&rdquo;</p>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="prompt">
+      <div class="prompt-h"><span class="step-no">STEP 01</span><span class="step-t">Audit &amp; release plan</span><span class="paste">paste request + terms</span></div>
+      <div class="prompt-body">
+        <dl class="art">
+          <dt class="r">Request</dt><dd>Read my existing repo end to end and produce a single prioritised gap-list to get <em>both</em> apps live in the stores.</dd>
+          <dt class="t">Terms</dt><dd><ul>
+            <li>Output one table: task / why it blocks submission / effort (hrs) / risk / can-AI-do-it-or-needs-a-specialist.</li>
+            <li>Do not write code yet &mdash; this step is diagnosis only.</li>
+            <li>Explicitly flag the native call-screen work as specialist-likely.</li>
+            <li>List every account, key, or credential I&rsquo;ll need to provide, rather than assuming them.</li>
+          </ul></dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="prompt">
+      <div class="prompt-h"><span class="step-no">STEP 02</span><span class="step-t">Store packaging &amp; listings</span><span class="paste">paste request + terms</span></div>
+      <div class="prompt-body">
+        <dl class="art">
+          <dt class="r">Request</dt><dd>Prepare both apps for submission: native config plus the store listings.</dd>
+          <dt class="t">Terms</dt><dd><ul>
+            <li>Generate iOS usage strings (camera, mic, photos), Android permissions, icon/splash config, and the Firebase setup steps.</li>
+            <li>Write App Store + Play listing copy (name, subtitle, description, keywords) tuned for a video-first dating app, set to an 18+ rating.</li>
+            <li>Do not touch the backend.</li>
+            <li>Hand me a tick-box checklist I can work through, and mark anything that needs a real device to verify.</li>
+          </ul></dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="prompt">
+      <div class="prompt-h"><span class="step-no">STEP 03</span><span class="step-t">Payments &mdash; RevenueCat</span><span class="paste">paste request + terms</span></div>
+      <div class="prompt-body">
+        <dl class="art">
+          <dt class="r">Request</dt><dd>Implement in-app subscriptions for the Spark ($30) and Magnetic ($50) tiers using RevenueCat&rsquo;s Capacitor SDK.</dd>
+          <dt class="t">Terms</dt><dd><ul>
+            <li>Use <code>@revenuecat/purchases-capacitor</code>; map products onto the existing entitlement/tier sync already in the app.</li>
+            <li>Keep the web card path completely separate &mdash; don&rsquo;t merge the two.</li>
+            <li>Write a test plan covering purchase, restore, upgrade, downgrade, and cancel; reflect the 15&ndash;30% store fee in the revenue reporting.</li>
+            <li>Where a server-side webhook needs changing, flag it and show me the change &mdash; don&rsquo;t guess silently.</li>
+          </ul></dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="prompt">
+      <div class="prompt-h"><span class="step-no">STEP 04</span><span class="step-t">Native call screen &mdash; the hard one</span><span class="paste">the likely hand-off</span></div>
+      <div class="prompt-body">
+        <dl class="art">
+          <dt class="r">Request</dt><dd>Make incoming video dates ring like a real phone call on the lock screen (CallKit on iOS, ConnectionService on Android), fired by push even when the app is killed.</dd>
+          <dt class="t">Terms</dt><dd><ul>
+            <li>First survey the existing Capacitor community plugins and tell me honestly whether a maintained one covers this, or whether it needs a custom native plugin.</li>
+            <li>If custom: scope the native Swift/Kotlin work as a written spec I could hand to a specialist &mdash; don&rsquo;t half-build it.</li>
+            <li>Wire it to the existing push + Daily.co call flow, not a new one.</li>
+            <li>This is the step most likely to exceed what AI-assisted DIY can finish &mdash; say so the moment you hit that limit. This is what I&rsquo;d hire the specialist for.</li>
+          </ul></dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="prompt">
+      <div class="prompt-h"><span class="step-no">STEP 05</span><span class="step-t">Deep links into the app</span><span class="paste">paste request + terms</span></div>
+      <div class="prompt-body">
+        <dl class="art">
+          <dt class="r">Request</dt><dd>Make calendar and email links open the app and route straight into the call or booking (iOS Universal Links, Android App Links).</dd>
+          <dt class="t">Terms</dt><dd><ul>
+            <li>Configure <code>apple-app-site-association</code> and <code>assetlinks.json</code>, and give me the exact hosting/DNS steps.</li>
+            <li>Handle the existing signed &ldquo;deep-link-into-call&rdquo; flow from the brief.</li>
+            <li>Test both cold-start (app closed) and warm-start (app open); tell me what to tap to verify each.</li>
+          </ul></dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- STEP 6 -->
+    <div class="prompt">
+      <div class="prompt-h"><span class="step-no">STEP 06</span><span class="step-t">Trust, safety &amp; AI moderation</span><span class="paste">where Nemotron fits</span></div>
+      <div class="prompt-body">
+        <dl class="art">
+          <dt class="r">Request</dt><dd>Harden trust &amp; safety so it both protects members and passes dating-category review.</dd>
+          <dt class="t">Terms</dt><dd><ul>
+            <li>Verify age gate, block, report, and the moderation disclosure are present <em>and</em> visible to a reviewer.</li>
+            <li>Review the AI photo + in-call moderation path already in the app.</li>
+            <li>Give me a cost-and-quality comparison of moderation engines &mdash; current provider vs Claude vs NVIDIA Nemotron Safety/Nano Omni (self- or NIM-hosted) &mdash; with a clear pick for launch scale (hundreds of members) and a separate pick for later scale.</li>
+            <li>Do not over-engineer for launch; recommend the simplest thing that&rsquo;s safe and passes review.</li>
+          </ul></dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- STEP 7 -->
+    <div class="prompt">
+      <div class="prompt-h"><span class="step-no">STEP 07</span><span class="step-t">QA &amp; real-device testing</span><span class="paste">paste request + terms</span></div>
+      <div class="prompt-body">
+        <dl class="art">
+          <dt class="r">Request</dt><dd>Produce a pre-submission QA plan and wire up crash monitoring.</dd>
+          <dt class="t">Terms</dt><dd><ul>
+            <li>Give a real-device test matrix: oldest supported iOS + Android, and a small and large screen each.</li>
+            <li>Integrate Sentry for crash/error reporting.</li>
+            <li>Smoke-test the full critical path: signup &rarr; profile &rarr; approval &rarr; browse &rarr; call &rarr; book &rarr; pay.</li>
+            <li>End with a one-page go/no-go checklist &mdash; nothing ships with an open item.</li>
+          </ul></dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- STEP 8 -->
+    <div class="prompt">
+      <div class="prompt-h"><span class="step-no">STEP 08</span><span class="step-t">Store review &amp; submission</span><span class="paste">paste request + terms</span></div>
+      <div class="prompt-body">
+        <dl class="art">
+          <dt class="r">Request</dt><dd>Get both apps through review first time and submitted.</dd>
+          <dt class="t">Terms</dt><dd><ul>
+            <li>Pre-flight against Apple Guideline 1.2 (user-generated content) and Google&rsquo;s dating/UGC policies; list where each is satisfied.</li>
+            <li>Prepare reviewer notes and a working demo account.</li>
+            <li>Anticipate the likeliest rejection reasons for a dating app and pre-empt them.</li>
+            <li>After approval, give me a monitored soft-launch plan &mdash; not a full-blast release on day one.</li>
+          </ul></dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="callout win" style="margin-top:22px;">
+      <span class="tag">The world-class layer &mdash; once it&rsquo;s live</span>
+      Shipping is table stakes. What separates a great dating app is what you do next: an onboarding that pushes <strong>profile completion above ~80%</strong> (empty profiles kill matching), <strong>safety treated as a visible feature</strong> not fine print, <strong>notification timing</strong> tuned to real browsing peaks rather than 24/7 blasting, and relentless focus on the one metric that matters here &mdash; <strong>first-date conversion</strong>, not swipes. Point the same persona at each of these, one prompt at a time, after launch.
+    </div>
   </section>
 
   <footer class="foot">
