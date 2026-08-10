@@ -247,6 +247,23 @@
   .art dd ul { margin: 2px 0 0; padding-left: 17px; }
   .art dd li { margin-bottom: 3px; }
   @media (max-width: 560px) { .art { grid-template-columns: 1fr; gap: 1px; } .art dt { padding-top: 8px; } }
+
+  /* ---- groundwork checklist ---- */
+  ol.setup { counter-reset: g; list-style: none; padding: 0; margin: 16px 0 0; }
+  ol.setup > li { position: relative; padding: 14px 0 14px 46px; border-top: 1px solid var(--hair); }
+  ol.setup > li::before {
+    counter-increment: g; content: counter(g);
+    position: absolute; left: 0; top: 13px; width: 30px; height: 30px; border-radius: 50%;
+    background: var(--accent); color: var(--chip-ink);
+    font-family: ui-monospace, monospace; font-weight: 700; font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  ol.setup > li b { font-size: 16px; display: block; margin-bottom: 2px; letter-spacing: -.01em; }
+  ol.setup > li .m { font-size: 12.5px; color: var(--ink-faint); margin-top: 5px; font-family: ui-monospace, monospace; letter-spacing: -.01em; }
+  ol.setup > li.ph { counter-increment: none; padding: 22px 0 4px; border-top: none; }
+  ol.setup > li.ph::before { display: none; }
+  ol.setup > li.ph span { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink); font-weight: 800; }
+  ol.setup > li.ph + li { border-top: none; }
 </style>
 </head>
 <body>
@@ -613,6 +630,68 @@
       </ul>
       <div class="verdict" style="margin-top:14px;"><b>Honest verdict for Richard&rsquo;s stage:</b> don&rsquo;t use it to launch. At ~680 members, a paid API (Claude or his current provider) is simpler and cheaper than standing up model infrastructure. Nemotron only wins once moderation volume &mdash; and its per-request bill &mdash; is large enough to justify self-hosting on a GPU (or NVIDIA&rsquo;s hosted NIM). File it under &ldquo;deliberate cost lever at thousands of active users,&rdquo; not &ldquo;launch requirement.&rdquo;</div>
     </div>
+
+    <h3 style="margin-top:34px;">Step 00 &mdash; Groundwork (do this before any prompt)</h3>
+    <p>None of the build prompts do much until the machine and accounts exist. Here is every step, in order, in plain terms. Do them top to bottom &mdash; and start the two slow ones (Apple approval and merchant/payment approval) <em>first</em>, because they wait on other people, not on you.</p>
+    <ol class="setup">
+      <li class="ph"><span>Phase A &mdash; Your machine (one-time)</span></li>
+      <li>
+        <b>Get a Mac.</b>
+        Any recent Mac mini or MacBook works. You <em>must</em> be on macOS to build the iPhone version &mdash; there is no way around this.
+        <div class="m">~AUD $1,000+ one-off · half a day to buy/set up</div>
+      </li>
+      <li>
+        <b>Install the free tools on the Mac.</b>
+        You need Node.js, Git, Xcode (from the Mac App Store), Android Studio, and Claude Code. Open Claude Code and ask it: &ldquo;Give me the exact commands to install Node, Git, Android Studio and check Xcode on this Mac,&rdquo; then paste them in one at a time.
+        <div class="m">free · 1&ndash;2 hours</div>
+      </li>
+      <li>
+        <b>Get the app&rsquo;s code onto your Mac.</b>
+        Ask whoever built the app to add you to the GitHub repository, then &ldquo;clone&rdquo; it to your Mac (Claude Code will walk you through the one command). This is the code the prompts will edit.
+        <div class="m">free · 30 minutes</div>
+      </li>
+
+      <li class="ph"><span>Phase B &mdash; Your accounts (Richard owns every one)</span></li>
+      <li>
+        <b>Enrol in the Apple Developer Program.</b> <span class="chip warn" style="transform:scale(.82);transform-origin:left;vertical-align:middle;">start this first</span>
+        At developer.apple.com &mdash; this is what lets you publish to the App Store. Business enrolment can need a D-U-N-S number and take a few days to verify, so kick it off before anything else.
+        <div class="m">US$99/year · 1&ndash;3 days to verify</div>
+      </li>
+      <li>
+        <b>Register a Google Play Console account.</b>
+        At play.google.com/console &mdash; this publishes the Android version. Verification is usually same-day.
+        <div class="m">US$25 once · same day</div>
+      </li>
+      <li>
+        <b>Create a free RevenueCat account.</b>
+        This runs your $30 (Spark) and $50 (Magnetic) subscriptions across both stores. You&rsquo;ll connect it in Step 03.
+        <div class="m">free to start</div>
+      </li>
+      <li>
+        <b>Create a Firebase project.</b>
+        At firebase.google.com &mdash; this powers Android push notifications. Just create the project; the prompt in Step 02 configures it.
+        <div class="m">free · 20 minutes</div>
+      </li>
+      <li>
+        <b>Take ownership of the services the app already uses.</b>
+        Make sure these are in <em>your</em> name and email, not the old developer&rsquo;s login: Supabase, Daily.co, the domain, and the email + SMS providers. Get added as owner on each. This is the step founders skip and regret.
+        <div class="m">free · a few emails</div>
+      </li>
+
+      <li class="ph"><span>Phase C &mdash; The money plumbing (long lead &mdash; start now)</span></li>
+      <li>
+        <b>Begin merchant / payment approval.</b> <span class="chip warn" style="transform:scale(.82);transform-origin:left;vertical-align:middle;">gates revenue</span>
+        This is the banking/merchant approval that switches real card payments on. It has its own waiting time and it gates the October revenue plan &mdash; so start the application this week, in parallel with everything above.
+        <div class="m">cost varies · start immediately, don&rsquo;t wait</div>
+      </li>
+
+      <li class="ph"><span>Phase D &mdash; Confirm you&rsquo;re ready</span></li>
+      <li>
+        <b>Run a one-line readiness check.</b>
+        In Claude Code, ask: &ldquo;Confirm this Mac has Node, Git, Xcode, Android Studio and Claude Code working, and that I&rsquo;m signed in to my Apple Developer and Google Play accounts.&rdquo; When it all checks out, move to Step 01 below.
+        <div class="m">15 minutes</div>
+      </li>
+    </ol>
 
     <h3 style="margin-top:34px;">The prompts &mdash; built on the ART framework</h3>
     <p>Every prompt below is written <strong>Act&nbsp;/&nbsp;Request&nbsp;/&nbsp;Terms</strong>. The <em>Act</em> (who the AI is being) stays the same for all of them &mdash; set it once, below &mdash; then paste each step&rsquo;s Request + Terms into Claude Code in order.</p>
