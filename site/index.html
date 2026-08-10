@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Mingle Movement — Build vs. Ship: Options & Costs</title>
+<style>
+  :root {
+    /* light palette — warm paper, ink, Mingle crimson/orange accents used sparingly */
+    --paper:      #F6F4F1;
+    --surface:    #FFFFFF;
+    --surface-2:  #FBF9F6;
+    --ink:        #1B1512;
+    --ink-soft:   #4A423D;
+    --ink-faint:  #7C726B;
+    --hair:       #E4DED7;
+    --hair-strong:#D3C9BF;
+    --accent:     #CF2E48;   /* crimson — recommended / key figures */
+    --accent-2:   #E1742A;   /* orange — secondary emphasis */
+    --accent-ink: #9C1B31;   /* crimson text on paper */
+    --good:       #2E7D57;
+    --good-bg:    #E6F1EB;
+    --warn:       #B5760A;
+    --warn-bg:    #F6ECD6;
+    --stop:       #B23A3A;
+    --stop-bg:    #F4E1DE;
+    --chip-ink:   #FFFFFF;
+    --shadow:     0 1px 2px rgba(27,21,18,.05), 0 8px 24px -12px rgba(27,21,18,.18);
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --paper:      #14100D;
+      --surface:    #1E1813;
+      --surface-2:  #241D17;
+      --ink:        #F0E9E2;
+      --ink-soft:   #C7BCB2;
+      --ink-faint:  #8E8279;
+      --hair:       #322A23;
+      --hair-strong:#413730;
+      --accent:     #FF6B84;
+      --accent-2:   #F79A4E;
+      --accent-ink: #FF8FA2;
+      --good:       #6FCB9E;
+      --good-bg:    #17281F;
+      --warn:       #E0AC4E;
+      --warn-bg:    #2C2312;
+      --stop:       #F08A82;
+      --stop-bg:    #2E1917;
+      --chip-ink:   #14100D;
+      --shadow:     0 1px 2px rgba(0,0,0,.3), 0 10px 30px -14px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:      #14100D;
+    --surface:    #1E1813;
+    --surface-2:  #241D17;
+    --ink:        #F0E9E2;
+    --ink-soft:   #C7BCB2;
+    --ink-faint:  #8E8279;
+    --hair:       #322A23;
+    --hair-strong:#413730;
+    --accent:     #FF6B84;
+    --accent-2:   #F79A4E;
+    --accent-ink: #FF8FA2;
+    --good:       #6FCB9E;
+    --good-bg:    #17281F;
+    --warn:       #E0AC4E;
+    --warn-bg:    #2C2312;
+    --stop:       #F08A82;
+    --stop-bg:    #2E1917;
+    --chip-ink:   #14100D;
+    --shadow:     0 1px 2px rgba(0,0,0,.3), 0 10px 30px -14px rgba(0,0,0,.6);
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    line-height: 1.6;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 22px 96px; }
+
+  /* ---- masthead ---- */
+  header.mast {
+    border-bottom: 1px solid var(--hair-strong);
+    background: var(--surface-2);
+  }
+  .mast-inner { max-width: 860px; margin: 0 auto; padding: 30px 22px 26px; }
+  .kicker {
+    font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--accent-ink); font-weight: 700; margin: 0 0 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .kicker::before { content: ""; width: 26px; height: 2px; background: var(--accent); display: inline-block; }
+  h1 {
+    font-size: clamp(30px, 5.6vw, 46px);
+    line-height: 1.04; letter-spacing: -.022em; font-weight: 800;
+    margin: 0 0 14px; text-wrap: balance;
+  }
+  .dek { font-size: clamp(17px, 2.3vw, 20px); color: var(--ink-soft); margin: 0; max-width: 62ch; text-wrap: pretty; }
+  .meta {
+    margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--hair);
+    display: flex; flex-wrap: wrap; gap: 6px 26px;
+    font-size: 13px; color: var(--ink-faint);
+  }
+  .meta b { color: var(--ink-soft); font-weight: 600; }
+
+  /* ---- structure ---- */
+  section { margin-top: 52px; }
+  .eyebrow {
+    font-size: 12px; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--ink-faint); font-weight: 700; margin: 0 0 8px;
+  }
+  h2 {
+    font-size: clamp(23px, 3.4vw, 30px); letter-spacing: -.018em; font-weight: 800;
+    margin: 0 0 6px; line-height: 1.12; text-wrap: balance;
+  }
+  h2 .num { color: var(--accent); font-variant-numeric: tabular-nums; margin-right: .4em; }
+  h3 { font-size: 19px; letter-spacing: -.01em; margin: 26px 0 6px; font-weight: 700; }
+  p { margin: 0 0 14px; }
+  a { color: var(--accent-ink); text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent); text-underline-offset: 2px; }
+  strong { font-weight: 700; }
+  .lead { font-size: 19px; color: var(--ink-soft); }
+
+  /* ---- the thesis box ---- */
+  .thesis {
+    background: var(--surface);
+    border: 1px solid var(--hair-strong);
+    border-left: 4px solid var(--accent);
+    border-radius: 4px;
+    padding: 24px 26px;
+    box-shadow: var(--shadow);
+  }
+  .thesis .eyebrow { color: var(--accent-ink); }
+  .thesis p:last-child { margin-bottom: 0; }
+  .thesis .big { font-size: 21px; font-weight: 700; letter-spacing: -.01em; color: var(--ink); line-height: 1.4; }
+
+  /* ---- chips ---- */
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11.5px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 100px; white-space: nowrap;
+  }
+  .chip.rec   { background: var(--accent); color: var(--chip-ink); }
+  .chip.cheap { background: var(--good-bg); color: var(--good); }
+  .chip.warn  { background: var(--warn-bg); color: var(--warn); }
+  .chip.stop  { background: var(--stop-bg); color: var(--stop); }
+
+  /* ---- tables ---- */
+  .table-scroll { overflow-x: auto; border: 1px solid var(--hair-strong); border-radius: 6px; box-shadow: var(--shadow); background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 14.5px; min-width: 520px; }
+  th, td { text-align: left; padding: 11px 15px; border-bottom: 1px solid var(--hair); vertical-align: top; }
+  thead th { background: var(--surface-2); font-size: 12px; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-faint); font-weight: 700; border-bottom: 1px solid var(--hair-strong); }
+  tbody tr:last-child td { border-bottom: none; }
+  .num-col { font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace; font-variant-numeric: tabular-nums; white-space: nowrap; font-size: 13.5px; }
+  tr.total td { background: var(--surface-2); font-weight: 700; border-top: 1px solid var(--hair-strong); }
+  .diff { font-weight: 700; }
+  .diff.easy { color: var(--good); }
+  .diff.med  { color: var(--warn); }
+  .diff.hard { color: var(--stop); }
+
+  /* ---- option cards ---- */
+  .opt {
+    background: var(--surface);
+    border: 1px solid var(--hair-strong);
+    border-radius: 8px;
+    padding: 22px 24px;
+    margin-top: 18px;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+  .opt.is-rec { border-color: var(--accent); border-width: 1.5px; }
+  .opt-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 4px; }
+  .opt-n { font-family: ui-monospace, monospace; font-size: 13px; font-weight: 700; color: var(--accent); }
+  .opt-title { font-size: 21px; font-weight: 800; letter-spacing: -.015em; margin: 0; }
+  .opt-cost {
+    margin-left: auto; font-family: ui-monospace, monospace; font-variant-numeric: tabular-nums;
+    font-size: 20px; font-weight: 700; color: var(--ink); white-space: nowrap;
+  }
+  .opt-cost small { font-size: 12px; color: var(--ink-faint); font-weight: 500; display: block; text-align: right; letter-spacing: .02em; }
+  .opt-chips { display: flex; gap: 7px; flex-wrap: wrap; margin: 10px 0 14px; }
+  .opt p { font-size: 15.5px; }
+  ul.tight { margin: 8px 0 14px; padding-left: 20px; }
+  ul.tight li { margin-bottom: 6px; font-size: 15px; }
+  .verdict { font-size: 14.5px; padding: 12px 15px; border-radius: 5px; background: var(--surface-2); border: 1px solid var(--hair); }
+  .verdict b { color: var(--accent-ink); }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 30px; margin: 6px 0 14px; }
+  .two h4 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-faint); margin: 0 0 6px; font-weight: 700; }
+  .two ul { margin: 0; padding-left: 18px; }
+  .two li { font-size: 14px; margin-bottom: 5px; }
+  @media (max-width: 620px) { .two { grid-template-columns: 1fr; } }
+
+  /* ---- callout ---- */
+  .callout { border-radius: 6px; padding: 16px 18px; margin: 16px 0; font-size: 15px; border: 1px solid var(--hair-strong); background: var(--surface-2); }
+  .callout .tag { font-weight: 700; font-size: 12.5px; letter-spacing: .05em; text-transform: uppercase; display: block; margin-bottom: 5px; }
+  .callout.risk { border-left: 3px solid var(--warn); }
+  .callout.risk .tag { color: var(--warn); }
+  .callout.win { border-left: 3px solid var(--good); }
+  .callout.win .tag { color: var(--good); }
+
+  ol.steps { counter-reset: s; list-style: none; padding: 0; margin: 14px 0 0; }
+  ol.steps li { position: relative; padding: 0 0 16px 44px; }
+  ol.steps li::before {
+    counter-increment: s; content: counter(s);
+    position: absolute; left: 0; top: -2px;
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--accent); color: var(--chip-ink);
+    font-family: ui-monospace, monospace; font-weight: 700; font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  ol.steps li:not(:last-child)::after {
+    content: ""; position: absolute; left: 14.5px; top: 30px; bottom: 4px; width: 1px; background: var(--hair-strong);
+  }
+  ol.steps b { font-size: 16px; }
+
+  footer.foot { margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--hair-strong); font-size: 13px; color: var(--ink-faint); }
+  hr.rule { border: none; border-top: 1px solid var(--hair); margin: 40px 0; }
+  .fn { font-size: 13px; color: var(--ink-faint); }
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="mast-inner">
+    <p class="kicker">Business &amp; Product Advisory</p>
+    <h1>Richard doesn&rsquo;t need to build a dating app. He needs to ship the one he already has.</h1>
+    <p class="dek">A cost-and-options review of The Mingle Movement&rsquo;s path to the App Store &amp; Google Play &mdash; and why the honest number is closer to <b>$6k&ndash;$15k</b> than the <b>$50k</b> quote.</p>
+    <div class="meta">
+      <span><b>Prepared for</b> Luke &amp; Richard</span>
+      <span><b>Subject</b> The Mingle Movement (live web app + mobile shell)</span>
+      <span><b>Date</b> 10 Aug 2026</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section id="thesis" style="margin-top:36px;">
+    <div class="thesis">
+      <p class="eyebrow">The one thing that changes everything</p>
+      <p class="big">The quotes Richard received ($50k&ndash;$150k) are priced as if the app is being <em>built from scratch</em>. It isn&rsquo;t. Reading his own technical brief: the product is <strong>live in production</strong>, the backend is complete (~45 tables, admin console, video calling, a full nurture engine), and the iOS/Android shell is <strong>already wired</strong> &mdash; just not submitted to the stores yet.</p>
+      <p>What&rsquo;s left is not a build. It&rsquo;s a <strong>finish-and-ship</strong>: package the existing app, activate payments, add the one genuinely hard native piece (a real incoming-call screen), and get through store review. That reframe is worth roughly <strong>5&ndash;10&times;</strong> on price. Everything below flows from it.</p>
+    </div>
+  </section>
+
+  <section id="whats-left">
+    <p class="eyebrow">What&rsquo;s actually left to do</p>
+    <h2>The remaining work, in plain terms</h2>
+    <p class="lead">Richard&rsquo;s brief already lists this in Section 6. Stripped of jargon, five things stand between today and &ldquo;live in both app stores.&rdquo; Only one of them is hard.</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>The task</th><th>What it means</th><th>Difficulty</th><th class="num-col">Est. effort</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Store packaging &amp; listings</strong></td>
+            <td>Permission strings, icons, screenshots, store descriptions, age gate, Firebase config</td>
+            <td><span class="diff easy">Easy</span></td>
+            <td class="num-col">20&ndash;40 hrs</td>
+          </tr>
+          <tr>
+            <td><strong>In-app purchases live</strong></td>
+            <td>Turn on Apple/Google billing for the $30 &amp; $50 tiers, test the entitlement sync that&rsquo;s already wired</td>
+            <td><span class="diff med">Medium</span></td>
+            <td class="num-col">20&ndash;40 hrs</td>
+          </tr>
+          <tr>
+            <td><strong>Deep links</strong></td>
+            <td>Calendar &amp; email links open the app instead of the browser (universal / app links)</td>
+            <td><span class="diff med">Medium</span></td>
+            <td class="num-col">10&ndash;20 hrs</td>
+          </tr>
+          <tr>
+            <td><strong>Native call screen</strong> &mdash; <em>the hard one</em></td>
+            <td>Incoming video dates ring like a real phone call, on the lock screen, even when the app is closed (CallKit on iOS, ConnectionService on Android). Richard&rsquo;s brief calls this &ldquo;the single biggest native win.&rdquo;</td>
+            <td><span class="diff hard">Hard</span></td>
+            <td class="num-col">40&ndash;90 hrs</td>
+          </tr>
+          <tr>
+            <td><strong>QA + store-review dance</strong></td>
+            <td>Test on real devices, then get through Apple/Google review &mdash; dating apps get extra scrutiny</td>
+            <td><span class="diff med">Medium</span></td>
+            <td class="num-col">20&ndash;40 hrs</td>
+          </tr>
+          <tr class="total">
+            <td colspan="3">Total &ldquo;finish-and-ship&rdquo; effort</td>
+            <td class="num-col">~110&ndash;230 hrs</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fn" style="margin-top:10px;">This is the number that matters. At an offshore blended rate of ~$50/hr that&rsquo;s <strong>$5.5k&ndash;$11.5k</strong>; at a local Sydney rate of ~$120/hr it&rsquo;s <strong>$13k&ndash;$28k</strong>. Neither is $50k, and nothing here is a rebuild.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section id="options">
+    <p class="eyebrow">The decision</p>
+    <h2>Four options, cheapest to most expensive</h2>
+    <p class="lead">Ranked by out-of-pocket cost. My recommendation is a blend of the first two &mdash; explained after the cards.</p>
+
+    <!-- OPTION 1 -->
+    <div class="opt">
+      <div class="opt-head">
+        <span class="opt-n">OPTION 01</span>
+        <h3 class="opt-title" style="margin:0;">Do it yourself, AI-assisted</h3>
+        <span class="opt-cost">$0&ndash;$3k<small>+ your time</small></span>
+      </div>
+      <div class="opt-chips">
+        <span class="chip cheap">Cheapest cash outlay</span>
+        <span class="chip warn">Highest time cost</span>
+      </div>
+      <p>Use Claude Code and AI tooling to do the packaging work yourselves. Because the app is already built, most of what&rsquo;s left is <em>configuration and integration</em>, not architecture &mdash; which is exactly where AI is strongest. Luke, this is the &ldquo;can we just do it ourselves?&rdquo; path, and for a good chunk of the list the answer is genuinely yes.</p>
+      <div class="two">
+        <div>
+          <h4>AI handles well</h4>
+          <ul>
+            <li>Store packaging, permission strings, config files</li>
+            <li>Store listings, screenshots, descriptions</li>
+            <li>Wiring &amp; testing in-app purchases</li>
+            <li>Deep-link setup</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Where DIY stalls</h4>
+          <ul>
+            <li>The native call screen (CallKit/ConnectionService) &mdash; specialist territory</li>
+            <li>Apple/Google review rejections for a dating app</li>
+            <li>Signing certificates &amp; store console gotchas</li>
+          </ul>
+        </div>
+      </div>
+      <p class="fn">Hard costs: Apple Developer <b>$99/yr</b>, Google Play <b>$25 once</b>, AI tooling <b>~$20&ndash;200/mo</b>, plus a Mac for iOS builds.</p>
+      <div class="verdict"><b>Verdict:</b> Realistically covers 70&ndash;80% of the remaining work for near-zero cash. The call-screen piece and the store-review back-and-forth are where a solo/AI effort tends to grind for weeks. Great for control and learning; risky as the <em>only</em> plan given an October revenue target.</div>
+    </div>
+
+    <!-- OPTION 2 -->
+    <div class="opt is-rec">
+      <div class="opt-head">
+        <span class="opt-n">OPTION 02</span>
+        <h3 class="opt-title" style="margin:0;">Hire one vetted Capacitor specialist</h3>
+        <span class="opt-cost">$6k&ndash;$18k<small>fixed scope</small></span>
+      </div>
+      <div class="opt-chips">
+        <span class="chip rec">Recommended</span>
+        <span class="chip cheap">Best value</span>
+      </div>
+      <p>Hire a <em>single</em> freelance developer who specialises in Capacitor / Ionic native builds, on a <strong>fixed-scope, milestone</strong> engagement &mdash; not open-ended hourly. Point them at the finish-and-ship list, and especially the hard native call screen. The existing backend stays untouched; the brief confirms it&rsquo;s &ldquo;client-agnostic.&rdquo;</p>
+      <ul class="tight">
+        <li><strong>Milestone 1</strong> &mdash; both apps built, signed, and submitted with listings &amp; permissions</li>
+        <li><strong>Milestone 2</strong> &mdash; in-app purchases live and validated end-to-end</li>
+        <li><strong>Milestone 3</strong> &mdash; incoming calls ring on the lock screen (the single biggest win)</li>
+        <li><strong>Milestone 4</strong> &mdash; through Apple &amp; Google review, live in both stores</li>
+      </ul>
+      <div class="verdict"><b>Verdict:</b> The sweet spot. Roughly <b>1/3 to 1/8 the cost of the quotes</b>, de-risks the one genuinely hard piece, and keeps everything that already works. Pay per milestone so Richard only pays for results that land. <b>This is what I&rsquo;d do.</b></div>
+    </div>
+
+    <!-- OPTION 3 -->
+    <div class="opt">
+      <div class="opt-head">
+        <span class="opt-n">OPTION 03</span>
+        <h3 class="opt-title" style="margin:0;">Boutique app agency (hybrid polish)</h3>
+        <span class="opt-cost">$25k&ndash;$55k<small>managed team</small></span>
+      </div>
+      <div class="opt-chips">
+        <span class="chip warn">Premium for convenience</span>
+      </div>
+      <p>A small studio does the finish-and-ship <em>and</em> rebuilds the highest-traffic screens (Browse + the call experience) natively for polish and performance, keeping the backend. You&rsquo;re paying for a managed team, a warranty, project management, and a maintenance relationship &mdash; not for missing product.</p>
+      <div class="verdict"><b>Verdict:</b> Worth it only if Richard wants a hands-off, accountable team and ongoing support, and is comfortable spending 3&ndash;5&times; Option 2 to get it. At 680 members pre-launch, hard to justify yet &mdash; but a reasonable &ldquo;phase 2&rdquo; once revenue is real.</p></div>
+    </div>
+
+    <!-- OPTION 4 -->
+    <div class="opt">
+      <div class="opt-head">
+        <span class="opt-n">OPTION 04</span>
+        <h3 class="opt-title" style="margin:0;">Full native rewrite</h3>
+        <span class="opt-cost">$80k&ndash;$150k+<small>rebuild the client</small></span>
+      </div>
+      <div class="opt-chips">
+        <span class="chip stop">Avoid &mdash; this is what the quotes priced</span>
+      </div>
+      <p>Rebuild the entire app as pure native (Swift + Kotlin) against the same backend. This is almost certainly what generated the $50k&ndash;$150k figures &mdash; it prices a whole client from zero.</p>
+      <div class="verdict"><b>Verdict:</b> Not warranted. The product, backend, admin, and shell already exist and are reusable. A rewrite throws away working software to chase native performance a pre-launch product doesn&rsquo;t need yet. Revisit only at serious scale (tens of thousands of active users), if ever.</div>
+    </div>
+  </section>
+
+  <section id="compare">
+    <p class="eyebrow">At a glance</p>
+    <h2>Side by side</h2>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Option</th><th class="num-col">Cost</th><th class="num-col">Timeline</th><th>Handles the hard native piece?</th><th>Best when&hellip;</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>01 &nbsp;DIY + AI</strong></td><td class="num-col">$0&ndash;$3k</td><td class="num-col">6&ndash;12+ wks</td><td>Not reliably</td><td>Control &amp; learning matter most; time is free</td></tr>
+          <tr><td><strong>02 &nbsp;Specialist</strong> <span class="chip rec" style="transform:scale(.85);transform-origin:left;">Rec</span></td><td class="num-col">$6k&ndash;$18k</td><td class="num-col">3&ndash;6 wks</td><td>Yes</td><td>You want it done right, cheaply, soon</td></tr>
+          <tr><td><strong>03 &nbsp;Agency</strong></td><td class="num-col">$25k&ndash;$55k</td><td class="num-col">6&ndash;10 wks</td><td>Yes + polish</td><td>Hands-off team &amp; ongoing support</td></tr>
+          <tr><td><strong>04 &nbsp;Rewrite</strong></td><td class="num-col">$80k&ndash;$150k+</td><td class="num-col">4&ndash;8 mo</td><td>Yes, from scratch</td><td>&mdash; (not now)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fn">Costs in USD unless noted. Timelines assume the merchant/payment approval (below) isn&rsquo;t the bottleneck.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section id="rates">
+    <p class="eyebrow">Market research &mdash; developer rates</p>
+    <h2>What a developer actually costs in 2026</h2>
+    <p class="lead">If Richard goes with Option 2 or 3, here&rsquo;s the live market. Rates are blended senior freelance mobile rates; a Capacitor/Ionic specialty runs at the upper end of each band, and iOS specialists sit ~12&ndash;18% above general rates.</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Where the developer is</th><th class="num-col">Hourly (USD)</th><th>Trade-off</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Australia</strong> (local, Sydney)</td><td class="num-col">$80&ndash;$130</td><td>Same timezone, easy trust, in-person; priciest</td></tr>
+          <tr><td><strong>US / UK / Canada</strong></td><td class="num-col">$80&ndash;$150</td><td>Strong English, high rates; agencies $150&ndash;250</td></tr>
+          <tr><td><strong>Western Europe</strong></td><td class="num-col">$60&ndash;$100</td><td>Strong engineering, partial timezone overlap</td></tr>
+          <tr><td><strong>Eastern Europe</strong> (Poland, Ukraine, Romania)</td><td class="num-col">$35&ndash;$70</td><td>Excellent senior talent, good value &mdash; a sweet spot</td></tr>
+          <tr><td><strong>Latin America</strong> (Brazil, Argentina, Mexico)</td><td class="num-col">$30&ndash;$60</td><td>Strong value; awkward AU timezone</td></tr>
+          <tr><td><strong>India / South Asia</strong></td><td class="num-col">$20&ndash;$45</td><td>Cheapest senior; vetting effort higher</td></tr>
+          <tr><td><strong>Philippines</strong></td><td class="num-col">$15&ndash;$40</td><td>Good AU timezone overlap; vet carefully for this specialty</td></tr>
+          <tr><td><strong>Vetted marketplaces</strong> (Toptal, Arc, Gun.io)</td><td class="num-col">$60&ndash;$180</td><td>Pre-screened &mdash; you pay a premium to skip vetting</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout risk">
+      <span class="tag">Budget honestly</span>
+      Your true cost lands at roughly <strong>1.4&ndash;1.8&times;</strong> the quoted hourly once you add management, ramp-up, and revisions. A &ldquo;$40/hr&rdquo; developer really costs you ~$60/hr all-in. Fixed-price milestones (Option 2) largely absorb this &mdash; another reason to prefer them over hourly.
+    </div>
+  </section>
+
+  <section id="task-value">
+    <p class="eyebrow">Market research &mdash; price by task</p>
+    <h2>What each piece is worth</h2>
+    <p class="lead">Luke, this is the &ldquo;market value of the specific tasks by difficulty&rdquo; you asked for &mdash; priced at a mid-market blended rate (~$50/hr). It shows exactly where the money should go: the call screen, not the packaging.</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Task</th><th>Difficulty</th><th class="num-col">Effort</th><th class="num-col">Fair price</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Store packaging, listings, permissions, Firebase</td><td><span class="diff easy">Easy</span></td><td class="num-col">20&ndash;40 h</td><td class="num-col">$1k&ndash;$4k</td></tr>
+          <tr><td>Deep links (universal / app links)</td><td><span class="diff med">Medium</span></td><td class="num-col">10&ndash;20 h</td><td class="num-col">$0.6k&ndash;$2k</td></tr>
+          <tr><td>In-app purchases live + entitlement testing</td><td><span class="diff med">Medium</span></td><td class="num-col">20&ndash;40 h</td><td class="num-col">$1k&ndash;$4k</td></tr>
+          <tr><td>QA on real devices + store-review iteration</td><td><span class="diff med">Medium</span></td><td class="num-col">20&ndash;40 h</td><td class="num-col">$1k&ndash;$4k</td></tr>
+          <tr><td><strong>Native call screen</strong> (CallKit + ConnectionService)</td><td><span class="diff hard">Hard</span></td><td class="num-col">40&ndash;90 h</td><td class="num-col">$3k&ndash;$9k</td></tr>
+          <tr class="total"><td colspan="2">Everything, done properly</td><td class="num-col">110&ndash;230 h</td><td class="num-col">$6.6k&ndash;$23k</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fn">Over half the cost concentrates in one task. When you interview developers, this is the litmus test: a generalist will underestimate the call screen; a specialist will talk fluently about CallKit and ConnectionService without prompting.</p>
+  </section>
+
+  <section id="where">
+    <p class="eyebrow">Market research &mdash; sourcing</p>
+    <h2>Where to find the right person</h2>
+    <div class="two" style="margin-top:16px;">
+      <div>
+        <h4>Vetted (pay more, risk less)</h4>
+        <ul>
+          <li><strong>Toptal</strong> &mdash; top ~3%, premium rates, fastest to a safe hire</li>
+          <li><strong>Arc.dev</strong> &mdash; lists Ionic/Capacitor specialists directly, ~$60&ndash;100/hr</li>
+          <li><strong>Gun.io / Lemon.io</strong> &mdash; vetted senior freelancers</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Marketplaces (cheaper, vet yourself)</h4>
+        <ul>
+          <li><strong>Upwork</strong> &mdash; huge pool; filter by &ldquo;Capacitor&rdquo; + job success &gt;95%</li>
+          <li><strong>Codementor</strong> &mdash; great for hiring hourly help on just the call screen</li>
+          <li><strong>Contra</strong> &mdash; commission-free, strong for indie devs</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Specialist communities (best fit)</h4>
+        <ul>
+          <li><strong>Ionic Forum &amp; Capacitor Discord</strong> &mdash; where the real specialists are</li>
+          <li><strong>Capacitor GitHub contributors</strong> &mdash; message people who&rsquo;ve shipped call/push plugins</li>
+          <li><strong>&ldquo;Ionic Certified&rdquo; partners</strong> for the agency route</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Local Australia (trust &amp; timezone)</h4>
+        <ul>
+          <li><strong>LinkedIn</strong> &mdash; search &ldquo;Capacitor / Ionic&rdquo; + Sydney/Melbourne</li>
+          <li><strong>Sydney React/mobile meetups</strong> for referrals</li>
+          <li>Boutique AU app studios for Option 3</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="vetting">
+    <p class="eyebrow">Protect the downside</p>
+    <h2>How to hire without getting burned</h2>
+    <ul class="tight">
+      <li><strong>Ask the filter question:</strong> &ldquo;Walk me through how you&rsquo;d make an incoming call ring on the lock screen with CallKit and ConnectionService.&rdquo; A confident, specific answer separates specialists from generalists. Everything else on the list is routine.</li>
+      <li><strong>Start with a small paid trial</strong> &mdash; e.g. get the app building and submitted (Milestone 1) before committing to the whole scope.</li>
+      <li><strong>Fixed price per milestone</strong>, each tied to something demonstrable (&ldquo;call rings on my locked iPhone&rdquo;), not hours logged.</li>
+      <li><strong>Richard owns every account</strong> &mdash; Apple Developer, Google Play, Supabase, domain. The developer gets invited access, never the keys. This is the mistake that traps founders.</li>
+      <li><strong>Use the NDA</strong> he already has, and keep the detailed technical brief for shortlisted candidates only &mdash; as he&rsquo;s already planned.</li>
+    </ul>
+  </section>
+
+  <hr class="rule">
+
+  <section id="business">
+    <p class="eyebrow">The business lens</p>
+    <h2>Two things that gate the October plan</h2>
+    <p class="lead">These aren&rsquo;t development problems &mdash; they&rsquo;re on the critical path to the 1,000-subscriber, $30k/month projection, and they&rsquo;re easy to under-prioritise.</p>
+
+    <div class="callout risk">
+      <span class="tag">Blocker 1 &mdash; Merchant / payment approval</span>
+      Card payments are still &ldquo;stubbed, pending merchant approval,&rdquo; and native billing needs App Store / Play approval. <strong>No payments = no $30k/month, no matter how good the app is.</strong> This is a business/banking task with its own lead time &mdash; start it <em>this week</em>, in parallel with any development. Don&rsquo;t let it be discovered in October.
+    </div>
+    <div class="callout risk">
+      <span class="tag">Blocker 2 &mdash; Dating-app store review</span>
+      Apple and Google scrutinise dating apps hard (user-generated content rules): they require a real age gate, blocking, reporting, and a moderation disclosure. The good news &mdash; Richard&rsquo;s brief shows he already has all of these. The task is making them <em>obvious to a reviewer</em>, or expect a first-round rejection and a week&rsquo;s delay. Budget for one or two review rounds.
+    </div>
+    <div class="callout win">
+      <span class="tag">The payback math</span>
+      At the projected 1,000 subscribers &times; ~$30, that&rsquo;s ~$30k/month. An Option-2 finish-and-ship (~$10k) pays for itself in <strong>under two weeks</strong> of projected revenue. Even so, don&rsquo;t overpay: the $50k quote isn&rsquo;t &ldquo;affordable because revenue is coming&rdquo; &mdash; it&rsquo;s the wrong scope. Remember Apple/Google take <strong>15&ndash;30%</strong> of in-app subscription revenue; price the tiers and the projection with that haircut baked in.
+    </div>
+  </section>
+
+  <section id="recommendation">
+    <p class="eyebrow">Bottom line</p>
+    <h2>What I&rsquo;d actually do</h2>
+    <div class="thesis">
+      <p class="big" style="margin-bottom:12px;">Blend Options 1 and 2. Do the easy 70% yourselves, AI-assisted; pay a specialist for the hard 30%.</p>
+      <p style="margin-bottom:0;">Realistic all-in: <strong>~$6k&ndash;$15k and 3&ndash;6 weeks</strong> to live in both stores &mdash; against a $50k quote for work that isn&rsquo;t needed.</p>
+    </div>
+    <ol class="steps">
+      <li><b>Start merchant/payment approval this week.</b> It&rsquo;s the longest-lead item and it gates revenue, not code. (Richard, in parallel with everything else.)</li>
+      <li><b>Do the store-packaging groundwork yourselves, AI-assisted.</b> Listings, screenshots, permissions, deep links, IAP wiring. Cheap, and it builds real understanding of your own product.</li>
+      <li><b>Hire one vetted Capacitor specialist on fixed milestones</b> for the native call screen, IAP validation, and final store submission. Use the filter question. Budget $6k&ndash;$12k; target Eastern Europe or a vetted marketplace for the best value/risk balance, or local AU if timezone and trust matter more than price.</li>
+      <li><b>Make moderation, blocking, reporting and the age gate obvious to reviewers,</b> then submit. Expect one review round; keep going.</li>
+      <li><b>Ship, then revisit Option 3 later</b> &mdash; only once revenue is real and scale demands native polish. Not before.</li>
+    </ol>
+  </section>
+
+  <footer class="foot">
+    <p><strong>The Mingle Movement &mdash; Development Options &amp; Cost Review.</strong> Prepared as an independent advisory for Luke &amp; Richard, 10 August 2026. Figures are 2026 market estimates in USD unless stated; actual quotes will vary by developer, scope detail, and store-review outcomes. All product facts are drawn from Richard&rsquo;s own technical brief.</p>
+    <p class="fn">Rate data: Second Talent, Arc.dev, Upwork &amp; Toptal benchmarks (mobile freelance, 2026); Qubit Labs / Uvik offshore rate guides (2026).</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
