@@ -10,8 +10,9 @@
 > ### ⚠️ Assumptions to confirm
 > I built this SOP with sensible defaults. Please confirm or correct these and I'll update it:
 > 1. **Departments/inboxes** = Billing (`billing@lukehawkins.com`), Support/Fulfillment (`support@fulfillment.lukehawkins.com`), Sales/Setters (Setter Team), and Luke personally.
-> 2. **Delegation method** = set the conversation **Owner** + leave an **@mention Internal Comment** (primary), backed up by a **department tag**.
+> 2. **Delegation method** = mark the message **Unread**, then hand it off in the **#customer-support** Slack channel by @tagging the person who must reply (tag **Luke + Dan** if unsure), then mark it **Read**. Setting the CRM **Owner**/tag is a recommended backup.
 > 3. **Missed-call owner** = the Setter team, checking the Call Report multiple times per day.
+> 4. **"Dan"** = Dan Diaz (creator of the #customer-support channel). Confirm this is who you meant.
 >
 > Anything in *[square brackets]* is a name/detail you should fill in.
 
@@ -19,14 +20,16 @@
 
 ## 1. The One Rule That Prevents Missed Messages
 
-**Never mark a message as read unless *you* have responded to it.**
+**Never leave a message in the "read" state unless it has been handled — either *you* replied, or you handed it off in Slack to the person who will.**
 
 The incident we are preventing: someone opened a message meant for another department, it flipped to **read**, it dropped out of the **Unread** view, and the department that was supposed to reply never saw it.
 
 From now on:
 
-- **Opening a message does not mean you own it.** If it is not yours to answer, you must return it to the **Unread** state so it reappears for the right person.
-- **Read = Done.** A message is only allowed to sit in the "read" state once it has been replied to or its task is genuinely complete.
+- **Opening a message does not mean you own it.** If a message you open is **not for you**, your **first action is to mark it back to Unread** so it can't get lost while you deal with it.
+- **Then hand it off in Slack.** Post the message in the **#customer-support** Slack channel and **@tag the person who needs to reply**. If you don't know who that is, **@tag Luke and @Dan and ask "who is this message for?"** (see §4C).
+- **Only once it's handed off in Slack may you mark it Read.** The Slack post — not the CRM inbox — is now what guarantees the right person picks it up.
+- **Read = Handled.** A message is only allowed to sit "read" after a reply was sent **or** it's been posted to Slack with the right person tagged.
 - **When in doubt, mark it Unread.** An extra unread message is a minor annoyance. A missed customer is lost revenue and a bad reputation.
 
 ---
@@ -34,9 +37,9 @@ From now on:
 ## 2. Golden Rules (memorise these)
 
 1. **Don't click into messages you don't intend to action.** Browsing the inbox out of curiosity is how messages get accidentally opened.
-2. **If you open something that isn't yours → mark it Unread immediately** (see §4).
-3. **Never mark Read until you've actually replied.**
-4. **Delegate visibly, not silently.** Handing a message to someone means assigning an Owner + @mentioning them — not just "leaving it there hoping they see it."
+2. **If you open something that isn't yours → mark it Unread immediately** (see §4), *then* hand it off in Slack.
+3. **Never mark Read until it's handled** — either you replied, or you posted it to **#customer-support** and tagged the right person.
+4. **Delegate visibly in Slack, not silently.** Handing a message off means posting it in **#customer-support** and @tagging the person who must reply — not just "leaving it there hoping they see it." If you don't know who → tag **Luke and Dan** and ask.
 5. **Respect DND.** If a contact has enabled DND / "delete me from your list," stop marketing to them and flag it (see §7).
 6. **Check missed calls every day** (see §6). A missed call is a missed lead.
 7. **End of day: your inbox view is clean** — everything is replied to, reassigned, or snoozed with an owner.
@@ -77,23 +80,24 @@ When a new message lands in the **Team inbox**, decide who it belongs to:
 
 **If NO (it belongs to another department, or you're not ready to reply):**
 1. **Do not reply.**
-2. **Delegate it** (§4C).
-3. **Mark it back to Unread** so it re-surfaces for the correct person:
+2. **Mark it back to Unread first** — this is your safety net so the message can't get lost:
    - Open the conversation's **options menu** (the three-dot `⋮` / envelope icon in the top-right of the conversation header) and choose **Mark as Unread**.
    - Confirm the conversation shows as **bold / unread** again in the list and reappears under the **Unread** tab.
-4. Never leave someone else's message sitting in the read state.
+3. **Hand it off in Slack** (§4C) — post it in **#customer-support** and @tag whoever needs to reply (or tag Luke + Dan if you're not sure).
+4. **Only then mark it Read.** Once it's posted in Slack with the right person tagged, it's safe to mark the CRM conversation Read — the Slack thread now owns the follow-up. (Optional but recommended: also set the **Owner** in Contact Details so accountability shows inside the CRM too.)
 
 > 📷 **Screenshot 2 — Reply composer & From address.**
 > *Insert the Sue Minto reply-composer screenshot here.* Shows the **Email** composer with **From: `info@lukehawkins.com`**, **From Name: Luke Hawkins**, the **To** field, and **Subject** line. Always confirm the correct From identity before sending, and note the **"DnD enabled by customer"** banner if present (see §7).
 
-### 4C. How to delegate (hand it to the right person)
+### 4C. How to hand it off in Slack (the required step)
 
-Do **both** of these so nothing relies on someone happening to notice:
+When a message isn't yours, the hand-off happens in the **#customer-support** Slack channel so the right person is actively notified — not left to notice it on their own.
 
-1. **Set the Owner.** In the **Contact Details** panel on the right, set **Owner** to the responsible person (it defaults to *Unassigned*). The Owner is the single accountable person for that conversation.
-2. **@mention them in an Internal Comment.** In the message composer, switch from **Email** to **Internal Comment**, type `@` + their name, and add one line of context (e.g. *"@Chloe this is a billing dispute — over to you"*). Internal Comments are private to the team and notify the person mentioned.
-3. **(Backup) Apply the department tag.** In Contact Details → **Tags**, add the relevant tag (e.g. `billing`, `support`, `sales`) so each team can filter to their own work.
-4. **Then mark the conversation Unread** (§4B) so it's visibly waiting for that person.
+1. **Post the message in #customer-support.** Include enough for the person to act without opening the CRM cold: the **customer's name**, the **channel** (email/SMS/call), a **one-line summary or paste** of what they said, and a **link to the CRM conversation** if you can grab it.
+2. **@tag the person who needs to reply** based on the routing map in §3 (e.g. billing dispute → @*[billing owner]*; access/tech issue → @*[support owner]*; new lead/booking → @*[setter]*).
+3. **If you don't know who it's for → @tag Luke and @Dan and ask "who is this message for?"** Do not guess and do not leave it unrouted. Luke/Dan will point it to the right person in-thread.
+4. **(Recommended) Also set the Owner + tag inside the CRM.** In **Contact Details**, set **Owner** to the responsible person and add the department **Tag** (`billing`, `support`, `sales`). This keeps accountability visible inside GHL as a backup to Slack.
+5. **Order of operations:** mark **Unread** first (§4B step 2) → post + tag in Slack → **then** mark **Read**. Never mark Read until the Slack hand-off is done.
 
 > 📷 **Screenshot 3 — Contact Details panel (Owner, Followers, Tags).**
 > *Insert the Contact Details screenshot here.* Shows the **Owner** and **Followers** fields at the top and the **Tags** section (e.g. `aug17-fb`, `260817 challenge`, `webinar`). This is where you assign accountability and tag the department.
@@ -109,14 +113,14 @@ Do **both** of these so nothing relies on someone happening to notice:
 
 | State | What it means | Who may set it |
 |---|---|---|
-| **Unread (bold)** | Still needs a reply from someone | Anyone who opened it but isn't actioning it |
-| **Read** | Has been replied to / task complete | Only the person who actually handled it |
-| **Owner set** | This named person is accountable | Whoever delegates it |
+| **Unread (bold)** | Still needs a reply — OR you've just opened someone else's message and haven't handed it off yet | Anyone who opened it but isn't actioning it |
+| **Read** | Handled: replied to, **or** posted to #customer-support with the right person tagged | Only after a reply **or** a Slack hand-off |
+| **Owner set** | This named person is accountable | Whoever hands it off |
 | **Tagged (dept)** | Routed to a department queue | Whoever triages it |
 | **Starred** | Flagged as important / needs Luke's eyes | Anyone, but tell the owner |
 | **DND** | Contact opted out — do not market | Set automatically or by request (§7) |
 
-**Rule of thumb:** *Read* is a promise that someone dealt with it. Don't make that promise on someone else's behalf.
+**Rule of thumb:** *Read* is a promise that the message is being dealt with. You may only make that promise once you've either replied yourself or tagged the right person in **#customer-support**.
 
 ---
 
@@ -177,9 +181,9 @@ If a contact asks to be removed, stops replying angrily, or a **"DnD enabled by 
 ---
 
 ## 9. Escalation
-- **Unsure who owns a message?** → Internal Comment @*[team lead]*, mark Unread, don't guess.
-- **Angry customer / refund / legal / press?** → tag + @mention Luke, Star the conversation.
-- **A message was missed / a call wasn't returned?** → tell *[team lead]* so we can find the gap, not to assign blame.
+- **Unsure who owns a message?** → mark it Unread, post it in **#customer-support**, **@tag Luke and Dan** and ask *"who is this message for?"* — don't guess.
+- **Angry customer / refund / legal / press?** → post in **#customer-support**, @tag Luke, and Star the conversation in the CRM.
+- **A message was missed / a call wasn't returned?** → flag it in **#customer-support** so we can find the gap, not to assign blame.
 
 ---
 
@@ -187,9 +191,10 @@ If a contact asks to be removed, stops replying angrily, or a **"DnD enabled by 
 
 | ✅ Do | ❌ Don't |
 |---|---|
-| Mark someone else's message **Unread** the moment you realise it's not yours | Leave an opened message in the read state "for now" |
-| Reply, *then* let it go read | Mark read to "tidy up" the inbox |
-| Set an **Owner** + **@mention** when delegating | Assume a teammate will notice it on their own |
+| Mark someone else's message **Unread** the moment you realise it's not yours, *then* hand it off | Leave an opened message in the read state "for now" |
+| Post it in **#customer-support** and **@tag the right person**, then mark Read | Mark read before it's been handed off in Slack |
+| Not sure who it's for? **@tag Luke and Dan** and ask | Guess the department or leave it unrouted |
+| Reply yourself, *then* let it go read | Mark read to "tidy up" the inbox |
 | Check the **Call report** for **Missed** calls daily | Wait for someone to mention a missed call |
 | Respect **DND** and route complaints to a human | Keep automations running on someone who opted out |
 
