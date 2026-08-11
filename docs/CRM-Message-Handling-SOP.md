@@ -28,6 +28,10 @@ The incident we are preventing: someone opened a message meant for another depar
 From now on:
 
 - **Opening a message does not mean you own it.** If a message you open is **not for you**, your **first action is to mark it back to Unread** so it can't get lost while you deal with it.
+
+> 📷 **Screenshot — How to Mark as Unread (annotated).**
+> With the conversation open, click the **envelope icon** in the top-right toolbar of the conversation header (between the ⭐ Star and the 🗑 Trash icons). This flips the conversation back to **bold / unread** so the right person still sees it. *Do this the moment you realise the message isn't yours, before anything else.*
+
 - **Then hand it off in Slack.** Post the message in the **#customer-support** Slack channel and **@tag the person who needs to reply**. If you don't know who that is, **@tag Luke and @Dan and ask "who is this message for?"** (see §4C).
 - **Only once it's handed off in Slack may you mark it Read.** The Slack post — not the CRM inbox — is now what guarantees the right person picks it up.
 - **Read = Handled.** A message is only allowed to sit "read" after a reply was sent **or** it's been posted to Slack with the right person tagged.
