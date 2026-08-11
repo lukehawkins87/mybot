@@ -8,13 +8,14 @@
 ---
 
 > ### ⚠️ Assumptions to confirm
-> I built this SOP with sensible defaults. Please confirm or correct these and I'll update it:
-> 1. **Departments/inboxes** = Billing (`billing@lukehawkins.com`), Support/Fulfillment (`support@fulfillment.lukehawkins.com`), Sales/Setters (Setter Team), and Luke personally.
-> 2. **Delegation method** = mark the message **Unread**, then hand it off in the **#customer-support** Slack channel by @tagging the person who must reply (tag **Luke + Dan** if unsure), then mark it **Read**. Setting the CRM **Owner**/tag is a recommended backup.
-> 3. **Missed-call owner** = the Setter team, checking the Call Report multiple times per day.
-> 4. **"Dan"** = Dan Diaz (creator of the #customer-support channel). Confirm this is who you meant.
+> Confirmed with Luke (11 Aug 2026); one item still open:
+> 1. **Routing owners** — Billing → **Fatima + Kristine** · Fulfilment/Support → **Sheree + Bernice** · Sales → **Lisa + Sarah** · Setters → **Fernando + Sarika** · VIP → **Luke** · Unsure → **Luke + Dan**.
+> 2. **Delegation method** = mark the message **Unread**, then hand it off in the **#customer-support** Slack channel by @tagging the person(s) who must reply (tag **Luke + Dan** if unsure), then mark it **Read**. Setting the CRM **Owner**/tag is a recommended backup.
+> 3. **Missed-call owner** = the setters (**Fernando + Sarika**), checking the Call Report multiple times per day.
+> 4. **"Dan"** = Daniel Diaz, Operations Manager (owns the #customer-support channel).
+> 5. **OPEN:** confirm **Fernando's** Slack handle (`@fer`?) — see §3.1.
 >
-> Anything in *[square brackets]* is a name/detail you should fill in.
+> Anything in *[square brackets]* is a detail still to fill in.
 
 ---
 
@@ -50,41 +51,77 @@ From now on:
 
 When a new message lands in the **Team inbox**, decide who it belongs to:
 
-| If the message is about… | Department | Route to | Example |
+| If the message is about… | Department | Who to @tag in #customer-support | Example |
 |---|---|---|---|
-| Invoices, payments, refunds, chargebacks, card declines | **Billing** | `billing@lukehawkins.com` — *[owner name]* | "Why was I charged $7?", disputed payment |
-| Program access, delivery, tech/login issues, "how do I…", unsubscribe requests | **Support / Fulfillment** | `support@fulfillment.lukehawkins.com` — *[owner name]* | "I can't access the training", "please delete me" |
-| New leads, booking a call, appointment requests, sales questions | **Sales / Setters** | Setter Team — *[owner name]* | "Can I book a call?", replies to ad DMs |
-| Personal / VIP / anything only Luke should answer | **Luke** | @info (Luke Hawkins) | Partner/JV outreach, sensitive complaints |
-| Not sure | **Ask before guessing** | Post in #customer-support, @tag Luke + Dan | Ambiguous or mixed-topic messages |
+| Invoices, payments, refunds, chargebacks, card declines | **Billing** | **@Fatima + @Kristine** (`@billing`, `@finance`) | "Why was I charged $7?", disputed payment |
+| Program access, delivery, coaching/events, tech/login issues, "how do I…", unsubscribe requests | **Fulfilment / Support** | **@Sheree + @Bernice** (`@sheree`, `@bernice`) | "I can't access the training", "please delete me" |
+| Sales questions from an existing/warm lead, pricing, closing | **Sales** | **@Lisa + @Sarah** (`@lisa`, `@sarah`) | Pricing questions, "I'm ready to join" |
+| New leads, booking a call, appointment requests, replies to ad DMs | **Setters** | **@Fernando + @Sarika** (`@fer`*, `@sarika`) | "Can I book a call?", replies to ad DMs |
+| Personal / VIP / anything only Luke should answer | **Luke** | **@Luke** (`@info`) | Partner/JV outreach, sensitive complaints |
+| Not sure | **Ask before guessing** | Post in #customer-support, **@tag Luke + Dan** | Ambiguous or mixed-topic messages |
 
-### 3.1 Team Roster (from the #customer-support Slack channel)
+> *Confirm **Fernando's** Slack handle — the closest match in #customer-support is `@fer` (Fer Diaz). If that's not Fernando, tell me his handle and I'll fix it.*
 
-These are the 19 people in **#customer-support**. Names and Slack handles are pulled directly from Slack; the **Department** column is what you need to confirm — I only filled in the ones the email handle makes obvious, so nobody gets tagged by mistake.
+### 3.1 Team Roster & Org Chart
 
-| Name | Slack handle | Email | Department / role → **CONFIRM** |
-|---|---|---|---|
-| Luke Hawkins | `@info` | info@lukehawkins.com | Founder / VIP + escalation |
-| Dan Diaz | `@dan` | dan@lukehawkins.com | Team lead / escalation *(owns this channel)* |
-| Kristine | `@finance` | finance@lukehawkins.com | Finance |
-| Fatima | `@billing` | billing@lukehawkins.com | Billing |
-| Fer Diaz | `@fer` | fer@lukehawkins.com | *[assign]* |
-| LJ | `@lj` | lj@lukehawkins.com | *[assign — appears in CRM doing setting/outreach]* |
-| Bernice Allan | `@bernice` | bernice@lukehawkins.com | *[assign]* |
-| Kate Angulo | `@kate` | kate@lukehawkins.com | *[assign]* |
-| Shine | `@sunshine` | sunshine@lukehawkins.com | *[assign]* |
-| Nawal Rafay | `@nawal` | nawal@lukehawkins.com | *[assign]* |
-| Sarah | `@sarah` | sarah@lukehawkins.com | *[assign]* |
-| Sarika | `@sarika` | sarika@lukehawkins.com | *[assign]* |
-| Lisa Cooke | `@lisa` | lisa@lukehawkins.com | *[assign]* |
-| Blessing Obi | `@blessingobi407` | blessingobi407@gmail.com | *[assign]* |
-| Sascha Jones | `@sascha` | sascha@lukehawkins.com | *[assign]* |
-| Sheree | `@sheree` | sheree@lukehawkins.com | *[assign]* |
-| Fran Heath | `@fran` | fran@lukehawkins.com | *[assign]* |
-| Zoe | `@zoe` | zoe@lukehawkins.com | *[assign]* |
-| Brad Harnan | `@brad` | brad@lukehawkins.com | *[assign]* |
+Departments and roles below are from the **company Organisational Chart (June 2026, 25 people)**. Slack handles are for the 19 people currently in **#customer-support** — those are the people who can be @tagged there. People marked *(not in #customer-support)* need to be added to the channel before they can be tagged.
 
-> **Action for Luke:** fill in the Department column, then map each department in §3 to its owner. Once you tell me who covers Support/Fulfillment and Sales/Setters, I'll slot the exact `@handles` into the routing map so the SOP tells staff precisely who to tag.
+**Leadership**
+
+| Name | Slack handle | Role |
+|---|---|---|
+| Luke | `@info` | CEO / GM + Sales Manager — VIP & final escalation |
+| Daniel (Dan) | `@dan` | Operations Manager — escalation *(owns #customer-support)* |
+
+**Billing / Finance & Legal** — *route billing here → @Fatima + @Kristine*
+
+| Name | Slack handle | Role |
+|---|---|---|
+| Kristine | `@finance` | Head Bookkeeper |
+| Fatima | `@billing` | Assistant Bookkeeper |
+| Narissa | *(not in #customer-support)* | Accountant |
+
+**Fulfilment / Support** — *route support here → @Sheree + @Bernice*
+
+| Name | Slack handle | Role |
+|---|---|---|
+| Bernice | `@bernice` | Head Biz & Support Coach & Events Manager |
+| Sheree | `@sheree` | Biz & Support Coach for Clients |
+| Zoe | `@zoe` | Support Coach & Events Help |
+| Fran | `@fran` | Support Coach & Events Support |
+| Sascha | `@sascha` | Support Coach & Events Confirmer |
+| Moe | *(not in #customer-support)* | Support Coach & Events Support |
+
+**Sales & Setters** — *sales → @Lisa + @Sarah · setters → @Fernando + @Sarika*
+
+| Name | Slack handle | Role |
+|---|---|---|
+| Lisa | `@lisa` | Salesperson |
+| Sarah | `@sarah` | Salesperson |
+| Brad | `@brad` | Salesperson |
+| Sarika | `@sarika` | Call Setter |
+| Fernando | `@fer` *(confirm)* | Message Setter |
+
+**Operations**
+
+| Name | Slack handle | Role |
+|---|---|---|
+| Kate | `@kate` | Admin Lead / Graphic Design |
+| Nawal | `@nawal` | Operations Support |
+| LJ | `@lj` | Admin |
+| Shine | `@sunshine` | Admin |
+| Blessing | `@blessingobi407` | Admin & Student Support |
+
+**Marketing & Media** *(none currently in #customer-support)*
+
+| Name | Role |
+|---|---|
+| Michael | Marketing Manager |
+| Zee | Content Manager & Website |
+| Ace | Video Editor |
+| Mammit | Video Editor |
+
+> **One thing to confirm:** Is **Fernando** the person on Slack as `@fer` (Fer Diaz)? If not, send me his handle. Also, Narissa, Moe, and the Marketing team aren't in #customer-support — add them if messages ever need to route to them.
 
 > 📷 **Screenshot 1 — Team inbox (Conversations → Conversations).**
 > *Insert the Team inbox screenshot here.* Shows the **Unread / All / Recent / Starred** filter tabs at the top of the inbox and the list of conversations (e.g. *Lh Billing*, *Sue Minto*). The **blue number badge** (e.g. `12`) on a conversation = number of unread messages in that thread. This is the view everyone works from.
@@ -122,7 +159,7 @@ These are the 19 people in **#customer-support**. Names and Slack handles are pu
 When a message isn't yours, the hand-off happens in the **#customer-support** Slack channel so the right person is actively notified — not left to notice it on their own.
 
 1. **Post the message in #customer-support.** Include enough for the person to act without opening the CRM cold: the **customer's name**, the **channel** (email/SMS/call), a **one-line summary or paste** of what they said, and a **link to the CRM conversation** if you can grab it.
-2. **@tag the person who needs to reply** based on the routing map in §3 (e.g. billing dispute → @*[billing owner]*; access/tech issue → @*[support owner]*; new lead/booking → @*[setter]*).
+2. **@tag the person who needs to reply** based on the routing map in §3 (e.g. billing dispute → **@Fatima + @Kristine**; access/coaching/tech issue → **@Sheree + @Bernice**; new lead/booking → **@Fernando + @Sarika**; sales/pricing → **@Lisa + @Sarah**).
 3. **If you don't know who it's for → @tag Luke and @Dan and ask "who is this message for?"** Do not guess and do not leave it unrouted. Luke/Dan will point it to the right person in-thread.
 4. **(Recommended) Also set the Owner + tag inside the CRM.** In **Contact Details**, set **Owner** to the responsible person and add the department **Tag** (`billing`, `support`, `sales`). This keeps accountability visible inside GHL as a backup to Slack.
 5. **Order of operations:** mark **Unread** first (§4B step 2) → post + tag in Slack → **then** mark **Read**. Never mark Read until the Slack hand-off is done.
@@ -171,7 +208,7 @@ Missed calls are tracked in **Reporting → Call report**.
 > *Insert the Call report screenshot here.* Shows the calls table with columns **Date & time, Contact name, Number name, Source type, Call status, Disposition, Keyword, Duration, Recording**. In the example, *Gavin Marks (+61 435 146 259)* has **Call status = Missed, Duration = 0s, No recording** — that is exactly what a missed call looks like and what must be called back. The bar chart at the top shows call volume for the selected range; use **Filters / All numbers** to narrow by line (e.g. *Setter Team 2*).
 
 **Ownership & cadence (confirm):**
-- **Who:** *[Setter team]* owns missed-call callbacks.
+- **Who:** the **setters (Fernando + Sarika)** own missed-call callbacks.
 - **How often:** Check the Call report **at least [3×] per day** — morning, midday, end of day — and clear every `Missed` entry.
 - **Target:** Call back inbound missed calls within **[15–30 minutes]** during business hours.
 - Log each callback (Disposition, e.g. *Requested Appointment*) so we can see it was actioned.
