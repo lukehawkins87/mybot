@@ -55,8 +55,36 @@ When a new message lands in the **Team inbox**, decide who it belongs to:
 | Invoices, payments, refunds, chargebacks, card declines | **Billing** | `billing@lukehawkins.com` — *[owner name]* | "Why was I charged $7?", disputed payment |
 | Program access, delivery, tech/login issues, "how do I…", unsubscribe requests | **Support / Fulfillment** | `support@fulfillment.lukehawkins.com` — *[owner name]* | "I can't access the training", "please delete me" |
 | New leads, booking a call, appointment requests, sales questions | **Sales / Setters** | Setter Team — *[owner name]* | "Can I book a call?", replies to ad DMs |
-| Personal / VIP / anything only Luke should answer | **Luke** | Luke Hawkins | Partner/JV outreach, sensitive complaints |
-| Not sure | **Ask before guessing** | Post an Internal Comment @*[team lead]* | Ambiguous or mixed-topic messages |
+| Personal / VIP / anything only Luke should answer | **Luke** | @info (Luke Hawkins) | Partner/JV outreach, sensitive complaints |
+| Not sure | **Ask before guessing** | Post in #customer-support, @tag Luke + Dan | Ambiguous or mixed-topic messages |
+
+### 3.1 Team Roster (from the #customer-support Slack channel)
+
+These are the 19 people in **#customer-support**. Names and Slack handles are pulled directly from Slack; the **Department** column is what you need to confirm — I only filled in the ones the email handle makes obvious, so nobody gets tagged by mistake.
+
+| Name | Slack handle | Email | Department / role → **CONFIRM** |
+|---|---|---|---|
+| Luke Hawkins | `@info` | info@lukehawkins.com | Founder / VIP + escalation |
+| Dan Diaz | `@dan` | dan@lukehawkins.com | Team lead / escalation *(owns this channel)* |
+| Kristine | `@finance` | finance@lukehawkins.com | Finance |
+| Fatima | `@billing` | billing@lukehawkins.com | Billing |
+| Fer Diaz | `@fer` | fer@lukehawkins.com | *[assign]* |
+| LJ | `@lj` | lj@lukehawkins.com | *[assign — appears in CRM doing setting/outreach]* |
+| Bernice Allan | `@bernice` | bernice@lukehawkins.com | *[assign]* |
+| Kate Angulo | `@kate` | kate@lukehawkins.com | *[assign]* |
+| Shine | `@sunshine` | sunshine@lukehawkins.com | *[assign]* |
+| Nawal Rafay | `@nawal` | nawal@lukehawkins.com | *[assign]* |
+| Sarah | `@sarah` | sarah@lukehawkins.com | *[assign]* |
+| Sarika | `@sarika` | sarika@lukehawkins.com | *[assign]* |
+| Lisa Cooke | `@lisa` | lisa@lukehawkins.com | *[assign]* |
+| Blessing Obi | `@blessingobi407` | blessingobi407@gmail.com | *[assign]* |
+| Sascha Jones | `@sascha` | sascha@lukehawkins.com | *[assign]* |
+| Sheree | `@sheree` | sheree@lukehawkins.com | *[assign]* |
+| Fran Heath | `@fran` | fran@lukehawkins.com | *[assign]* |
+| Zoe | `@zoe` | zoe@lukehawkins.com | *[assign]* |
+| Brad Harnan | `@brad` | brad@lukehawkins.com | *[assign]* |
+
+> **Action for Luke:** fill in the Department column, then map each department in §3 to its owner. Once you tell me who covers Support/Fulfillment and Sales/Setters, I'll slot the exact `@handles` into the routing map so the SOP tells staff precisely who to tag.
 
 > 📷 **Screenshot 1 — Team inbox (Conversations → Conversations).**
 > *Insert the Team inbox screenshot here.* Shows the **Unread / All / Recent / Starred** filter tabs at the top of the inbox and the list of conversations (e.g. *Lh Billing*, *Sue Minto*). The **blue number badge** (e.g. `12`) on a conversation = number of unread messages in that thread. This is the view everyone works from.
@@ -170,7 +198,7 @@ If a contact asks to be removed, stops replying angrily, or a **"DnD enabled by 
 
 **Throughout the day**
 - [ ] Only open messages you intend to action.
-- [ ] Anything not yours → delegate (Owner + @mention + tag) and mark **Unread**.
+- [ ] Anything not yours → mark **Unread**, hand off in **#customer-support** (@tag the right person, or Luke + Dan if unsure), then mark Read.
 - [ ] Re-check missed calls midday.
 
 **End of day**
